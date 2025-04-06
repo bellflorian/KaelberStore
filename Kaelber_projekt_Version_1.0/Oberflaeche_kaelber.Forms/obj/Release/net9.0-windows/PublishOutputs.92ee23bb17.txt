@@ -1,0 +1,7 @@
+G:\VisualStudio Projekter\Publish Projekte\Oberflaeche_kaelber.Forms.exe
+G:\VisualStudio Projekter\Publish Projekte\Oberflaeche_kaelber.Forms.dll
+G:\VisualStudio Projekter\Publish Projekte\Oberflaeche_kaelber.Forms.deps.json
+G:\VisualStudio Projekter\Publish Projekte\Oberflaeche_kaelber.Forms.runtimeconfig.json
+G:\VisualStudio Projekter\Publish Projekte\Oberflaeche_kaelber.Forms.pdb
+G:\VisualStudio Projekter\Publish Projekte\Kaelber_projekt.Class.dll
+G:\VisualStudio Projekter\Publish Projekte\Kaelber_projekt.Class.pdb
