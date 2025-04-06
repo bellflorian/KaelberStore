@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "Kaelber_projekt.Console/1.0.0": {
+        "dependencies": {
+          "Kaelber_projekt.Class": "1.0.0"
+        },
+        "runtime": {
+          "Kaelber_projekt.Console.dll": {}
+        }
+      },
+      "Kaelber_projekt.Class/1.0.0": {
+        "runtime": {
+          "Kaelber_projekt.Class.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Kaelber_projekt.Console/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Kaelber_projekt.Class/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

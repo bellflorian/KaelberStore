@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "Kaelber_projekt.Class/1.0.0": {
+        "runtime": {
+          "Kaelber_projekt.Class.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Kaelber_projekt.Class/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
