@@ -190,3 +190,28 @@ C:\Users\FlorianBell\Desktop\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.For
 C:\Users\FlorianBell\Desktop\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.Kaelberbox.resources
 C:\Users\FlorianBell\Desktop\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.Properties.Resources.resources
 C:\Users\FlorianBell\Desktop\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.SelectKalbForm.resources
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\bin\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.exe
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\bin\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.deps.json
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\bin\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.runtimeconfig.json
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\bin\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.dll
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\bin\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.pdb
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\bin\Debug\net9.0-windows\Kaelber_projekt.Class.dll
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\bin\Debug\net9.0-windows\Kaelber_projekt.Class.pdb
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.csproj.AssemblyReference.cache
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.AddKalbForm.resources
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.DatenKaelberForm.resources
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.Kaelberbox.resources
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.Properties.Resources.resources
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.SelectKalbForm.resources
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.csproj.GenerateResource.cache
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.GeneratedMSBuildEditorConfig.editorconfig
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.AssemblyInfoInputs.cache
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.AssemblyInfo.cs
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.csproj.CoreCompileInputs.cache
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.sourcelink.json
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflae.1472B1FD.Up2Date
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.dll
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\refint\Oberflaeche_kaelber.Forms.dll
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.pdb
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\Oberflaeche_kaelber.Forms.genruntimeconfig.cache
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Oberflaeche_kaelber.Forms\obj\Debug\net9.0-windows\ref\Oberflaeche_kaelber.Forms.dll

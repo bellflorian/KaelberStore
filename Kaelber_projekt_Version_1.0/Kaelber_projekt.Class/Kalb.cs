@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Generic; 
 using System.ComponentModel;
 
 namespace Kaelber_projekt.Class
 {
     public class Kalb
     {
+        // Halloooogerwoifjmweoif
         public int Lebensnummer {  get; set; }
         public string Name {  get; set; }
         public char Geschlecht {  get; set; }

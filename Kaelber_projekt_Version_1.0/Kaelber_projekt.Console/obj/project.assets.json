@@ -27,23 +27,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\FlorianBell\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\marti\\.nuget\\packages\\": {},
+    "E:\\komponente visual studio\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\FlorianBell\\Desktop\\Kaelber_projekt_Version_1.0\\Kaelber_projekt.Console\\Kaelber_projekt.Console.csproj",
+      "projectUniqueName": "G:\\VisualStudio Projekter\\GitProjekts\\KaelberStore\\Kaelber_projekt_Version_1.0\\Kaelber_projekt.Console\\Kaelber_projekt.Console.csproj",
       "projectName": "Kaelber_projekt.Console",
-      "projectPath": "C:\\Users\\FlorianBell\\Desktop\\Kaelber_projekt_Version_1.0\\Kaelber_projekt.Console\\Kaelber_projekt.Console.csproj",
-      "packagesPath": "C:\\Users\\FlorianBell\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\FlorianBell\\Desktop\\Kaelber_projekt_Version_1.0\\Kaelber_projekt.Console\\obj\\",
+      "projectPath": "G:\\VisualStudio Projekter\\GitProjekts\\KaelberStore\\Kaelber_projekt_Version_1.0\\Kaelber_projekt.Console\\Kaelber_projekt.Console.csproj",
+      "packagesPath": "C:\\Users\\marti\\.nuget\\packages\\",
+      "outputPath": "G:\\VisualStudio Projekter\\GitProjekts\\KaelberStore\\Kaelber_projekt_Version_1.0\\Kaelber_projekt.Console\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "E:\\komponente visual studio\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\FlorianBell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\marti\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -52,15 +52,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\FlorianBell\\Desktop\\Kaelber_projekt_Version_1.0\\Kaelber_projekt.Class\\Kaelber_projekt.Class.csproj": {
-              "projectPath": "C:\\Users\\FlorianBell\\Desktop\\Kaelber_projekt_Version_1.0\\Kaelber_projekt.Class\\Kaelber_projekt.Class.csproj"
+            "G:\\VisualStudio Projekter\\GitProjekts\\KaelberStore\\Kaelber_projekt_Version_1.0\\Kaelber_projekt.Class\\Kaelber_projekt.Class.csproj": {
+              "projectPath": "G:\\VisualStudio Projekter\\GitProjekts\\KaelberStore\\Kaelber_projekt_Version_1.0\\Kaelber_projekt.Class\\Kaelber_projekt.Class.csproj"
             }
           }
         }

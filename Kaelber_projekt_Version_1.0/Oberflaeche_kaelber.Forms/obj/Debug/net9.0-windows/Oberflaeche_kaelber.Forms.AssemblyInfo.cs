@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Oberflaeche_kaelber.Forms")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d39788f49e69771ba917a4eb8ceacbd9c9880990")]
 [assembly: System.Reflection.AssemblyProductAttribute("Oberflaeche_kaelber.Forms")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Oberflaeche_kaelber.Forms")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
