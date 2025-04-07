@@ -1,2 +1,0 @@
-2345;erfger;m;Mittel 40kg;34;06.01.2025 00:00:00;False;True;True;False;False;;-
-2344;Erni;w;Klein 35kg;23;04.04.2025 18:57:19;True;False;False;True;False;;-

@@ -97,3 +97,15 @@ C:\Users\FlorianBell\Desktop\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\o
 C:\Users\FlorianBell\Desktop\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\refint\Kaelber_projekt.Class.dll
 C:\Users\FlorianBell\Desktop\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.pdb
 C:\Users\FlorianBell\Desktop\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\ref\Kaelber_projekt.Class.dll
+C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\bin\Debug\net9.0\Kaelber_projekt.Class.deps.json
+C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\bin\Debug\net9.0\Kaelber_projekt.Class.dll
+C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\bin\Debug\net9.0\Kaelber_projekt.Class.pdb
+C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.AssemblyInfoInputs.cache
+C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.AssemblyInfo.cs
+C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.csproj.CoreCompileInputs.cache
+C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.sourcelink.json
+C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.dll
+C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\refint\Kaelber_projekt.Class.dll
+C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.pdb
+C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\ref\Kaelber_projekt.Class.dll
