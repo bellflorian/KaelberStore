@@ -37,13 +37,13 @@
             panel3 = new Panel();
             panel2 = new Panel();
             panel1 = new Panel();
+            tcStalluebersichtAlterStall = new TabPage();
             tcPageKaelber1 = new TabPage();
             btnAddKealber = new Button();
             dgvDatenKaelber = new DataGridView();
             tcPageKaelber2 = new TabPage();
             dgvDatenKaelber2 = new DataGridView();
             btnMilchmenge = new Button();
-            tcStalluebersichtAlterStall = new TabPage();
             tcTabs.SuspendLayout();
             tcStalluebersichtNeuerStall.SuspendLayout();
             tcPageKaelber1.SuspendLayout();
@@ -141,6 +141,15 @@
             panel1.Size = new Size(10, 610);
             panel1.TabIndex = 0;
             // 
+            // tcStalluebersichtAlterStall
+            // 
+            tcStalluebersichtAlterStall.Location = new Point(4, 24);
+            tcStalluebersichtAlterStall.Name = "tcStalluebersichtAlterStall";
+            tcStalluebersichtAlterStall.Size = new Size(1362, 705);
+            tcStalluebersichtAlterStall.TabIndex = 3;
+            tcStalluebersichtAlterStall.Text = "Stallübersicht Alter Stall";
+            tcStalluebersichtAlterStall.UseVisualStyleBackColor = true;
+            // 
             // tcPageKaelber1
             // 
             tcPageKaelber1.BackColor = SystemColors.Control;
@@ -194,28 +203,19 @@
             dgvDatenKaelber2.Dock = DockStyle.Top;
             dgvDatenKaelber2.Location = new Point(3, 3);
             dgvDatenKaelber2.Name = "dgvDatenKaelber2";
-            dgvDatenKaelber2.Size = new Size(1356, 602);
+            dgvDatenKaelber2.Size = new Size(1356, 654);
             dgvDatenKaelber2.TabIndex = 4;
             dgvDatenKaelber2.CellValueChanged += dgvDatenKaelber2_CellValueChanged;
             // 
             // btnMilchmenge
             // 
-            btnMilchmenge.Location = new Point(3, 615);
+            btnMilchmenge.Location = new Point(3, 663);
             btnMilchmenge.Name = "btnMilchmenge";
             btnMilchmenge.Size = new Size(1356, 34);
             btnMilchmenge.TabIndex = 3;
             btnMilchmenge.Text = "Berechne Milchmenge";
             btnMilchmenge.UseVisualStyleBackColor = true;
             btnMilchmenge.Click += btnMilchmenge_Click_1;
-            // 
-            // tcStalluebersichtAlterStall
-            // 
-            tcStalluebersichtAlterStall.Location = new Point(4, 24);
-            tcStalluebersichtAlterStall.Name = "tcStalluebersichtAlterStall";
-            tcStalluebersichtAlterStall.Size = new Size(1362, 705);
-            tcStalluebersichtAlterStall.TabIndex = 3;
-            tcStalluebersichtAlterStall.Text = "Stallübersicht Alter Stall";
-            tcStalluebersichtAlterStall.UseVisualStyleBackColor = true;
             // 
             // DatenKaelberForm
             // 
