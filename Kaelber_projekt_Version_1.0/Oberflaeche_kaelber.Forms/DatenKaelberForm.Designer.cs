@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatenKaelberForm));
             tcTabs = new TabControl();
-            tcStalluebersicht = new TabPage();
+            tcStalluebersichtNeuerStall = new TabPage();
             kaelberbox1 = new Kaelberbox();
             panel5 = new Panel();
             panel4 = new Panel();
@@ -43,8 +43,9 @@
             tcPageKaelber2 = new TabPage();
             dgvDatenKaelber2 = new DataGridView();
             btnMilchmenge = new Button();
+            tcStalluebersichtAlterStall = new TabPage();
             tcTabs.SuspendLayout();
-            tcStalluebersicht.SuspendLayout();
+            tcStalluebersichtNeuerStall.SuspendLayout();
             tcPageKaelber1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDatenKaelber).BeginInit();
             tcPageKaelber2.SuspendLayout();
@@ -53,30 +54,31 @@
             // 
             // tcTabs
             // 
-            tcTabs.Controls.Add(tcStalluebersicht);
+            tcTabs.Controls.Add(tcStalluebersichtNeuerStall);
+            tcTabs.Controls.Add(tcStalluebersichtAlterStall);
             tcTabs.Controls.Add(tcPageKaelber1);
             tcTabs.Controls.Add(tcPageKaelber2);
             tcTabs.Dock = DockStyle.Fill;
             tcTabs.Location = new Point(0, 0);
             tcTabs.Name = "tcTabs";
             tcTabs.SelectedIndex = 0;
-            tcTabs.Size = new Size(1370, 685);
+            tcTabs.Size = new Size(1370, 733);
             tcTabs.TabIndex = 3;
             // 
-            // tcStalluebersicht
+            // tcStalluebersichtNeuerStall
             // 
-            tcStalluebersicht.BackColor = SystemColors.Control;
-            tcStalluebersicht.Controls.Add(kaelberbox1);
-            tcStalluebersicht.Controls.Add(panel5);
-            tcStalluebersicht.Controls.Add(panel4);
-            tcStalluebersicht.Controls.Add(panel3);
-            tcStalluebersicht.Controls.Add(panel2);
-            tcStalluebersicht.Controls.Add(panel1);
-            tcStalluebersicht.Location = new Point(4, 24);
-            tcStalluebersicht.Name = "tcStalluebersicht";
-            tcStalluebersicht.Size = new Size(1362, 657);
-            tcStalluebersicht.TabIndex = 2;
-            tcStalluebersicht.Text = "Stallübersicht";
+            tcStalluebersichtNeuerStall.BackColor = SystemColors.Control;
+            tcStalluebersichtNeuerStall.Controls.Add(kaelberbox1);
+            tcStalluebersichtNeuerStall.Controls.Add(panel5);
+            tcStalluebersichtNeuerStall.Controls.Add(panel4);
+            tcStalluebersichtNeuerStall.Controls.Add(panel3);
+            tcStalluebersichtNeuerStall.Controls.Add(panel2);
+            tcStalluebersichtNeuerStall.Controls.Add(panel1);
+            tcStalluebersichtNeuerStall.Location = new Point(4, 24);
+            tcStalluebersichtNeuerStall.Name = "tcStalluebersichtNeuerStall";
+            tcStalluebersichtNeuerStall.Size = new Size(1362, 705);
+            tcStalluebersichtNeuerStall.TabIndex = 2;
+            tcStalluebersichtNeuerStall.Text = "Stallübersicht Neuer Stall";
             // 
             // kaelberbox1
             // 
@@ -147,13 +149,13 @@
             tcPageKaelber1.Location = new Point(4, 24);
             tcPageKaelber1.Name = "tcPageKaelber1";
             tcPageKaelber1.Padding = new Padding(3);
-            tcPageKaelber1.Size = new Size(1362, 657);
+            tcPageKaelber1.Size = new Size(1362, 705);
             tcPageKaelber1.TabIndex = 0;
             tcPageKaelber1.Text = "Daten Kälber";
             // 
             // btnAddKealber
             // 
-            btnAddKealber.Location = new Point(3, 615);
+            btnAddKealber.Location = new Point(3, 665);
             btnAddKealber.Name = "btnAddKealber";
             btnAddKealber.Size = new Size(1356, 34);
             btnAddKealber.TabIndex = 2;
@@ -168,7 +170,7 @@
             dgvDatenKaelber.Dock = DockStyle.Top;
             dgvDatenKaelber.Location = new Point(3, 3);
             dgvDatenKaelber.Name = "dgvDatenKaelber";
-            dgvDatenKaelber.Size = new Size(1356, 602);
+            dgvDatenKaelber.Size = new Size(1356, 656);
             dgvDatenKaelber.TabIndex = 1;
             dgvDatenKaelber.CellClick += dgvDatenKaelber_CellClick;
             dgvDatenKaelber.CellValueChanged += dgvDatenKaelber_CellValueChanged_1;
@@ -181,7 +183,7 @@
             tcPageKaelber2.Location = new Point(4, 24);
             tcPageKaelber2.Name = "tcPageKaelber2";
             tcPageKaelber2.Padding = new Padding(3);
-            tcPageKaelber2.Size = new Size(1362, 657);
+            tcPageKaelber2.Size = new Size(1362, 705);
             tcPageKaelber2.TabIndex = 1;
             tcPageKaelber2.Text = "Übersicht Kälber";
             // 
@@ -206,16 +208,25 @@
             btnMilchmenge.UseVisualStyleBackColor = true;
             btnMilchmenge.Click += btnMilchmenge_Click_1;
             // 
+            // tcStalluebersichtAlterStall
+            // 
+            tcStalluebersichtAlterStall.Location = new Point(4, 24);
+            tcStalluebersichtAlterStall.Name = "tcStalluebersichtAlterStall";
+            tcStalluebersichtAlterStall.Size = new Size(1362, 705);
+            tcStalluebersichtAlterStall.TabIndex = 3;
+            tcStalluebersichtAlterStall.Text = "Stallübersicht Alter Stall";
+            tcStalluebersichtAlterStall.UseVisualStyleBackColor = true;
+            // 
             // DatenKaelberForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1370, 685);
+            ClientSize = new Size(1370, 733);
             Controls.Add(tcTabs);
             Name = "DatenKaelberForm";
             Text = "Kälber Daten";
             tcTabs.ResumeLayout(false);
-            tcStalluebersicht.ResumeLayout(false);
+            tcStalluebersichtNeuerStall.ResumeLayout(false);
             tcPageKaelber1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvDatenKaelber).EndInit();
             tcPageKaelber2.ResumeLayout(false);
@@ -231,12 +242,13 @@
         private Button btnAddKealber;
         private DataGridView dgvDatenKaelber2;
         private Button btnMilchmenge;
-        private TabPage tcStalluebersicht;
+        private TabPage tcStalluebersichtNeuerStall;
         private Panel panel1;
         private Panel panel2;
         private Panel panel4;
         private Panel panel3;
         private Panel panel5;
         private Kaelberbox kaelberbox1;
+        private TabPage tcStalluebersichtAlterStall;
     }
 }

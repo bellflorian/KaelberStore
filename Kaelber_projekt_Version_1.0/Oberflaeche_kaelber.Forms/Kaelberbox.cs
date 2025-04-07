@@ -85,5 +85,6 @@ namespace Oberflaeche_kaelber.Forms
             this.Controls.Add(lebensnummerLabel);
             this.Controls.Add(milchLabel);
         }
+
     }
 }
