@@ -1,4 +1,5 @@
 ﻿using Kaelber_projekt.Class;
+using System.Drawing.Printing;
 using System.Windows.Forms;
 namespace Oberflaeche_kaelber.Forms
 {
@@ -95,7 +96,7 @@ namespace Oberflaeche_kaelber.Forms
         private void dgvDatenKaelber2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             RecalculateKaelber();
-            store.SaveToFile(); 
+            store.SaveToFile();
         }
 
         private void RecalculateKaelber()
@@ -143,6 +144,93 @@ namespace Oberflaeche_kaelber.Forms
             MessageBox.Show($"Die gesamte Milchmenge beträgt: {milchmengeSum}L", "Berechnung Milchmenge", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            var auswahlForm = new DruckSpaltenAuswahlForm();
+            if (auswahlForm.ShowDialog() == DialogResult.OK)
+            {
+                StarteDruckMitFeldAuswahl(auswahlForm.AusgewaehlteFelder);
+            }
+        }
+
+        private void StarteDruckMitFeldAuswahl(List<string> feldNamen)
+        {
+            PrintDocument doc = new PrintDocument();
+            doc.DefaultPageSettings.Landscape = true; // Querformat aktivieren
+
+            doc.PrintPage += (s, e) =>
+            {
+                float seitenrandLinks = 50f;
+                float seitenrandOben = 80f;
+                float seitenbreite = e.MarginBounds.Width;
+                float zeilenHoehe = 25f;
+
+                float y = seitenrandOben;
+                float x = seitenrandLinks;
+
+                var list = (List<Kalb>)bindingSource1.List;
+
+                // Hole nur ausgewählte Properties der Klasse Kalb
+                var props = typeof(Kalb).GetProperties()
+                    .Where(p => feldNamen.Contains(p.Name))
+                    .ToList();
+
+                int spaltenAnzahl = props.Count;
+                float spaltenBreite = seitenbreite / spaltenAnzahl;
+
+                Font headerFont = new Font("Segoe UI", 10, FontStyle.Bold);
+                Font cellFont = new Font("Segoe UI", 9);
+                Pen zellenRahmen = Pens.Black;
+
+                // 🔹 Kopfzeile (Feldnamen)
+                foreach (var prop in props)
+                {
+                    var headerRect = new RectangleF(x, y, spaltenBreite, zeilenHoehe);
+
+                    e.Graphics.DrawString(prop.Name, headerFont, Brushes.Black, headerRect);
+                    e.Graphics.DrawRectangle(zellenRahmen, headerRect.X, headerRect.Y, headerRect.Width, headerRect.Height);
+
+                    x += spaltenBreite;
+                }
+
+                y += zeilenHoehe;
+
+                // 🔹 Datenzeilen
+                foreach (var kalb in list)
+                {
+                    x = seitenrandLinks;
+
+                    foreach (var prop in props)
+                    {
+                        object propValue = prop.GetValue(kalb);
+                        string value;
+
+                        if (propValue is DateTime dt)
+                            value = dt.ToShortDateString(); // nur Datum
+                        else
+                            value = propValue?.ToString() ?? "";
+
+                        var cellRect = new RectangleF(x, y, spaltenBreite, zeilenHoehe);
+
+                        e.Graphics.DrawString(value, cellFont, Brushes.Black, cellRect);
+                        e.Graphics.DrawRectangle(zellenRahmen, cellRect.X, cellRect.Y, cellRect.Width, cellRect.Height);
+
+                        x += spaltenBreite;
+                    }
+
+                    y += zeilenHoehe;
+                }
+            };
+
+            using (PrintDialog dialog = new PrintDialog())
+            {
+                dialog.Document = doc;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                    doc.Print();
+            }
+        }
+
+
         private void StyleDataGridView(DataGridView dgv)
         {
             dgv.EnableHeadersVisualStyles = false;
@@ -183,5 +271,7 @@ namespace Oberflaeche_kaelber.Forms
 
             dgv.AllowUserToAddRows = false;
         }
+
+        
     }
 }

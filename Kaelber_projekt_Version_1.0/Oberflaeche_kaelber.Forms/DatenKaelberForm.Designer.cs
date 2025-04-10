@@ -43,6 +43,7 @@
             tcPageKaelber2 = new TabPage();
             dgvDatenKaelber2 = new DataGridView();
             btnMilchmenge = new Button();
+            btnPrint = new Button();
             tcTabs.SuspendLayout();
             tcStalluebersicht.SuspendLayout();
             tcPageKaelber1.SuspendLayout();
@@ -142,6 +143,7 @@
             // tcPageKaelber1
             // 
             tcPageKaelber1.BackColor = SystemColors.Control;
+            tcPageKaelber1.Controls.Add(btnPrint);
             tcPageKaelber1.Controls.Add(btnAddKealber);
             tcPageKaelber1.Controls.Add(dgvDatenKaelber);
             tcPageKaelber1.Location = new Point(4, 24);
@@ -155,7 +157,7 @@
             // 
             btnAddKealber.Location = new Point(3, 615);
             btnAddKealber.Name = "btnAddKealber";
-            btnAddKealber.Size = new Size(1356, 34);
+            btnAddKealber.Size = new Size(1164, 34);
             btnAddKealber.TabIndex = 2;
             btnAddKealber.Text = "Neues Kalb hinzufügen";
             btnAddKealber.UseVisualStyleBackColor = true;
@@ -206,6 +208,16 @@
             btnMilchmenge.UseVisualStyleBackColor = true;
             btnMilchmenge.Click += btnMilchmenge_Click_1;
             // 
+            // btnPrint
+            // 
+            btnPrint.Location = new Point(1173, 615);
+            btnPrint.Name = "btnPrint";
+            btnPrint.Size = new Size(181, 34);
+            btnPrint.TabIndex = 3;
+            btnPrint.Text = "Drucken";
+            btnPrint.UseVisualStyleBackColor = true;
+            btnPrint.Click += btnPrint_Click;
+            // 
             // DatenKaelberForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -238,5 +250,6 @@
         private Panel panel3;
         private Panel panel5;
         private Kaelberbox kaelberbox1;
+        private Button btnPrint;
     }
 }

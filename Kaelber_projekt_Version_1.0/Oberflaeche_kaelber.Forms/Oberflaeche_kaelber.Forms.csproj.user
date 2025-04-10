@@ -10,6 +10,9 @@
     <Compile Update="AddKalbForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="DruckSpaltenAuswahlForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Kaelberbox.cs">
       <SubType>UserControl</SubType>
     </Compile>
