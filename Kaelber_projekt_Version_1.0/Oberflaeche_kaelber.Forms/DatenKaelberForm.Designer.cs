@@ -174,6 +174,10 @@
             dgvDatenKaelber.TabIndex = 1;
             dgvDatenKaelber.CellClick += dgvDatenKaelber_CellClick;
             dgvDatenKaelber.CellValueChanged += dgvDatenKaelber_CellValueChanged_1;
+            dgvDatenKaelber.DragDrop += dgvDatenKaelber_DragDrop;
+            dgvDatenKaelber.DragOver += dgvDatenKaelber_DragOver;
+            dgvDatenKaelber.MouseDown += dgvDatenKaelber_MouseDown;
+            dgvDatenKaelber.MouseMove += dgvDatenKaelber_MouseMove;
             // 
             // tcPageKaelber2
             // 

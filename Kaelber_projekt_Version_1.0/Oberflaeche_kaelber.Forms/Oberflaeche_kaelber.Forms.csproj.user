@@ -10,6 +10,18 @@
     <Compile Update="AddKalbForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="DatenKaelberForm_BACKUP_254.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DatenKaelberForm_BASE_254.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DatenKaelberForm_LOCAL_254.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="DatenKaelberForm_REMOTE_254.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="DruckSpaltenAuswahlForm.cs">
       <SubType>Form</SubType>
     </Compile>
