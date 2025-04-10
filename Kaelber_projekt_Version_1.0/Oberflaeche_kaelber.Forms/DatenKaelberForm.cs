@@ -29,6 +29,8 @@ namespace Oberflaeche_kaelber.Forms
             dgvDatenKaelber.DataSource = bindingSource1;
             dgvDatenKaelber2.DataSource = bindingSource1;
 
+            dgvDatenKaelber.AllowDrop = true;
+
 
             // Ausblenden auf dem ersten Tab
             bool temp = false;
@@ -95,7 +97,7 @@ namespace Oberflaeche_kaelber.Forms
         private void dgvDatenKaelber2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             RecalculateKaelber();
-            store.SaveToFile(); 
+            store.SaveToFile();
         }
 
         private void RecalculateKaelber()
@@ -143,6 +145,57 @@ namespace Oberflaeche_kaelber.Forms
             MessageBox.Show($"Die gesamte Milchmenge beträgt: {milchmengeSum}L", "Berechnung Milchmenge", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // Sorting the List
+
+        private int dragRowIndex = -1;
+        private bool dragging = false;
+
+        private void dgvDatenKaelber_MouseDown(object sender, MouseEventArgs e)
+        {
+            var hit = dgvDatenKaelber.HitTest(e.X, e.Y);
+            if (hit.Type == DataGridViewHitTestType.Cell && hit.RowIndex >= 0)
+            {
+                dragRowIndex = hit.RowIndex;
+                dragging = true;
+            }
+        }
+
+        private void dgvDatenKaelber_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (dragging && e.Button == MouseButtons.Left)
+            {
+                dgvDatenKaelber.DoDragDrop(dgvDatenKaelber.Rows[dragRowIndex], DragDropEffects.Move);
+            }
+        }
+
+        private void dgvDatenKaelber_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void dgvDatenKaelber_DragDrop(object sender, DragEventArgs e)
+        {
+            Point clientPoint = dgvDatenKaelber.PointToClient(new Point(e.X, e.Y));
+            var hit = dgvDatenKaelber.HitTest(clientPoint.X, clientPoint.Y);
+            int dropRowIndex = hit.RowIndex;
+
+            if (dropRowIndex >= 0 && dragRowIndex != dropRowIndex)
+            {
+                var list = (List<Kalb>)bindingSource1.List;
+
+                var item = list[dragRowIndex];
+                list.RemoveAt(dragRowIndex);
+                list.Insert(dropRowIndex, item);
+
+                bindingSource1.ResetBindings(false); // wichtig für visuelles Update
+                dgvDatenKaelber.Rows[dropRowIndex].Selected = true;
+
+                store.SaveToFile();
+            }
+
+            dragging = false;
+        }
+
         private void StyleDataGridView(DataGridView dgv)
         {
             dgv.EnableHeadersVisualStyles = false;
@@ -183,5 +236,7 @@ namespace Oberflaeche_kaelber.Forms
 
             dgv.AllowUserToAddRows = false;
         }
+
+        
     }
 }
