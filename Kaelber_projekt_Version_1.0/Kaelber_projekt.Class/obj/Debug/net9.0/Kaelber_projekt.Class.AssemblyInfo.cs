@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Kaelber_projekt.Class")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e415ad26f13b96f2957af7ff804af5e721d01e3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+51e8e1f291ecbc108aecd00754025c19cd875f59")]
 [assembly: System.Reflection.AssemblyProductAttribute("Kaelber_projekt.Class")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Kaelber_projekt.Class")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -25,7 +25,7 @@ namespace Oberflaeche_kaelber.Forms
 
             foreach (var name in props)
             {
-                clbColumnsSelect.Items.Add(name, false); // standardmäßig alles ausgewählt
+                clbColumnsSelect.Items.Add(name, true);// standardmäßig alles ausgewählt
             }
         }
 

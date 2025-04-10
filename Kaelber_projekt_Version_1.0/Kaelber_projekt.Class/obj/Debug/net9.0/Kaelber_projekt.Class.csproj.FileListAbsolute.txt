@@ -109,3 +109,15 @@ C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_
 C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\refint\Kaelber_projekt.Class.dll
 C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.pdb
 C:\Users\FlorianBell\Documents\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\ref\Kaelber_projekt.Class.dll
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\bin\Debug\net9.0\Kaelber_projekt.Class.deps.json
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\bin\Debug\net9.0\Kaelber_projekt.Class.dll
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\bin\Debug\net9.0\Kaelber_projekt.Class.pdb
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.GeneratedMSBuildEditorConfig.editorconfig
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.AssemblyInfoInputs.cache
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.AssemblyInfo.cs
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.csproj.CoreCompileInputs.cache
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.sourcelink.json
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.dll
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\refint\Kaelber_projekt.Class.dll
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\Kaelber_projekt.Class.pdb
+G:\VisualStudio Projekter\GitProjekts\KaelberStore\Kaelber_projekt_Version_1.0\Kaelber_projekt.Class\obj\Debug\net9.0\ref\Kaelber_projekt.Class.dll
