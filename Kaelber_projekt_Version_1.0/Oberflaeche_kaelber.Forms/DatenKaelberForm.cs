@@ -145,7 +145,7 @@ namespace Oberflaeche_kaelber.Forms
             MessageBox.Show($"Die gesamte Milchmenge beträgt: {milchmengeSum}L", "Berechnung Milchmenge", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void btnPrint_Click(object sender, EventArgs e)
+        private void btnPrint_Click_1(object sender, EventArgs e)
         {
             var auswahlForm = new DruckSpaltenAuswahlForm();
             if (auswahlForm.ShowDialog() == DialogResult.OK)
@@ -169,7 +169,7 @@ namespace Oberflaeche_kaelber.Forms
                 float y = seitenrandOben;
                 float x = seitenrandLinks;
 
-                var list = (List<Kalb>)bindingSource1.List;
+                var list = (bindingSource1.List as IEnumerable<Kalb>)?.ToList();
 
                 // Hole nur ausgewählte Properties der Klasse Kalb
                 var props = typeof(Kalb).GetProperties()
@@ -208,6 +208,8 @@ namespace Oberflaeche_kaelber.Forms
 
                         if (propValue is DateTime dt)
                             value = dt.ToShortDateString(); // nur Datum
+                        else if (propValue is bool b)
+                            value = b ? "Ja" : "Nein"; // ✔️ boolean zu Ja/Nein
                         else
                             value = propValue?.ToString() ?? "";
 
@@ -231,7 +233,7 @@ namespace Oberflaeche_kaelber.Forms
             }
         }
 
-// Sorting the List
+        // Sorting the List
 
         private int dragRowIndex = -1;
         private bool dragging = false;
@@ -330,5 +332,6 @@ namespace Oberflaeche_kaelber.Forms
 
             dgv.AllowUserToAddRows = false;
         }
+
     }
 }

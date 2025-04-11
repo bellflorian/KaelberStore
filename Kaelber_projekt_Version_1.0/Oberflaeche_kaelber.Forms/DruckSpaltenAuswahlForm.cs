@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,9 +24,27 @@ namespace Oberflaeche_kaelber.Forms
            .Select(p => p.Name)
            .ToList();
 
+            List<string> standartspalten = new()
+            {
+                "Lebensnummer",
+                "Milch",
+                "Krankheiten",
+                "Kaelberstarter",
+                "Heu",
+                "Wasser",
+                "Silofutter",
+                "Alter",
+                "Abspanndatum",
+                "Notiz"
+            }; 
+
             foreach (var name in props)
             {
-                clbColumnsSelect.Items.Add(name, true);// standardmäßig alles ausgewählt
+                int index = clbColumnsSelect.Items.Add(name);// standardmäßig alles ausgewählt
+                if (standartspalten.Contains(name))
+                {
+                    clbColumnsSelect.SetItemChecked(index, true);
+                }
             }
         }
 
