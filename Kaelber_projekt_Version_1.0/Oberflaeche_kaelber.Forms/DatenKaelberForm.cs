@@ -1,4 +1,5 @@
 ﻿using Kaelber_projekt.Class;
+using System.ComponentModel;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 namespace Oberflaeche_kaelber.Forms
@@ -19,14 +20,12 @@ namespace Oberflaeche_kaelber.Forms
 
         private void LoadData()
         {
-            //store.AddKalb(new Kalb(2345, "Kritzi", 'm', "Mittel 40kg", 32, DateTime.Now.AddDays(-10), false, false, false, false, " "));
-            //store.AddKalb(new Kalb(3456, "Erwin", 'm', "Mittel 40kg", 34, DateTime.Now.AddDays(-30), false, false, false, false, " "));
-            //store.AddKalb(new Kalb(3245, "Kira", 'w', "Mittel 40kg", 54, DateTime.Now, false, false, false, false, " "));
-
+            bindingSource1.ListChanged += BindingSource1_ListChanged;
 
             kaelber = store.GetAllKaelber();
             RecalculateKaelber();
-            bindingSource1.DataSource = kaelber;
+            var sortierbareListe = new SortableBindingList<Kalb>(kaelber);
+            bindingSource1.DataSource = sortierbareListe;
             dgvDatenKaelber.DataSource = bindingSource1;
             dgvDatenKaelber2.DataSource = bindingSource1;
 
@@ -92,13 +91,13 @@ namespace Oberflaeche_kaelber.Forms
         private void dgvDatenKaelber_CellValueChanged_1(object sender, DataGridViewCellEventArgs e)
         {
             RecalculateKaelber();
-            store.SaveToFile();
+            store.SetKaelber((bindingSource1.List as IEnumerable<Kalb>).ToList());
         }
 
         private void dgvDatenKaelber2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             RecalculateKaelber();
-            store.SaveToFile();
+            store.SetKaelber((bindingSource1.List as IEnumerable<Kalb>).ToList());
         }
 
         private void RecalculateKaelber()
@@ -123,7 +122,7 @@ namespace Oberflaeche_kaelber.Forms
                     if (kalb != null)
                     {
                         bindingSource1.Remove(kalb);
-                        store.SaveToFile();
+                        store.SetKaelber((bindingSource1.List as IEnumerable<Kalb>).ToList());
                     }
                 }
             }
@@ -268,7 +267,7 @@ namespace Oberflaeche_kaelber.Forms
 
             if (dropRowIndex >= 0 && dragRowIndex != dropRowIndex)
             {
-                var list = (List<Kalb>)bindingSource1.List;
+                var list = (SortableBindingList<Kalb>)bindingSource1.List;
 
                 var item = list[dragRowIndex];
                 list.RemoveAt(dragRowIndex);
@@ -277,12 +276,20 @@ namespace Oberflaeche_kaelber.Forms
                 bindingSource1.ResetBindings(false); // wichtig für visuelles Update
                 dgvDatenKaelber.Rows[dropRowIndex].Selected = true;
 
-                store.SaveToFile();
+                store.SetKaelber((bindingSource1.List as IEnumerable<Kalb>).ToList());
             }
 
             dragging = false;
         }
-        
+
+        private void BindingSource1_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            if (e.ListChangedType == ListChangedType.Reset)
+            {
+                store.SetKaelber((bindingSource1.List as IEnumerable<Kalb>).ToList());
+            }
+        }
+
         private void StyleDataGridView(DataGridView dgv)
         {
             dgv.EnableHeadersVisualStyles = false;
@@ -323,7 +330,5 @@ namespace Oberflaeche_kaelber.Forms
 
             dgv.AllowUserToAddRows = false;
         }
-
-        
     }
 }

@@ -11,6 +11,7 @@ namespace Kaelber_projekt.Class
         public void AddKalb (Kalb kalb);
         public List<Kalb> GetAllKaelber();
         public void SaveToFile();
+        public void SetKaelber(List<Kalb> newList);
 
     }
 }
