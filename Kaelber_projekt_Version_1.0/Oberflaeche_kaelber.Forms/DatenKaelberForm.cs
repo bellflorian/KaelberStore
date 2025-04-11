@@ -82,7 +82,9 @@ namespace Oberflaeche_kaelber.Forms
             {
                 if (addKalbForm.ShowDialog() == DialogResult.OK)
                 {
-                    store.AddKalb(new Kalb(addKalbForm.Lebensnummer, addKalbForm.Name, addKalbForm.Geschlecht, addKalbForm.Groeße, addKalbForm.MutterNummer, addKalbForm.Geburtsdatum, addKalbForm.Eisen, addKalbForm.Selene, addKalbForm.Impfungen, addKalbForm.Hornlos, addKalbForm.Krankheiten));
+                    Kalb kalb = new Kalb(addKalbForm.Lebensnummer, addKalbForm.Name, addKalbForm.Geschlecht, addKalbForm.Groeße, addKalbForm.MutterNummer, addKalbForm.Geburtsdatum, addKalbForm.Eisen, addKalbForm.Selene, addKalbForm.Impfungen, addKalbForm.Hornlos, addKalbForm.Krankheiten);
+                    store.AddKalb(kalb);
+                    (bindingSource1.List as IList<Kalb>)?.Add(kalb);
                 }
             }
             bindingSource1.ResetBindings(false);
