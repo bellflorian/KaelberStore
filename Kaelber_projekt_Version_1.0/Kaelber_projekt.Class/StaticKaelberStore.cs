@@ -24,6 +24,10 @@ namespace Kaelber_projekt.Class
 
         }
 
+        public void SetKaelber(List<Kalb> newList)
+        {
+            
+        }
 
         public StaticKaelberStore()
         {

@@ -17,23 +17,32 @@ namespace Kaelber_projekt.Class
         {
             Kaelber.Add(kalb);
             SaveToFile();
+        }
 
+        public void SetKaelber(List<Kalb> newList)
+        {
+            Kaelber = newList;
+            SaveToFile();
         }
 
         public List<Kalb> GetAllKaelber()
         {
+            Kaelber.Clear();
+
             if (!File.Exists("Kaelber.txt"))
             {
                 File.Create("Kaelber.txt").Close();
+                return Kaelber;
             }
-            
+
             string[] lines = File.ReadAllLines("Kaelber.txt");
+
             foreach (string line in lines)
             {
                 string[] parts = line.Split(';');
                 if (parts.Length == 13)
                 {
-                    Kalb kalb = new Kalb
+                    Kaelber.Add(new Kalb
                     {
                         Lebensnummer = int.Parse(parts[0]),
                         Name = parts[1],
@@ -48,10 +57,10 @@ namespace Kaelber_projekt.Class
                         Enthornt = bool.Parse(parts[10]),
                         Krankheiten = parts[11],
                         Notiz = parts[12]
-                    };
-                    Kaelber.Add(kalb);
+                    });
                 }
             }
+
             return Kaelber;
         }
 
