@@ -49,8 +49,8 @@
             // 
             tcTabs.Controls.Add(tcPageKaelber2);
             tcTabs.Controls.Add(tcPageKaelber1);
-            tcTabs.Controls.Add(tcStalluebersichtNeuerStall);
-            tcTabs.Controls.Add(tcStalluebersichtAlterStall);
+            //tcTabs.Controls.Add(tcStalluebersichtNeuerStall);
+            //tcTabs.Controls.Add(tcStalluebersichtAlterStall);
             tcTabs.Dock = DockStyle.Fill;
             tcTabs.Location = new Point(0, 0);
             tcTabs.Name = "tcTabs";
