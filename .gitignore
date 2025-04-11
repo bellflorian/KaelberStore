@@ -3,3 +3,7 @@ obj/
 *.user
 .vs/
 *.exe
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
