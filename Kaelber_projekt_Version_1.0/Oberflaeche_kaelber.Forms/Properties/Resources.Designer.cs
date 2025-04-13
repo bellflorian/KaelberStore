@@ -81,7 +81,7 @@ namespace Oberflaeche_kaelber.Forms.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap KaelberBoxPlusV2 {
             get {
@@ -91,7 +91,7 @@ namespace Oberflaeche_kaelber.Forms.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap KaelberBoxPlusV3 {
             get {
@@ -101,11 +101,21 @@ namespace Oberflaeche_kaelber.Forms.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap KaelberboxV1 {
             get {
                 object obj = ResourceManager.GetObject("KaelberboxV1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap KaelberBoxVertikal2 {
+            get {
+                object obj = ResourceManager.GetObject("KaelberBoxVertikal2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

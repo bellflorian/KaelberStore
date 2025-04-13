@@ -38,29 +38,27 @@
             btnAddKealber = new Button();
             dgvDatenKaelber = new DataGridView();
             tcStalluebersichtNeuerStall = new TabPage();
-            tcStalluebersichtAlterStall = new TabPage();
-            kaelberbox1 = new Kaelberbox();
-            kaelberbox2 = new Kaelberbox();
-            kaelberbox3 = new Kaelberbox();
-            kaelberbox4 = new Kaelberbox();
-            kaelberbox5 = new Kaelberbox();
-            kaelberbox6 = new Kaelberbox();
-            kaelberbox7 = new Kaelberbox();
             kaelberbox8 = new Kaelberbox();
-            kaelberbox9 = new Kaelberbox();
-            kaelberbox10 = new Kaelberbox();
-            kaelberbox11 = new Kaelberbox();
-            kaelberbox12 = new Kaelberbox();
-            kaelberbox13 = new Kaelberbox();
-            kaelberbox14 = new Kaelberbox();
+            kaelberbox7 = new Kaelberbox();
+            kaelberbox6 = new Kaelberbox();
+            kaelberbox5 = new Kaelberbox();
+            kaelberbox4 = new Kaelberbox();
+            kaelberbox3 = new Kaelberbox();
+            kaelberbox2 = new Kaelberbox();
+            kaelberbox1 = new Kaelberbox();
+            tcStalluebersichtAlterStall = new TabPage();
             kaelberbox15 = new Kaelberbox();
-            kaelberbox16 = new Kaelberbox();
-            kaelberbox17 = new Kaelberbox();
-            kaelberbox18 = new Kaelberbox();
-            kaelberbox19 = new Kaelberbox();
-            kaelberbox20 = new Kaelberbox();
-            kaelberbox21 = new Kaelberbox();
-            kaelberbox22 = new Kaelberbox();
+            kaelberbox14 = new Kaelberbox();
+            kaelberbox13 = new Kaelberbox();
+            kaelberbox12 = new Kaelberbox();
+            kaelberbox11 = new Kaelberbox();
+            kaelberbox10 = new Kaelberbox();
+            kaelberbox9 = new Kaelberbox();
+            kaelberboxVertikal1 = new KaelberboxVertikal();
+            kaelberboxVertikal2 = new KaelberboxVertikal();
+            kaelberboxVertikal3 = new KaelberboxVertikal();
+            kaelberboxVertikal4 = new KaelberboxVertikal();
+            kaelberboxVertikal5 = new KaelberboxVertikal();
             tcTabs.SuspendLayout();
             tcPageKaelber2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDatenKaelber2).BeginInit();
@@ -169,13 +167,11 @@
             // 
             tcStalluebersichtNeuerStall.BackColor = SystemColors.Control;
             tcStalluebersichtNeuerStall.BackgroundImage = Properties.Resources.neuerstall_zeichnung2;
-            tcStalluebersichtNeuerStall.Controls.Add(kaelberbox22);
-            tcStalluebersichtNeuerStall.Controls.Add(kaelberbox21);
-            tcStalluebersichtNeuerStall.Controls.Add(kaelberbox20);
-            tcStalluebersichtNeuerStall.Controls.Add(kaelberbox19);
-            tcStalluebersichtNeuerStall.Controls.Add(kaelberbox18);
-            tcStalluebersichtNeuerStall.Controls.Add(kaelberbox17);
-            tcStalluebersichtNeuerStall.Controls.Add(kaelberbox16);
+            tcStalluebersichtNeuerStall.Controls.Add(kaelberboxVertikal5);
+            tcStalluebersichtNeuerStall.Controls.Add(kaelberboxVertikal4);
+            tcStalluebersichtNeuerStall.Controls.Add(kaelberboxVertikal3);
+            tcStalluebersichtNeuerStall.Controls.Add(kaelberboxVertikal2);
+            tcStalluebersichtNeuerStall.Controls.Add(kaelberboxVertikal1);
             tcStalluebersichtNeuerStall.Controls.Add(kaelberbox8);
             tcStalluebersichtNeuerStall.Controls.Add(kaelberbox7);
             tcStalluebersichtNeuerStall.Controls.Add(kaelberbox6);
@@ -189,6 +185,94 @@
             tcStalluebersichtNeuerStall.Size = new Size(1362, 657);
             tcStalluebersichtNeuerStall.TabIndex = 2;
             tcStalluebersichtNeuerStall.Text = " Stallübersicht Neuer Stall";
+            // 
+            // kaelberbox8
+            // 
+            kaelberbox8.BackColor = SystemColors.Control;
+            kaelberbox8.BackgroundImage = (Image)resources.GetObject("kaelberbox8.BackgroundImage");
+            kaelberbox8.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox8.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox8.Location = new Point(882, 21);
+            kaelberbox8.Name = "kaelberbox8";
+            kaelberbox8.Size = new Size(150, 100);
+            kaelberbox8.TabIndex = 7;
+            // 
+            // kaelberbox7
+            // 
+            kaelberbox7.BackColor = SystemColors.Control;
+            kaelberbox7.BackgroundImage = (Image)resources.GetObject("kaelberbox7.BackgroundImage");
+            kaelberbox7.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox7.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox7.Location = new Point(882, 485);
+            kaelberbox7.Name = "kaelberbox7";
+            kaelberbox7.Size = new Size(150, 100);
+            kaelberbox7.TabIndex = 6;
+            // 
+            // kaelberbox6
+            // 
+            kaelberbox6.BackColor = SystemColors.Control;
+            kaelberbox6.BackgroundImage = (Image)resources.GetObject("kaelberbox6.BackgroundImage");
+            kaelberbox6.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox6.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox6.Location = new Point(882, 368);
+            kaelberbox6.Name = "kaelberbox6";
+            kaelberbox6.Size = new Size(150, 100);
+            kaelberbox6.TabIndex = 5;
+            // 
+            // kaelberbox5
+            // 
+            kaelberbox5.BackColor = SystemColors.Control;
+            kaelberbox5.BackgroundImage = (Image)resources.GetObject("kaelberbox5.BackgroundImage");
+            kaelberbox5.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox5.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox5.Location = new Point(882, 256);
+            kaelberbox5.Name = "kaelberbox5";
+            kaelberbox5.Size = new Size(150, 100);
+            kaelberbox5.TabIndex = 4;
+            // 
+            // kaelberbox4
+            // 
+            kaelberbox4.BackColor = SystemColors.Control;
+            kaelberbox4.BackgroundImage = (Image)resources.GetObject("kaelberbox4.BackgroundImage");
+            kaelberbox4.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox4.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox4.Location = new Point(882, 141);
+            kaelberbox4.Name = "kaelberbox4";
+            kaelberbox4.Size = new Size(150, 100);
+            kaelberbox4.TabIndex = 3;
+            // 
+            // kaelberbox3
+            // 
+            kaelberbox3.BackColor = SystemColors.Control;
+            kaelberbox3.BackgroundImage = (Image)resources.GetObject("kaelberbox3.BackgroundImage");
+            kaelberbox3.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox3.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox3.Location = new Point(332, 246);
+            kaelberbox3.Name = "kaelberbox3";
+            kaelberbox3.Size = new Size(150, 100);
+            kaelberbox3.TabIndex = 2;
+            // 
+            // kaelberbox2
+            // 
+            kaelberbox2.BackColor = SystemColors.Control;
+            kaelberbox2.BackgroundImage = (Image)resources.GetObject("kaelberbox2.BackgroundImage");
+            kaelberbox2.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox2.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox2.Location = new Point(332, 368);
+            kaelberbox2.Name = "kaelberbox2";
+            kaelberbox2.Size = new Size(150, 100);
+            kaelberbox2.TabIndex = 1;
+            // 
+            // kaelberbox1
+            // 
+            kaelberbox1.BackColor = SystemColors.Control;
+            kaelberbox1.BackgroundImage = (Image)resources.GetObject("kaelberbox1.BackgroundImage");
+            kaelberbox1.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox1.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox1.Location = new Point(332, 485);
+            kaelberbox1.Name = "kaelberbox1";
+            kaelberbox1.Size = new Size(150, 100);
+            kaelberbox1.TabIndex = 0;
             // 
             // tcStalluebersichtAlterStall
             // 
@@ -207,148 +291,16 @@
             tcStalluebersichtAlterStall.TabIndex = 3;
             tcStalluebersichtAlterStall.Text = "Stallübersicht Alter Stall";
             // 
-            // kaelberbox1
+            // kaelberbox15
             // 
-            kaelberbox1.BackColor = SystemColors.Control;
-            kaelberbox1.BackgroundImage = (Image)resources.GetObject("kaelberbox1.BackgroundImage");
-            kaelberbox1.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox1.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox1.Location = new Point(332, 485);
-            kaelberbox1.Name = "kaelberbox1";
-            kaelberbox1.Size = new Size(150, 100);
-            kaelberbox1.TabIndex = 0;
-            // 
-            // kaelberbox2
-            // 
-            kaelberbox2.BackColor = SystemColors.Control;
-            kaelberbox2.BackgroundImage = (Image)resources.GetObject("kaelberbox2.BackgroundImage");
-            kaelberbox2.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox2.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox2.Location = new Point(332, 368);
-            kaelberbox2.Name = "kaelberbox2";
-            kaelberbox2.Size = new Size(150, 100);
-            kaelberbox2.TabIndex = 1;
-            // 
-            // kaelberbox3
-            // 
-            kaelberbox3.BackColor = SystemColors.Control;
-            kaelberbox3.BackgroundImage = (Image)resources.GetObject("kaelberbox3.BackgroundImage");
-            kaelberbox3.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox3.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox3.Location = new Point(332, 246);
-            kaelberbox3.Name = "kaelberbox3";
-            kaelberbox3.Size = new Size(150, 100);
-            kaelberbox3.TabIndex = 2;
-            // 
-            // kaelberbox4
-            // 
-            kaelberbox4.BackColor = SystemColors.Control;
-            kaelberbox4.BackgroundImage = (Image)resources.GetObject("kaelberbox4.BackgroundImage");
-            kaelberbox4.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox4.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox4.Location = new Point(882, 141);
-            kaelberbox4.Name = "kaelberbox4";
-            kaelberbox4.Size = new Size(150, 100);
-            kaelberbox4.TabIndex = 3;
-            // 
-            // kaelberbox5
-            // 
-            kaelberbox5.BackColor = SystemColors.Control;
-            kaelberbox5.BackgroundImage = (Image)resources.GetObject("kaelberbox5.BackgroundImage");
-            kaelberbox5.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox5.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox5.Location = new Point(882, 256);
-            kaelberbox5.Name = "kaelberbox5";
-            kaelberbox5.Size = new Size(150, 100);
-            kaelberbox5.TabIndex = 4;
-            // 
-            // kaelberbox6
-            // 
-            kaelberbox6.BackColor = SystemColors.Control;
-            kaelberbox6.BackgroundImage = (Image)resources.GetObject("kaelberbox6.BackgroundImage");
-            kaelberbox6.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox6.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox6.Location = new Point(882, 368);
-            kaelberbox6.Name = "kaelberbox6";
-            kaelberbox6.Size = new Size(150, 100);
-            kaelberbox6.TabIndex = 5;
-            // 
-            // kaelberbox7
-            // 
-            kaelberbox7.BackColor = SystemColors.Control;
-            kaelberbox7.BackgroundImage = (Image)resources.GetObject("kaelberbox7.BackgroundImage");
-            kaelberbox7.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox7.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox7.Location = new Point(882, 485);
-            kaelberbox7.Name = "kaelberbox7";
-            kaelberbox7.Size = new Size(150, 100);
-            kaelberbox7.TabIndex = 6;
-            // 
-            // kaelberbox8
-            // 
-            kaelberbox8.BackColor = SystemColors.Control;
-            kaelberbox8.BackgroundImage = (Image)resources.GetObject("kaelberbox8.BackgroundImage");
-            kaelberbox8.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox8.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox8.Location = new Point(882, 21);
-            kaelberbox8.Name = "kaelberbox8";
-            kaelberbox8.Size = new Size(150, 100);
-            kaelberbox8.TabIndex = 7;
-            // 
-            // kaelberbox9
-            // 
-            kaelberbox9.BackColor = SystemColors.Control;
-            kaelberbox9.BackgroundImage = (Image)resources.GetObject("kaelberbox9.BackgroundImage");
-            kaelberbox9.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox9.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox9.Location = new Point(158, 96);
-            kaelberbox9.Name = "kaelberbox9";
-            kaelberbox9.Size = new Size(150, 100);
-            kaelberbox9.TabIndex = 0;
-            // 
-            // kaelberbox10
-            // 
-            kaelberbox10.BackColor = SystemColors.Control;
-            kaelberbox10.BackgroundImage = (Image)resources.GetObject("kaelberbox10.BackgroundImage");
-            kaelberbox10.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox10.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox10.Location = new Point(314, 96);
-            kaelberbox10.Name = "kaelberbox10";
-            kaelberbox10.Size = new Size(150, 100);
-            kaelberbox10.TabIndex = 1;
-            // 
-            // kaelberbox11
-            // 
-            kaelberbox11.BackColor = SystemColors.Control;
-            kaelberbox11.BackgroundImage = (Image)resources.GetObject("kaelberbox11.BackgroundImage");
-            kaelberbox11.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox11.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox11.Location = new Point(470, 96);
-            kaelberbox11.Name = "kaelberbox11";
-            kaelberbox11.Size = new Size(150, 100);
-            kaelberbox11.TabIndex = 2;
-            // 
-            // kaelberbox12
-            // 
-            kaelberbox12.BackColor = SystemColors.Control;
-            kaelberbox12.BackgroundImage = (Image)resources.GetObject("kaelberbox12.BackgroundImage");
-            kaelberbox12.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox12.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox12.Location = new Point(626, 96);
-            kaelberbox12.Name = "kaelberbox12";
-            kaelberbox12.Size = new Size(150, 100);
-            kaelberbox12.TabIndex = 3;
-            // 
-            // kaelberbox13
-            // 
-            kaelberbox13.BackColor = SystemColors.Control;
-            kaelberbox13.BackgroundImage = (Image)resources.GetObject("kaelberbox13.BackgroundImage");
-            kaelberbox13.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox13.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox13.Location = new Point(792, 96);
-            kaelberbox13.Name = "kaelberbox13";
-            kaelberbox13.Size = new Size(150, 100);
-            kaelberbox13.TabIndex = 4;
+            kaelberbox15.BackColor = SystemColors.Control;
+            kaelberbox15.BackgroundImage = (Image)resources.GetObject("kaelberbox15.BackgroundImage");
+            kaelberbox15.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox15.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox15.Location = new Point(1209, 421);
+            kaelberbox15.Name = "kaelberbox15";
+            kaelberbox15.Size = new Size(150, 100);
+            kaelberbox15.TabIndex = 6;
             // 
             // kaelberbox14
             // 
@@ -361,93 +313,115 @@
             kaelberbox14.Size = new Size(150, 100);
             kaelberbox14.TabIndex = 5;
             // 
-            // kaelberbox15
+            // kaelberbox13
             // 
-            kaelberbox15.BackColor = SystemColors.Control;
-            kaelberbox15.BackgroundImage = (Image)resources.GetObject("kaelberbox15.BackgroundImage");
-            kaelberbox15.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox15.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox15.Location = new Point(1209, 421);
-            kaelberbox15.Name = "kaelberbox15";
-            kaelberbox15.Size = new Size(150, 100);
-            kaelberbox15.TabIndex = 6;
+            kaelberbox13.BackColor = SystemColors.Control;
+            kaelberbox13.BackgroundImage = (Image)resources.GetObject("kaelberbox13.BackgroundImage");
+            kaelberbox13.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox13.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox13.Location = new Point(792, 96);
+            kaelberbox13.Name = "kaelberbox13";
+            kaelberbox13.Size = new Size(150, 100);
+            kaelberbox13.TabIndex = 4;
             // 
-            // kaelberbox16
+            // kaelberbox12
             // 
-            kaelberbox16.BackColor = SystemColors.Control;
-            kaelberbox16.BackgroundImage = (Image)resources.GetObject("kaelberbox16.BackgroundImage");
-            kaelberbox16.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox16.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox16.Location = new Point(332, 119);
-            kaelberbox16.Name = "kaelberbox16";
-            kaelberbox16.Size = new Size(150, 100);
-            kaelberbox16.TabIndex = 8;
+            kaelberbox12.BackColor = SystemColors.Control;
+            kaelberbox12.BackgroundImage = (Image)resources.GetObject("kaelberbox12.BackgroundImage");
+            kaelberbox12.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox12.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox12.Location = new Point(626, 96);
+            kaelberbox12.Name = "kaelberbox12";
+            kaelberbox12.Size = new Size(150, 100);
+            kaelberbox12.TabIndex = 3;
             // 
-            // kaelberbox17
+            // kaelberbox11
             // 
-            kaelberbox17.BackColor = SystemColors.Control;
-            kaelberbox17.BackgroundImage = (Image)resources.GetObject("kaelberbox17.BackgroundImage");
-            kaelberbox17.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox17.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox17.Location = new Point(679, 21);
-            kaelberbox17.Name = "kaelberbox17";
-            kaelberbox17.Size = new Size(150, 100);
-            kaelberbox17.TabIndex = 9;
+            kaelberbox11.BackColor = SystemColors.Control;
+            kaelberbox11.BackgroundImage = (Image)resources.GetObject("kaelberbox11.BackgroundImage");
+            kaelberbox11.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox11.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox11.Location = new Point(470, 96);
+            kaelberbox11.Name = "kaelberbox11";
+            kaelberbox11.Size = new Size(150, 100);
+            kaelberbox11.TabIndex = 2;
             // 
-            // kaelberbox18
+            // kaelberbox10
             // 
-            kaelberbox18.BackColor = SystemColors.Control;
-            kaelberbox18.BackgroundImage = (Image)resources.GetObject("kaelberbox18.BackgroundImage");
-            kaelberbox18.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox18.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox18.Location = new Point(523, 21);
-            kaelberbox18.Name = "kaelberbox18";
-            kaelberbox18.Size = new Size(150, 100);
-            kaelberbox18.TabIndex = 10;
+            kaelberbox10.BackColor = SystemColors.Control;
+            kaelberbox10.BackgroundImage = (Image)resources.GetObject("kaelberbox10.BackgroundImage");
+            kaelberbox10.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox10.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox10.Location = new Point(314, 96);
+            kaelberbox10.Name = "kaelberbox10";
+            kaelberbox10.Size = new Size(150, 100);
+            kaelberbox10.TabIndex = 1;
             // 
-            // kaelberbox19
+            // kaelberbox9
             // 
-            kaelberbox19.BackColor = SystemColors.Control;
-            kaelberbox19.BackgroundImage = (Image)resources.GetObject("kaelberbox19.BackgroundImage");
-            kaelberbox19.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox19.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox19.Location = new Point(679, 273);
-            kaelberbox19.Name = "kaelberbox19";
-            kaelberbox19.Size = new Size(150, 100);
-            kaelberbox19.TabIndex = 11;
+            kaelberbox9.BackColor = SystemColors.Control;
+            kaelberbox9.BackgroundImage = (Image)resources.GetObject("kaelberbox9.BackgroundImage");
+            kaelberbox9.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox9.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox9.Location = new Point(158, 96);
+            kaelberbox9.Name = "kaelberbox9";
+            kaelberbox9.Size = new Size(150, 100);
+            kaelberbox9.TabIndex = 0;
             // 
-            // kaelberbox20
+            // kaelberboxVertikal1
             // 
-            kaelberbox20.BackColor = SystemColors.Control;
-            kaelberbox20.BackgroundImage = (Image)resources.GetObject("kaelberbox20.BackgroundImage");
-            kaelberbox20.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox20.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox20.Location = new Point(523, 273);
-            kaelberbox20.Name = "kaelberbox20";
-            kaelberbox20.Size = new Size(150, 100);
-            kaelberbox20.TabIndex = 12;
+            kaelberboxVertikal1.BackColor = Color.Beige;
+            kaelberboxVertikal1.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal1.BackgroundImage");
+            kaelberboxVertikal1.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberboxVertikal1.BorderStyle = BorderStyle.FixedSingle;
+            kaelberboxVertikal1.Location = new Point(332, 90);
+            kaelberboxVertikal1.Name = "kaelberboxVertikal1";
+            kaelberboxVertikal1.Size = new Size(100, 150);
+            kaelberboxVertikal1.TabIndex = 15;
             // 
-            // kaelberbox21
+            // kaelberboxVertikal2
             // 
-            kaelberbox21.BackColor = SystemColors.Control;
-            kaelberbox21.BackgroundImage = (Image)resources.GetObject("kaelberbox21.BackgroundImage");
-            kaelberbox21.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox21.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox21.Location = new Point(104, 153);
-            kaelberbox21.Name = "kaelberbox21";
-            kaelberbox21.Size = new Size(150, 100);
-            kaelberbox21.TabIndex = 13;
+            kaelberboxVertikal2.BackColor = Color.Beige;
+            kaelberboxVertikal2.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal2.BackgroundImage");
+            kaelberboxVertikal2.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberboxVertikal2.BorderStyle = BorderStyle.FixedSingle;
+            kaelberboxVertikal2.Location = new Point(573, 21);
+            kaelberboxVertikal2.Name = "kaelberboxVertikal2";
+            kaelberboxVertikal2.Size = new Size(100, 150);
+            kaelberboxVertikal2.TabIndex = 16;
             // 
-            // kaelberbox22
+            // kaelberboxVertikal3
             // 
-            kaelberbox22.BackColor = SystemColors.Control;
-            kaelberbox22.BackgroundImage = (Image)resources.GetObject("kaelberbox22.BackgroundImage");
-            kaelberbox22.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberbox22.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox22.Location = new Point(104, 273);
-            kaelberbox22.Name = "kaelberbox22";
-            kaelberbox22.Size = new Size(150, 100);
-            kaelberbox22.TabIndex = 14;
+            kaelberboxVertikal3.BackColor = Color.Beige;
+            kaelberboxVertikal3.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal3.BackgroundImage");
+            kaelberboxVertikal3.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberboxVertikal3.BorderStyle = BorderStyle.FixedSingle;
+            kaelberboxVertikal3.Location = new Point(690, 21);
+            kaelberboxVertikal3.Name = "kaelberboxVertikal3";
+            kaelberboxVertikal3.Size = new Size(100, 150);
+            kaelberboxVertikal3.TabIndex = 17;
+            // 
+            // kaelberboxVertikal4
+            // 
+            kaelberboxVertikal4.BackColor = Color.Beige;
+            kaelberboxVertikal4.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal4.BackgroundImage");
+            kaelberboxVertikal4.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberboxVertikal4.BorderStyle = BorderStyle.FixedSingle;
+            kaelberboxVertikal4.Location = new Point(82, 157);
+            kaelberboxVertikal4.Name = "kaelberboxVertikal4";
+            kaelberboxVertikal4.Size = new Size(100, 150);
+            kaelberboxVertikal4.TabIndex = 18;
+            // 
+            // kaelberboxVertikal5
+            // 
+            kaelberboxVertikal5.BackColor = Color.Beige;
+            kaelberboxVertikal5.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal5.BackgroundImage");
+            kaelberboxVertikal5.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberboxVertikal5.BorderStyle = BorderStyle.FixedSingle;
+            kaelberboxVertikal5.Location = new Point(188, 157);
+            kaelberboxVertikal5.Name = "kaelberboxVertikal5";
+            kaelberboxVertikal5.Size = new Size(100, 150);
+            kaelberboxVertikal5.TabIndex = 19;
             // 
             // DatenKaelberForm
             // 
@@ -493,12 +467,10 @@
         private Kaelberbox kaelberbox11;
         private Kaelberbox kaelberbox10;
         private Kaelberbox kaelberbox9;
-        private Kaelberbox kaelberbox22;
-        private Kaelberbox kaelberbox21;
-        private Kaelberbox kaelberbox20;
-        private Kaelberbox kaelberbox19;
-        private Kaelberbox kaelberbox18;
-        private Kaelberbox kaelberbox17;
-        private Kaelberbox kaelberbox16;
+        private KaelberboxVertikal kaelberboxVertikal5;
+        private KaelberboxVertikal kaelberboxVertikal4;
+        private KaelberboxVertikal kaelberboxVertikal3;
+        private KaelberboxVertikal kaelberboxVertikal2;
+        private KaelberboxVertikal kaelberboxVertikal1;
     }
 }
