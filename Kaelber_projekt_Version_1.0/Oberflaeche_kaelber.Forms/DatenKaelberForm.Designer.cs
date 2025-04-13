@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatenKaelberForm));
             tcTabs = new TabControl();
             tcPageKaelber2 = new TabPage();
             btnPrint = new Button();
@@ -37,12 +38,15 @@
             btnAddKealber = new Button();
             dgvDatenKaelber = new DataGridView();
             tcStalluebersichtNeuerStall = new TabPage();
+            kaelberbox1 = new Kaelberbox();
             tcStalluebersichtAlterStall = new TabPage();
+            kaelberboxVertikal1 = new KaelberboxVertikal();
             tcTabs.SuspendLayout();
             tcPageKaelber2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDatenKaelber2).BeginInit();
             tcPageKaelber1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDatenKaelber).BeginInit();
+            tcStalluebersichtNeuerStall.SuspendLayout();
             SuspendLayout();
             // 
             // tcTabs
@@ -143,11 +147,24 @@
             // tcStalluebersichtNeuerStall
             // 
             tcStalluebersichtNeuerStall.BackColor = SystemColors.Control;
+            tcStalluebersichtNeuerStall.Controls.Add(kaelberboxVertikal1);
+            tcStalluebersichtNeuerStall.Controls.Add(kaelberbox1);
             tcStalluebersichtNeuerStall.Location = new Point(4, 24);
             tcStalluebersichtNeuerStall.Name = "tcStalluebersichtNeuerStall";
             tcStalluebersichtNeuerStall.Size = new Size(1362, 657);
             tcStalluebersichtNeuerStall.TabIndex = 2;
             tcStalluebersichtNeuerStall.Text = " Stallübersicht Neuer Stall";
+            // 
+            // kaelberbox1
+            // 
+            kaelberbox1.BackColor = Color.Beige;
+            kaelberbox1.BackgroundImage = (Image)resources.GetObject("kaelberbox1.BackgroundImage");
+            kaelberbox1.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberbox1.BorderStyle = BorderStyle.FixedSingle;
+            kaelberbox1.Location = new Point(19, 20);
+            kaelberbox1.Name = "kaelberbox1";
+            kaelberbox1.Size = new Size(150, 100);
+            kaelberbox1.TabIndex = 0;
             // 
             // tcStalluebersichtAlterStall
             // 
@@ -157,6 +174,17 @@
             tcStalluebersichtAlterStall.Size = new Size(1362, 657);
             tcStalluebersichtAlterStall.TabIndex = 3;
             tcStalluebersichtAlterStall.Text = "Stallübersicht Alter Stall";
+            // 
+            // kaelberboxVertikal1
+            // 
+            kaelberboxVertikal1.BackColor = Color.Beige;
+            kaelberboxVertikal1.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal1.BackgroundImage");
+            kaelberboxVertikal1.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberboxVertikal1.BorderStyle = BorderStyle.FixedSingle;
+            kaelberboxVertikal1.Location = new Point(141, 248);
+            kaelberboxVertikal1.Name = "kaelberboxVertikal1";
+            kaelberboxVertikal1.Size = new Size(100, 150);
+            kaelberboxVertikal1.TabIndex = 1;
             // 
             // DatenKaelberForm
             // 
@@ -171,6 +199,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvDatenKaelber2).EndInit();
             tcPageKaelber1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvDatenKaelber).EndInit();
+            tcStalluebersichtNeuerStall.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -185,5 +214,7 @@
         private TabPage tcStalluebersichtAlterStall;
         private TabPage tcStalluebersichtNeuerStall;
         private Button btnPrint;
+        private Kaelberbox kaelberbox1;
+        private KaelberboxVertikal kaelberboxVertikal1;
     }
 }
