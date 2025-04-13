@@ -99,5 +99,25 @@ namespace Oberflaeche_kaelber.Forms.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap KaelberboxV1Vertikal2 {
+            get {
+                object obj = ResourceManager.GetObject("KaelberboxV1Vertikal2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap KaelberBoxVertikal2 {
+            get {
+                object obj = ResourceManager.GetObject("KaelberBoxVertikal2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

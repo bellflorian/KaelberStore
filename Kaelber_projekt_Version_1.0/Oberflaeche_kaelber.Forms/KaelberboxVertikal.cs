@@ -1,59 +1,121 @@
 ﻿using Kaelber_projekt.Class;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Oberflaeche_kaelber.Forms
 {
-    public class KaelberboxVertikal : Kaelberbox
+    public partial class KaelberboxVertikal : UserControl
     {
+        private Kalb aktuellesKalb;
+        public Kalb AktuellerKalb => aktuellesKalb;
+        public string BoxId;
+
         public KaelberboxVertikal()
         {
-            this.Size = new Size(100, 150); // Hochformat
-            this.BackgroundImage = Properties.Resources.KaelberBoxPlusV3; // Optional: gedrehtes Plus-Bild
+            InitializeComponent();
+
+            this.Size = new Size(100, 150);
+            this.BorderStyle = BorderStyle.FixedSingle;
+            this.BackgroundImage = Properties.Resources.KaelberBoxVertikal2;
             this.BackgroundImageLayout = ImageLayout.Zoom;
             this.BackColor = Color.Beige;
+
+            // ➕-Label
+            var plusLabel = new Label
+            {
+                Text = "+",
+                Size = new Size(60, 70),
+                Font = new Font("Segoe UI", 45, FontStyle.Bold),
+                ForeColor = Color.Black,
+                BackColor = Color.Transparent,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Cursor = Cursors.Hand,
+                Location = new Point(35, 20)
+            };
+
+            plusLabel.Click += (s, e) => ÖffneKalbAuswahl();
+            this.Controls.Add(plusLabel);
         }
 
-        public override void SetKalb(Kalb kalb)
+        private void ÖffneKalbAuswahl()
+        {
+            var auswahlFenster = new SelectKalbForm();
+            if (auswahlFenster.ShowDialog() == DialogResult.OK)
+            {
+                Kalb ausgewählt = auswahlFenster.ausgewaehltesKalb;
+                SetKalb(ausgewählt);
+            }
+        }
+
+        public void SetKalb(Kalb kalb)
         {
             aktuellesKalb = kalb;
             this.Controls.Clear();
 
             if (kalb == null)
             {
-                this.BackgroundImage = Properties.Resources.KaelberBoxPlusV3;
-                this.BackColor = Color.Beige;
+                var plusLabel = new Label
+                {
+                    Text = "+",
+                    Size = new Size(60, 70),
+                    Font = new Font("Segoe UI", 45, FontStyle.Bold),
+                    ForeColor = Color.Black,
+                    BackColor = Color.Transparent,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Cursor = Cursors.Hand,
+                    Location = new Point(35, 20)
+                };
+
+                plusLabel.Click += (s, e) => ÖffneKalbAuswahl();
+                this.Controls.Add(plusLabel);
                 return;
             }
 
-            this.BackgroundImage = null;
+            this.BackgroundImage = Properties.Resources.KaelberBoxVertikal2;
 
-            var lebensnummerLabel = new RotatedLabel
+            var lebensnummerLabel = new Label
             {
-                RotatedText = kalb.Lebensnummer.ToString(),
-                RotatedFont = new Font("Segoe UI", 13, FontStyle.Bold),
-                Size = new Size(25, 100), // ⬅️ umgedreht!
-                Location = new Point(25, 20),
+                Text = kalb.Lebensnummer.ToString(),
+                AutoSize = true,
+                Font = new Font("ADLaM Display", 12, FontStyle.Bold),
+                ForeColor = Color.Black,
+                BackColor = Color.Transparent,
+                Location = new Point(20, 60),
                 Cursor = Cursors.Hand
             };
 
-            var milchLabel = new RotatedLabel
+            var milchLabel = new Label
             {
-                RotatedText = $"Milch: {kalb.Milch}",
-                RotatedFont = new Font("Segoe UI", 13, FontStyle.Regular),
-                Size = new Size(25, 100),
-                Location = new Point(46, 20),
+                Text = kalb.Milch,
+                AutoSize = true,
+                Font = kalb.Milch == "Abgespannt"
+                    ? new Font("ADLaM Display", 9, FontStyle.Bold)
+                    : new Font("ADLaM Display", 25, FontStyle.Bold),
+                ForeColor = Color.Black,
+                BackColor = Color.Transparent,
+                Location = kalb.Milch == "Abgespannt"
+                    ? new Point(15, 80)
+                    : new Point(15, 78),
                 Cursor = Cursors.Hand
             };
 
-            // Klick & Hover übernehmen
+            // Events hinzufügen, damit auch Labels klickbar bleiben
             lebensnummerLabel.Click += (s, e) => ÖffneKalbAuswahl();
             milchLabel.Click += (s, e) => ÖffneKalbAuswahl();
-            lebensnummerLabel.MouseEnter += Kaelberbox_MouseEnter;
-            lebensnummerLabel.MouseLeave += Kaelberbox_MouseLeave;
-            milchLabel.MouseEnter += Kaelberbox_MouseEnter;
-            milchLabel.MouseLeave += Kaelberbox_MouseLeave;
+
+            // Falls das UserControl selbst nicht mehr reagiert, nochmal sichern:
+            this.Click += (s, e) => ÖffneKalbAuswahl();
 
             this.Controls.Add(lebensnummerLabel);
             this.Controls.Add(milchLabel);
         }
     }
 }
+
