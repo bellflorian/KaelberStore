@@ -15,6 +15,8 @@ namespace Oberflaeche_kaelber.Forms
     public partial class Kaelberbox : UserControl
     {
         private Kalb aktuellesKalb;
+        public Kalb AktuellerKalb => aktuellesKalb;
+        public string BoxId;
 
         public Kaelberbox()
         {
@@ -35,7 +37,7 @@ namespace Oberflaeche_kaelber.Forms
                 BackColor = Color.Transparent,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Cursor = Cursors.Hand,
-                Location = new Point(70, 8) // <<--- Feinposition (X, Y) anpassen wie du willst
+                Location = new Point(50, 30)
             };
 
             plusLabel.Click += (s, e) => ÖffneKalbAuswahl();
@@ -48,39 +50,68 @@ namespace Oberflaeche_kaelber.Forms
             if (auswahlFenster.ShowDialog() == DialogResult.OK)
             {
                 Kalb ausgewählt = auswahlFenster.ausgewaehltesKalb;
-                if (ausgewählt != null)
-                    SetKalb(ausgewählt);
+                SetKalb(ausgewählt);
             }
         }
 
         public void SetKalb(Kalb kalb)
         {
             aktuellesKalb = kalb;
-
-            // Entferne nur die bestehenden Labels (das Plus wird eh ersetzt)
             this.Controls.Clear();
 
-            // Lebensnummer-Label
+            if (kalb == null)
+            {
+                var plusLabel = new Label
+                {
+                    Text = "+",
+                    Size = new Size(60, 70),
+                    Font = new Font("Segoe UI", 45, FontStyle.Bold),
+                    ForeColor = Color.Black,
+                    BackColor = Color.Transparent,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Cursor = Cursors.Hand,
+                    Location = new Point((this.Width - 60) / 2, (this.Height - 70) / 2)
+                };
+
+                plusLabel.Click += (s, e) => ÖffneKalbAuswahl();
+                this.Controls.Add(plusLabel);
+                return;
+            }
+
+            this.BackgroundImage = Properties.Resources.KaelberboxV1;
+
             var lebensnummerLabel = new Label
             {
                 Text = kalb.Lebensnummer.ToString(),
                 AutoSize = true,
-                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                Font = new Font("ADLaM Display", 12, FontStyle.Bold),
                 ForeColor = Color.Black,
                 BackColor = Color.Transparent,
-                Location = new Point(60, 30) // <<< Außenbereich, oben
+                Location = new Point(20, 60),
+                Cursor = Cursors.Hand
             };
 
-            // Milch-Label
             var milchLabel = new Label
             {
-                Text = $"Milch: {kalb.Milch}",
+                Text = kalb.Milch,
                 AutoSize = true,
-                Font = new Font("Segoe UI", 9),
+                Font = kalb.Milch == "Abgespannt"
+                    ? new Font("ADLaM Display", 9, FontStyle.Bold)
+                    : new Font("ADLaM Display", 25, FontStyle.Bold),
                 ForeColor = Color.Black,
                 BackColor = Color.Transparent,
-                Location = new Point(60, 45) // <<< Außenbereich, darunter
+                Location = kalb.Milch == "Abgespannt"
+                    ? new Point(15, 80)
+                    : new Point(15, 78),
+                Cursor = Cursors.Hand
             };
+
+            // Events hinzufügen, damit auch Labels klickbar bleiben
+            lebensnummerLabel.Click += (s, e) => ÖffneKalbAuswahl();
+            milchLabel.Click += (s, e) => ÖffneKalbAuswahl();
+
+            // Falls das UserControl selbst nicht mehr reagiert, nochmal sichern:
+            this.Click += (s, e) => ÖffneKalbAuswahl();
 
             this.Controls.Add(lebensnummerLabel);
             this.Controls.Add(milchLabel);

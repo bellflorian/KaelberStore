@@ -21,7 +21,7 @@ namespace Oberflaeche_kaelber.Forms
         {
             InitializeComponent();
             kaelber = store.GetAllKaelber();
-            foreach(Kalb kalb in kaelber)
+            foreach (Kalb kalb in kaelber)
                 kalb.CalculateFields();
             cobxKaelberListe.DataSource = kaelber;
             cobxKaelberListe.DisplayMember = "Lebensnummer";
@@ -30,6 +30,13 @@ namespace Oberflaeche_kaelber.Forms
         private void btnOk_Click(object sender, EventArgs e)
         {
             ausgewaehltesKalb = cobxKaelberListe.SelectedItem as Kalb;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void btnRemvoeKalb_Click(object sender, EventArgs e)
+        {
+            ausgewaehltesKalb = null;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

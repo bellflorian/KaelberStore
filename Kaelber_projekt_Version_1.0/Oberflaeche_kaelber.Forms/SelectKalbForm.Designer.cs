@@ -30,6 +30,7 @@
         {
             cobxKaelberListe = new ComboBox();
             btnOk = new Button();
+            btnRemvoeKalb = new Button();
             SuspendLayout();
             // 
             // cobxKaelberListe
@@ -37,24 +38,35 @@
             cobxKaelberListe.FormattingEnabled = true;
             cobxKaelberListe.Location = new Point(12, 12);
             cobxKaelberListe.Name = "cobxKaelberListe";
-            cobxKaelberListe.Size = new Size(95, 23);
+            cobxKaelberListe.Size = new Size(129, 23);
             cobxKaelberListe.TabIndex = 0;
             // 
             // btnOk
             // 
             btnOk.Location = new Point(12, 48);
             btnOk.Name = "btnOk";
-            btnOk.Size = new Size(95, 23);
+            btnOk.Size = new Size(129, 23);
             btnOk.TabIndex = 1;
             btnOk.Text = "Bestätigen";
             btnOk.UseVisualStyleBackColor = true;
             btnOk.Click += btnOk_Click;
             // 
+            // btnRemvoeKalb
+            // 
+            btnRemvoeKalb.Location = new Point(12, 83);
+            btnRemvoeKalb.Name = "btnRemvoeKalb";
+            btnRemvoeKalb.Size = new Size(129, 23);
+            btnRemvoeKalb.TabIndex = 3;
+            btnRemvoeKalb.Text = "Kalb entfernen";
+            btnRemvoeKalb.UseVisualStyleBackColor = true;
+            btnRemvoeKalb.Click += btnRemvoeKalb_Click;
+            // 
             // SelectKalbForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(121, 83);
+            ClientSize = new Size(149, 118);
+            Controls.Add(btnRemvoeKalb);
             Controls.Add(btnOk);
             Controls.Add(cobxKaelberListe);
             Name = "SelectKalbForm";
@@ -66,5 +78,6 @@
 
         private ComboBox cobxKaelberListe;
         private Button btnOk;
+        private Button btnRemvoeKalb;
     }
 }

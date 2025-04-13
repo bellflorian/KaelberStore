@@ -35,9 +35,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Control;
+            BackColor = Color.Beige;
             BackgroundImage = Properties.Resources.KaelberboxV1;
             BackgroundImageLayout = ImageLayout.Zoom;
+            DoubleBuffered = true;
             Name = "Kaelberbox";
             Size = new Size(150, 100);
             ResumeLayout(false);
