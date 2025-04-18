@@ -24,6 +24,10 @@ namespace Kaelber_projekt.Class
         // Krankheiten INFO
         [DisplayName("Durchfall + Datum")]
         public string Krankheiten {  get; set; }
+        // Info Alter Stall
+        [DisplayName("Alter Stall")]
+        public bool AlterStall { get; set; }
+        
 
         // Errechnete Felder
         [DisplayName("Kälberstarter")]
@@ -35,8 +39,12 @@ namespace Kaelber_projekt.Class
         public int Alter {  get; set; }
         [DisplayName("vorauss. Abspanndatum Vollmond")]
         public DateTime Abspanndatum { get; set; }
+        // Info wenn ein Kalb zu klein ist um nach 2 Moante 
+        [DisplayName("zu klein zum Abspannen")]
+        public bool ZuKlein { get; set; }
         //public string WochenUndTageBisAbspanndatum { get; set; }
         public string Notiz {  get; set; }
+
 
 
         public Kalb()
@@ -53,7 +61,9 @@ namespace Kaelber_projekt.Class
                     bool selene,
                     bool impfungen,
                     bool hornlos,
-                    string krankheiten)
+                    string krankheiten,
+                    bool alterStall,
+                    bool zuklein)
         {
             Lebensnummer = lebensnummer;
             Name = name;
@@ -69,13 +79,18 @@ namespace Kaelber_projekt.Class
             Krankheiten = krankheiten;
             Notiz = "-";
             CalculateFields();
+            AlterStall = alterStall;
+            ZuKlein = zuklein;
         }
 
         public void CalculateFields()
         {
             Alter = (DateTime.Today - Geburtsdatum).Days + 1;
             //int totalTageBisAbspanndatum = (int)(Abspanndatum - DateTime.Today).TotalDays;
-            Abspanndatum = Util.NextFullMoon(Geburtsdatum.AddDays(56));
+            if (ZuKlein == true)
+                Abspanndatum = Util.NextFullMoon(Geburtsdatum.AddDays(84));
+            else
+                Abspanndatum = Util.NextFullMoon(Geburtsdatum.AddDays(56));
 
             double maxAlter = (Abspanndatum - Geburtsdatum).TotalDays;
             //Wochen und Tage bis Abspanndatum angezeigt

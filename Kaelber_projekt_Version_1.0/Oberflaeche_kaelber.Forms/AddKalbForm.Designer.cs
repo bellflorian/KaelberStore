@@ -240,6 +240,7 @@
             Controls.Add(lblLebensnummer);
             Name = "AddKalbForm";
             Text = "Neues Kalb hinzufügen";
+            Load += AddKalbForm_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }

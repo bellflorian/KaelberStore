@@ -23,7 +23,9 @@ namespace Oberflaeche_kaelber.Forms
         public bool Selene = false;
         public bool Impfungen = false;
         public bool Hornlos = false;
-        public string Krankheiten = string.Empty;   
+        public string Krankheiten = string.Empty;
+        public bool AlterStall = false;
+        public bool zuKlein = false;
 
         public AddKalbForm()
         {
@@ -113,6 +115,11 @@ namespace Oberflaeche_kaelber.Forms
             cbxGroeße.SelectedIndex = 1; // Standardauswahl
         }
         private void cbxGroeße_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddKalbForm_Load_1(object sender, EventArgs e)
         {
 
         }

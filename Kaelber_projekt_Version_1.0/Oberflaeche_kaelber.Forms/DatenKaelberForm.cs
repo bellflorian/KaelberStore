@@ -71,7 +71,7 @@ namespace Oberflaeche_kaelber.Forms
                     dgvDatenKaelber2.Columns[i].ReadOnly = true;
                 }
 
-                if (dgvDatenKaelber2.Columns[i].HeaderText == "Durchfall + Datum" || dgvDatenKaelber2.Columns[i].HeaderText == "Notiz")
+                if (dgvDatenKaelber2.Columns[i].HeaderText == "Durchfall + Datum" || dgvDatenKaelber2.Columns[i].HeaderText == "Notiz" || dgvDatenKaelber2.Columns[i].HeaderText == "Alter Stall" || dgvDatenKaelber2.Columns[i].HeaderText == "zu klein zum Abspannen")
                     dgvDatenKaelber2.Columns[i].ReadOnly = false;
             }
         }
@@ -82,7 +82,7 @@ namespace Oberflaeche_kaelber.Forms
             {
                 if (addKalbForm.ShowDialog() == DialogResult.OK)
                 {
-                    Kalb kalb = new Kalb(addKalbForm.Lebensnummer, addKalbForm.Name, addKalbForm.Geschlecht, addKalbForm.Groeße, addKalbForm.MutterNummer, addKalbForm.Geburtsdatum, addKalbForm.Eisen, addKalbForm.Selene, addKalbForm.Impfungen, addKalbForm.Hornlos, addKalbForm.Krankheiten);
+                    Kalb kalb = new Kalb(addKalbForm.Lebensnummer, addKalbForm.Name, addKalbForm.Geschlecht, addKalbForm.Groeße, addKalbForm.MutterNummer, addKalbForm.Geburtsdatum, addKalbForm.Eisen, addKalbForm.Selene, addKalbForm.Impfungen, addKalbForm.Hornlos, addKalbForm.Krankheiten, addKalbForm.AlterStall, addKalbForm.zuKlein);
                     store.AddKalb(kalb);
                     (bindingSource1.List as IList<Kalb>)?.Add(kalb);
                 }

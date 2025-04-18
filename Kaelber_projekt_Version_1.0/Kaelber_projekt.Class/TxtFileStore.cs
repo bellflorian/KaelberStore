@@ -40,7 +40,7 @@ namespace Kaelber_projekt.Class
             foreach (string line in lines)
             {
                 string[] parts = line.Split(';');
-                if (parts.Length == 13)
+                if (parts.Length == 15)
                 {
                     Kaelber.Add(new Kalb
                     {
@@ -55,8 +55,10 @@ namespace Kaelber_projekt.Class
                         Impfungen = bool.Parse(parts[8]),
                         Hornlos = bool.Parse(parts[9]),
                         Enthornt = bool.Parse(parts[10]),
-                        Krankheiten = parts[11],
-                        Notiz = parts[12]
+                        AlterStall = bool.Parse(parts[11]),
+                        Krankheiten = parts[12],
+                        Notiz = parts[13],
+                        ZuKlein = bool.Parse(parts[14])
                     });
                 }
             }
@@ -69,7 +71,7 @@ namespace Kaelber_projekt.Class
             List<string> output = new List<string>();
             foreach (Kalb kalb in Kaelber)
             {
-                string line = $"{kalb.Lebensnummer};{kalb.Name};{kalb.Geschlecht};{kalb.Groeße};{kalb.MutterNr};{kalb.Geburtsdatum};{kalb.Eisen};{kalb.Selene};{kalb.Impfungen};{kalb.Hornlos};{kalb.Enthornt};{kalb.Krankheiten};{kalb.Notiz}";
+                string line = $"{kalb.Lebensnummer};{kalb.Name};{kalb.Geschlecht};{kalb.Groeße};{kalb.MutterNr};{kalb.Geburtsdatum};{kalb.Eisen};{kalb.Selene};{kalb.Impfungen};{kalb.Hornlos};{kalb.Enthornt};{kalb.AlterStall};{kalb.Krankheiten};{kalb.Notiz};{kalb.ZuKlein}";
                 output.Add(line);
             }
             File.WriteAllLines("Kaelber.txt", output);
