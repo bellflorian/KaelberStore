@@ -37,7 +37,7 @@ namespace Oberflaeche_kaelber.Forms
                 BackColor = Color.Transparent,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Cursor = Cursors.Hand,
-                Location = new Point(50, 30)
+                Location = new Point(70, 5)
             };
 
             plusLabel.Click += (s, e) => ÖffneKalbAuswahl();
@@ -87,7 +87,7 @@ namespace Oberflaeche_kaelber.Forms
                 Font = new Font("ADLaM Display", 12, FontStyle.Bold),
                 ForeColor = Color.Black,
                 BackColor = Color.Transparent,
-                Location = new Point(20, 60),
+                Location = new Point(70, 20),
                 Cursor = Cursors.Hand
             };
 
@@ -101,8 +101,8 @@ namespace Oberflaeche_kaelber.Forms
                 ForeColor = Color.Black,
                 BackColor = Color.Transparent,
                 Location = kalb.Milch == "Abgespannt"
-                    ? new Point(15, 80)
-                    : new Point(15, 78),
+                    ? new Point(56, 50)
+                    : new Point(58, 40),
                 Cursor = Cursors.Hand
             };
 
