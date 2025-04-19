@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Kaelber_projekt.Class
 {
-    public class TxtFileStore: IKalbStore
+    public class TxtFileStore: IKalbStore, IKaelberboxStore
     {
         public List<Kalb> Kaelber { get; set; }
+        public List<Kaelberbox> Kaelberboxes { get; set; }
         public TxtFileStore()
         {
             Kaelber = new List<Kalb>();
+            Kaelberboxes = new List<Kaelberbox>();
         }
         public void AddKalb(Kalb kalb)
         {
@@ -23,6 +25,11 @@ namespace Kaelber_projekt.Class
         {
             Kaelber = newList;
             SaveToFile();
+        }
+
+        public Kalb GetKalb(int lebensnummer)
+        {
+            return Kaelber.Where(kalb => kalb.Lebensnummer == lebensnummer).FirstOrDefault();
         }
 
         public List<Kalb> GetAllKaelber()
@@ -75,6 +82,65 @@ namespace Kaelber_projekt.Class
                 output.Add(line);
             }
             File.WriteAllLines("Kaelber.txt", output);
+        }
+
+        public List<Kaelberbox> GetAllKaelberBoxes()
+        {
+            Kaelberboxes.Clear();
+
+            string[] content = File.ReadAllLines("Boxes.txt");
+
+            foreach (string line in content)
+            {
+                string[] lineSplit = line.Split(';');
+
+                int? lebensnummer = null;
+                if (!string.IsNullOrEmpty(lineSplit[1]))
+                    lebensnummer = int.Parse(lineSplit[1]);
+
+                Kaelberboxes.Add(new Kaelberbox(lineSplit[0], lebensnummer));
+            }
+
+            return Kaelberboxes;
+        }
+
+        public Kaelberbox GetKaelberBoxById(string id)
+        {
+            Kaelberboxes.Clear();
+            Kaelberboxes = GetAllKaelberBoxes();
+
+            return Kaelberboxes.Where(box => box.BoxId == id).FirstOrDefault();
+        }
+
+        public void SetBox(Kaelberbox box)
+        {
+            Kaelberboxes.Clear();
+            Kaelberboxes = GetAllKaelberBoxes();
+
+            int index = Kaelberboxes.FindIndex(b => b.BoxId == box.BoxId);
+
+            Kaelberboxes[index] = box;
+
+            SaveToBoxFile();
+        }
+
+        public bool GenerateBoxTxtFile(List<string> names)
+        {
+            if(File.Exists("Boxes.txt"))
+                return false;
+
+            File.Create("Boxes.txt").Close();
+
+            foreach (string name in names)
+                Kaelberboxes.Add(new Kaelberbox(name, null));
+
+            File.WriteAllLines("Boxes.txt", Kaelberboxes.Select(box => $"{box.BoxId};{box.Lebensnummer}"));
+            return true;
+        }
+
+        public void SaveToBoxFile()
+        {
+            File.WriteAllLines("Boxes.txt", Kaelberboxes.Select(box => $"{box.BoxId};{box.Lebensnummer}"));
         }
     }
 }

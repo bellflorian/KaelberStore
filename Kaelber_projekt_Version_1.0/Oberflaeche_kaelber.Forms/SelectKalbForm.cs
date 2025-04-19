@@ -34,7 +34,7 @@ namespace Oberflaeche_kaelber.Forms
             this.Close();
         }
 
-        private void btnRemvoeKalb_Click(object sender, EventArgs e)
+        private void btnRemoveKalb_Click_1(object sender, EventArgs e)
         {
             ausgewaehltesKalb = null;
             this.DialogResult = DialogResult.OK;

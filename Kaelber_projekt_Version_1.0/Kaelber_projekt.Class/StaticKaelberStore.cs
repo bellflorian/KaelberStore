@@ -29,6 +29,11 @@ namespace Kaelber_projekt.Class
             
         }
 
+        public Kalb GetKalb(int lebensnummer)
+        {
+            return null;
+        }
+
         public StaticKaelberStore()
         {
             Kaelber = new List<Kalb>();

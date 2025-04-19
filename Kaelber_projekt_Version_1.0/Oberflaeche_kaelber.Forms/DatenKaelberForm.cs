@@ -8,6 +8,7 @@ namespace Oberflaeche_kaelber.Forms
     {
         private BindingSource bindingSource1 = new BindingSource();
         private IKalbStore store = new TxtFileStore();
+        private IKaelberboxStore boxStore = new TxtFileStore();
         private List<Kalb> kaelber;
 
         public DatenKaelberForm()
@@ -31,6 +32,7 @@ namespace Oberflaeche_kaelber.Forms
 
             dgvDatenKaelber.AllowDrop = true;
 
+            LoadKaelberBoxes();
 
             // Ausblenden auf dem ersten Tab
             bool temp = false;
@@ -73,6 +75,79 @@ namespace Oberflaeche_kaelber.Forms
 
                 if (dgvDatenKaelber2.Columns[i].HeaderText == "Durchfall + Datum" || dgvDatenKaelber2.Columns[i].HeaderText == "Notiz" || dgvDatenKaelber2.Columns[i].HeaderText == "Alter Stall" || dgvDatenKaelber2.Columns[i].HeaderText == "zu klein zum Abspannen")
                     dgvDatenKaelber2.Columns[i].ReadOnly = false;
+            }
+        }
+
+        private void LoadKaelberBoxes()
+        {
+            List<string> names = new List<string>();
+            foreach (var ctrl in AlleControls(this))
+            {
+                if (ctrl is Kaelberbox box)
+                {
+                    names.Add(box.Name);
+                    box.KalbZugewiesen += Box_KalbZugewiesen;
+                }
+
+                else if(ctrl is KaelberboxVertikal boxVertical)
+                {
+                    names.Add(boxVertical.Name);
+                    boxVertical.KalbZugewiesen += Box_KalbZugewiesen;
+                }
+            }
+
+            boxStore.GenerateBoxTxtFile(names);
+
+            foreach (var ctrl in AlleControls(this))
+            {
+                if (ctrl is Kaelberbox box)
+                {
+                    Kaelber_projekt.Class.Kaelberbox tempBox = boxStore.GetKaelberBoxById(box.Name);
+
+                    if (tempBox.Lebensnummer == null)
+                        continue;
+
+                    box.AktuellerKalb = store.GetKalb(tempBox.Lebensnummer.Value);
+                }
+
+                else if (ctrl is KaelberboxVertikal boxVertical)
+                {
+                    Kaelber_projekt.Class.Kaelberbox tempBox = boxStore.GetKaelberBoxById(boxVertical.Name);
+
+                    if (tempBox.Lebensnummer == null)
+                        continue;
+
+                    boxVertical.AktuellerKalb = store.GetKalb(tempBox.Lebensnummer.Value);
+                }
+            }
+        }
+
+        private IEnumerable<Control> AlleControls(Control parent)
+        {
+            foreach (Control child in parent.Controls)
+            {
+                yield return child;
+
+                foreach (var subChild in AlleControls(child))
+                    yield return subChild;
+            }
+        }
+
+        private void Box_KalbZugewiesen(object sender, Kalb kalb)
+        {
+            if (sender is Kaelberbox box1)
+            {
+                var box = sender as Kaelberbox;
+
+                var daten = new Kaelber_projekt.Class.Kaelberbox(box.Name, kalb?.Lebensnummer);
+                boxStore.SetBox(daten);
+            }
+            else if (sender is KaelberboxVertikal box2)
+            {
+                var box = sender as KaelberboxVertikal;
+
+                var daten = new Kaelber_projekt.Class.Kaelberbox(box.Name, kalb?.Lebensnummer);
+                boxStore.SetBox(daten);
             }
         }
 

@@ -12,6 +12,6 @@ namespace Kaelber_projekt.Class
         public List<Kalb> GetAllKaelber();
         public void SaveToFile();
         public void SetKaelber(List<Kalb> newList);
-
+        public Kalb GetKalb(int lebensnummer);
     }
 }

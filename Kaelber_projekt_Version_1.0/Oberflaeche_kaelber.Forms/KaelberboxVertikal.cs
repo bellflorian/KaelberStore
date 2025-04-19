@@ -13,9 +13,15 @@ namespace Oberflaeche_kaelber.Forms
 {
     public partial class KaelberboxVertikal : UserControl
     {
+        public event EventHandler<Kalb> KalbZugewiesen;
         private Kalb aktuellesKalb;
-        public Kalb AktuellerKalb => aktuellesKalb;
-        public string BoxId;
+        [Browsable(false)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Kalb AktuellerKalb
+        {
+            get => aktuellesKalb;
+            set => SetKalb(value);
+        }
 
         public KaelberboxVertikal()
         {
@@ -75,6 +81,7 @@ namespace Oberflaeche_kaelber.Forms
 
                 plusLabel.Click += (s, e) => ÖffneKalbAuswahl();
                 this.Controls.Add(plusLabel);
+                KalbZugewiesen?.Invoke(this, kalb);
                 return;
             }
 
@@ -115,6 +122,8 @@ namespace Oberflaeche_kaelber.Forms
 
             this.Controls.Add(lebensnummerLabel);
             this.Controls.Add(milchLabel);
+
+            KalbZugewiesen?.Invoke(this, kalb);
         }
     }
 }
