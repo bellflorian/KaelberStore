@@ -77,7 +77,7 @@ namespace Oberflaeche_kaelber.Forms
                     BackColor = Color.Transparent,
                     TextAlign = ContentAlignment.MiddleCenter,
                     Cursor = Cursors.Hand,
-                    Location = new Point((this.Width - 60) / 2, (this.Height - 70) / 2)
+                    Location = new Point(70, 5)
                 };
 
                 plusLabel.Click += (s, e) => ÖffneKalbAuswahl();

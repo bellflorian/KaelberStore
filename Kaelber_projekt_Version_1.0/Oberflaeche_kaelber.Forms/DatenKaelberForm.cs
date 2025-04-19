@@ -89,7 +89,7 @@ namespace Oberflaeche_kaelber.Forms
                     box.KalbZugewiesen += Box_KalbZugewiesen;
                 }
 
-                else if(ctrl is KaelberboxVertikal boxVertical)
+                else if (ctrl is KaelberboxVertikal boxVertical)
                 {
                     names.Add(boxVertical.Name);
                     boxVertical.KalbZugewiesen += Box_KalbZugewiesen;
@@ -169,12 +169,14 @@ namespace Oberflaeche_kaelber.Forms
         {
             RecalculateKaelber();
             store.SetKaelber((bindingSource1.List as IEnumerable<Kalb>).ToList());
+            LoadKaelberBoxes();
         }
 
         private void dgvDatenKaelber2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             RecalculateKaelber();
             store.SetKaelber((bindingSource1.List as IEnumerable<Kalb>).ToList());
+            LoadKaelberBoxes();
         }
 
         private void RecalculateKaelber()
@@ -409,6 +411,5 @@ namespace Oberflaeche_kaelber.Forms
 
             dgv.AllowUserToAddRows = false;
         }
-
     }
 }

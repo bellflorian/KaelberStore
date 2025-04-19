@@ -38,6 +38,13 @@
             btnAddKealber = new Button();
             dgvDatenKaelber = new DataGridView();
             tcStalluebersichtNeuerStall = new TabPage();
+            kaelberboxVertikal7 = new KaelberboxVertikal();
+            kaelberboxVertikal6 = new KaelberboxVertikal();
+            kaelberboxVertikal5 = new KaelberboxVertikal();
+            kaelberboxVertikal4 = new KaelberboxVertikal();
+            kaelberboxVertikal3 = new KaelberboxVertikal();
+            kaelberboxVertikal2 = new KaelberboxVertikal();
+            kaelberboxVertikal1 = new KaelberboxVertikal();
             kaelberbox8 = new Kaelberbox();
             kaelberbox7 = new Kaelberbox();
             kaelberbox6 = new Kaelberbox();
@@ -54,11 +61,6 @@
             kaelberbox11 = new Kaelberbox();
             kaelberbox10 = new Kaelberbox();
             kaelberbox9 = new Kaelberbox();
-            kaelberboxVertikal1 = new KaelberboxVertikal();
-            kaelberboxVertikal2 = new KaelberboxVertikal();
-            kaelberboxVertikal3 = new KaelberboxVertikal();
-            kaelberboxVertikal4 = new KaelberboxVertikal();
-            kaelberboxVertikal5 = new KaelberboxVertikal();
             tcTabs.SuspendLayout();
             tcPageKaelber2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDatenKaelber2).BeginInit();
@@ -167,6 +169,8 @@
             // 
             tcStalluebersichtNeuerStall.BackColor = SystemColors.Control;
             tcStalluebersichtNeuerStall.BackgroundImage = Properties.Resources.neuerstall_zeichnung2;
+            tcStalluebersichtNeuerStall.Controls.Add(kaelberboxVertikal7);
+            tcStalluebersichtNeuerStall.Controls.Add(kaelberboxVertikal6);
             tcStalluebersichtNeuerStall.Controls.Add(kaelberboxVertikal5);
             tcStalluebersichtNeuerStall.Controls.Add(kaelberboxVertikal4);
             tcStalluebersichtNeuerStall.Controls.Add(kaelberboxVertikal3);
@@ -185,6 +189,83 @@
             tcStalluebersichtNeuerStall.Size = new Size(1362, 657);
             tcStalluebersichtNeuerStall.TabIndex = 2;
             tcStalluebersichtNeuerStall.Text = " Stallübersicht Neuer Stall";
+            // 
+            // kaelberboxVertikal7
+            // 
+            kaelberboxVertikal7.BackColor = Color.Beige;
+            kaelberboxVertikal7.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal7.BackgroundImage");
+            kaelberboxVertikal7.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberboxVertikal7.BorderStyle = BorderStyle.FixedSingle;
+            kaelberboxVertikal7.Location = new Point(690, 309);
+            kaelberboxVertikal7.Name = "kaelberboxVertikal7";
+            kaelberboxVertikal7.Size = new Size(100, 150);
+            kaelberboxVertikal7.TabIndex = 21;
+            // 
+            // kaelberboxVertikal6
+            // 
+            kaelberboxVertikal6.BackColor = Color.Beige;
+            kaelberboxVertikal6.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal6.BackgroundImage");
+            kaelberboxVertikal6.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberboxVertikal6.BorderStyle = BorderStyle.FixedSingle;
+            kaelberboxVertikal6.Location = new Point(573, 309);
+            kaelberboxVertikal6.Name = "kaelberboxVertikal6";
+            kaelberboxVertikal6.Size = new Size(100, 150);
+            kaelberboxVertikal6.TabIndex = 20;
+            // 
+            // kaelberboxVertikal5
+            // 
+            kaelberboxVertikal5.BackColor = Color.Beige;
+            kaelberboxVertikal5.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal5.BackgroundImage");
+            kaelberboxVertikal5.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberboxVertikal5.BorderStyle = BorderStyle.FixedSingle;
+            kaelberboxVertikal5.Location = new Point(188, 157);
+            kaelberboxVertikal5.Name = "kaelberboxVertikal5";
+            kaelberboxVertikal5.Size = new Size(100, 150);
+            kaelberboxVertikal5.TabIndex = 19;
+            // 
+            // kaelberboxVertikal4
+            // 
+            kaelberboxVertikal4.BackColor = Color.Beige;
+            kaelberboxVertikal4.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal4.BackgroundImage");
+            kaelberboxVertikal4.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberboxVertikal4.BorderStyle = BorderStyle.FixedSingle;
+            kaelberboxVertikal4.Location = new Point(82, 157);
+            kaelberboxVertikal4.Name = "kaelberboxVertikal4";
+            kaelberboxVertikal4.Size = new Size(100, 150);
+            kaelberboxVertikal4.TabIndex = 18;
+            // 
+            // kaelberboxVertikal3
+            // 
+            kaelberboxVertikal3.BackColor = Color.Beige;
+            kaelberboxVertikal3.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal3.BackgroundImage");
+            kaelberboxVertikal3.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberboxVertikal3.BorderStyle = BorderStyle.FixedSingle;
+            kaelberboxVertikal3.Location = new Point(690, 21);
+            kaelberboxVertikal3.Name = "kaelberboxVertikal3";
+            kaelberboxVertikal3.Size = new Size(100, 150);
+            kaelberboxVertikal3.TabIndex = 17;
+            // 
+            // kaelberboxVertikal2
+            // 
+            kaelberboxVertikal2.BackColor = Color.Beige;
+            kaelberboxVertikal2.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal2.BackgroundImage");
+            kaelberboxVertikal2.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberboxVertikal2.BorderStyle = BorderStyle.FixedSingle;
+            kaelberboxVertikal2.Location = new Point(573, 21);
+            kaelberboxVertikal2.Name = "kaelberboxVertikal2";
+            kaelberboxVertikal2.Size = new Size(100, 150);
+            kaelberboxVertikal2.TabIndex = 16;
+            // 
+            // kaelberboxVertikal1
+            // 
+            kaelberboxVertikal1.BackColor = Color.Beige;
+            kaelberboxVertikal1.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal1.BackgroundImage");
+            kaelberboxVertikal1.BackgroundImageLayout = ImageLayout.Zoom;
+            kaelberboxVertikal1.BorderStyle = BorderStyle.FixedSingle;
+            kaelberboxVertikal1.Location = new Point(332, 90);
+            kaelberboxVertikal1.Name = "kaelberboxVertikal1";
+            kaelberboxVertikal1.Size = new Size(100, 150);
+            kaelberboxVertikal1.TabIndex = 15;
             // 
             // kaelberbox8
             // 
@@ -368,61 +449,6 @@
             kaelberbox9.Size = new Size(150, 100);
             kaelberbox9.TabIndex = 0;
             // 
-            // kaelberboxVertikal1
-            // 
-            kaelberboxVertikal1.BackColor = Color.Beige;
-            kaelberboxVertikal1.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal1.BackgroundImage");
-            kaelberboxVertikal1.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberboxVertikal1.BorderStyle = BorderStyle.FixedSingle;
-            kaelberboxVertikal1.Location = new Point(332, 90);
-            kaelberboxVertikal1.Name = "kaelberboxVertikal1";
-            kaelberboxVertikal1.Size = new Size(100, 150);
-            kaelberboxVertikal1.TabIndex = 15;
-            // 
-            // kaelberboxVertikal2
-            // 
-            kaelberboxVertikal2.BackColor = Color.Beige;
-            kaelberboxVertikal2.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal2.BackgroundImage");
-            kaelberboxVertikal2.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberboxVertikal2.BorderStyle = BorderStyle.FixedSingle;
-            kaelberboxVertikal2.Location = new Point(573, 21);
-            kaelberboxVertikal2.Name = "kaelberboxVertikal2";
-            kaelberboxVertikal2.Size = new Size(100, 150);
-            kaelberboxVertikal2.TabIndex = 16;
-            // 
-            // kaelberboxVertikal3
-            // 
-            kaelberboxVertikal3.BackColor = Color.Beige;
-            kaelberboxVertikal3.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal3.BackgroundImage");
-            kaelberboxVertikal3.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberboxVertikal3.BorderStyle = BorderStyle.FixedSingle;
-            kaelberboxVertikal3.Location = new Point(690, 21);
-            kaelberboxVertikal3.Name = "kaelberboxVertikal3";
-            kaelberboxVertikal3.Size = new Size(100, 150);
-            kaelberboxVertikal3.TabIndex = 17;
-            // 
-            // kaelberboxVertikal4
-            // 
-            kaelberboxVertikal4.BackColor = Color.Beige;
-            kaelberboxVertikal4.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal4.BackgroundImage");
-            kaelberboxVertikal4.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberboxVertikal4.BorderStyle = BorderStyle.FixedSingle;
-            kaelberboxVertikal4.Location = new Point(82, 157);
-            kaelberboxVertikal4.Name = "kaelberboxVertikal4";
-            kaelberboxVertikal4.Size = new Size(100, 150);
-            kaelberboxVertikal4.TabIndex = 18;
-            // 
-            // kaelberboxVertikal5
-            // 
-            kaelberboxVertikal5.BackColor = Color.Beige;
-            kaelberboxVertikal5.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal5.BackgroundImage");
-            kaelberboxVertikal5.BackgroundImageLayout = ImageLayout.Zoom;
-            kaelberboxVertikal5.BorderStyle = BorderStyle.FixedSingle;
-            kaelberboxVertikal5.Location = new Point(188, 157);
-            kaelberboxVertikal5.Name = "kaelberboxVertikal5";
-            kaelberboxVertikal5.Size = new Size(100, 150);
-            kaelberboxVertikal5.TabIndex = 19;
-            // 
             // DatenKaelberForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -472,5 +498,7 @@
         private KaelberboxVertikal kaelberboxVertikal3;
         private KaelberboxVertikal kaelberboxVertikal2;
         private KaelberboxVertikal kaelberboxVertikal1;
+        private KaelberboxVertikal kaelberboxVertikal7;
+        private KaelberboxVertikal kaelberboxVertikal6;
     }
 }
