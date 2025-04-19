@@ -73,6 +73,16 @@ namespace Oberflaeche_kaelber.Forms.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap alter_stall_zeichnung1 {
+            get {
+                object obj = ResourceManager.GetObject("alter stall zeichnung1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap KaelberBoxPlusV1 {
             get {
                 object obj = ResourceManager.GetObject("KaelberBoxPlusV1", resourceCulture);

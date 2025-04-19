@@ -29,12 +29,14 @@ namespace Oberflaeche_kaelber.Forms
                 "Lebensnummer",
                 "Milch",
                 "Krankheiten",
+                "AlterStall",
                 "Kaelberstarter",
                 "Heu",
                 "Wasser",
                 "Silofutter",
                 "Alter",
                 "Abspanndatum",
+                "ZuKlein",
                 "Notiz"
             }; 
 

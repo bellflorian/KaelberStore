@@ -229,7 +229,7 @@
             kaelberboxVertikal4.BackgroundImage = (Image)resources.GetObject("kaelberboxVertikal4.BackgroundImage");
             kaelberboxVertikal4.BackgroundImageLayout = ImageLayout.Zoom;
             kaelberboxVertikal4.BorderStyle = BorderStyle.FixedSingle;
-            kaelberboxVertikal4.Location = new Point(82, 157);
+            kaelberboxVertikal4.Location = new Point(80, 157);
             kaelberboxVertikal4.Name = "kaelberboxVertikal4";
             kaelberboxVertikal4.Size = new Size(100, 150);
             kaelberboxVertikal4.TabIndex = 18;
@@ -273,7 +273,7 @@
             kaelberbox8.BackgroundImage = (Image)resources.GetObject("kaelberbox8.BackgroundImage");
             kaelberbox8.BackgroundImageLayout = ImageLayout.Zoom;
             kaelberbox8.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox8.Location = new Point(882, 21);
+            kaelberbox8.Location = new Point(882, 25);
             kaelberbox8.Name = "kaelberbox8";
             kaelberbox8.Size = new Size(150, 100);
             kaelberbox8.TabIndex = 7;
@@ -295,7 +295,7 @@
             kaelberbox6.BackgroundImage = (Image)resources.GetObject("kaelberbox6.BackgroundImage");
             kaelberbox6.BackgroundImageLayout = ImageLayout.Zoom;
             kaelberbox6.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox6.Location = new Point(882, 368);
+            kaelberbox6.Location = new Point(882, 371);
             kaelberbox6.Name = "kaelberbox6";
             kaelberbox6.Size = new Size(150, 100);
             kaelberbox6.TabIndex = 5;
@@ -306,7 +306,7 @@
             kaelberbox5.BackgroundImage = (Image)resources.GetObject("kaelberbox5.BackgroundImage");
             kaelberbox5.BackgroundImageLayout = ImageLayout.Zoom;
             kaelberbox5.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox5.Location = new Point(882, 256);
+            kaelberbox5.Location = new Point(882, 254);
             kaelberbox5.Name = "kaelberbox5";
             kaelberbox5.Size = new Size(150, 100);
             kaelberbox5.TabIndex = 4;
@@ -317,7 +317,7 @@
             kaelberbox4.BackgroundImage = (Image)resources.GetObject("kaelberbox4.BackgroundImage");
             kaelberbox4.BackgroundImageLayout = ImageLayout.Zoom;
             kaelberbox4.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox4.Location = new Point(882, 141);
+            kaelberbox4.Location = new Point(882, 139);
             kaelberbox4.Name = "kaelberbox4";
             kaelberbox4.Size = new Size(150, 100);
             kaelberbox4.TabIndex = 3;
@@ -328,7 +328,7 @@
             kaelberbox3.BackgroundImage = (Image)resources.GetObject("kaelberbox3.BackgroundImage");
             kaelberbox3.BackgroundImageLayout = ImageLayout.Zoom;
             kaelberbox3.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox3.Location = new Point(332, 246);
+            kaelberbox3.Location = new Point(332, 254);
             kaelberbox3.Name = "kaelberbox3";
             kaelberbox3.Size = new Size(150, 100);
             kaelberbox3.TabIndex = 2;
@@ -339,7 +339,7 @@
             kaelberbox2.BackgroundImage = (Image)resources.GetObject("kaelberbox2.BackgroundImage");
             kaelberbox2.BackgroundImageLayout = ImageLayout.Zoom;
             kaelberbox2.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox2.Location = new Point(332, 368);
+            kaelberbox2.Location = new Point(332, 371);
             kaelberbox2.Name = "kaelberbox2";
             kaelberbox2.Size = new Size(150, 100);
             kaelberbox2.TabIndex = 1;
@@ -358,7 +358,7 @@
             // tcStalluebersichtAlterStall
             // 
             tcStalluebersichtAlterStall.BackColor = SystemColors.Control;
-            tcStalluebersichtAlterStall.BackgroundImage = Properties.Resources.alter_stall_zeichnung;
+            tcStalluebersichtAlterStall.BackgroundImage = Properties.Resources.alter_stall_zeichnung1;
             tcStalluebersichtAlterStall.Controls.Add(kaelberbox15);
             tcStalluebersichtAlterStall.Controls.Add(kaelberbox14);
             tcStalluebersichtAlterStall.Controls.Add(kaelberbox13);
@@ -389,7 +389,7 @@
             kaelberbox14.BackgroundImage = (Image)resources.GetObject("kaelberbox14.BackgroundImage");
             kaelberbox14.BackgroundImageLayout = ImageLayout.Zoom;
             kaelberbox14.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox14.Location = new Point(959, 96);
+            kaelberbox14.Location = new Point(976, 96);
             kaelberbox14.Name = "kaelberbox14";
             kaelberbox14.Size = new Size(150, 100);
             kaelberbox14.TabIndex = 5;
@@ -400,7 +400,7 @@
             kaelberbox13.BackgroundImage = (Image)resources.GetObject("kaelberbox13.BackgroundImage");
             kaelberbox13.BackgroundImageLayout = ImageLayout.Zoom;
             kaelberbox13.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox13.Location = new Point(792, 96);
+            kaelberbox13.Location = new Point(827, 96);
             kaelberbox13.Name = "kaelberbox13";
             kaelberbox13.Size = new Size(150, 100);
             kaelberbox13.TabIndex = 4;
@@ -411,7 +411,7 @@
             kaelberbox12.BackgroundImage = (Image)resources.GetObject("kaelberbox12.BackgroundImage");
             kaelberbox12.BackgroundImageLayout = ImageLayout.Zoom;
             kaelberbox12.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox12.Location = new Point(626, 96);
+            kaelberbox12.Location = new Point(656, 96);
             kaelberbox12.Name = "kaelberbox12";
             kaelberbox12.Size = new Size(150, 100);
             kaelberbox12.TabIndex = 3;
@@ -422,7 +422,7 @@
             kaelberbox11.BackgroundImage = (Image)resources.GetObject("kaelberbox11.BackgroundImage");
             kaelberbox11.BackgroundImageLayout = ImageLayout.Zoom;
             kaelberbox11.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox11.Location = new Point(470, 96);
+            kaelberbox11.Location = new Point(483, 96);
             kaelberbox11.Name = "kaelberbox11";
             kaelberbox11.Size = new Size(150, 100);
             kaelberbox11.TabIndex = 2;
@@ -433,7 +433,7 @@
             kaelberbox10.BackgroundImage = (Image)resources.GetObject("kaelberbox10.BackgroundImage");
             kaelberbox10.BackgroundImageLayout = ImageLayout.Zoom;
             kaelberbox10.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox10.Location = new Point(314, 96);
+            kaelberbox10.Location = new Point(334, 96);
             kaelberbox10.Name = "kaelberbox10";
             kaelberbox10.Size = new Size(150, 100);
             kaelberbox10.TabIndex = 1;
@@ -444,7 +444,7 @@
             kaelberbox9.BackgroundImage = (Image)resources.GetObject("kaelberbox9.BackgroundImage");
             kaelberbox9.BackgroundImageLayout = ImageLayout.Zoom;
             kaelberbox9.BorderStyle = BorderStyle.FixedSingle;
-            kaelberbox9.Location = new Point(158, 96);
+            kaelberbox9.Location = new Point(159, 96);
             kaelberbox9.Name = "kaelberbox9";
             kaelberbox9.Size = new Size(150, 100);
             kaelberbox9.TabIndex = 0;
