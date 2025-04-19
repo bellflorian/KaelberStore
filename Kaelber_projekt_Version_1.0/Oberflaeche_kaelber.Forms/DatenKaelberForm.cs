@@ -206,6 +206,45 @@ namespace Oberflaeche_kaelber.Forms
                 }
             }
         }
+        private void dgvDatenKaelber_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Prüfen, ob die aktuelle Spalte die "Alter"-Spalte ist
+            if (dgvDatenKaelber.Columns[e.ColumnIndex].Name == "Alter")
+            {
+                var kalb = dgvDatenKaelber.Rows[e.RowIndex].DataBoundItem as Kalb;
+
+                if (kalb != null)
+                {
+                    double wochenBisAbspannen = (kalb.Abspanndatum - DateTime.Now).Days / 7.0;
+                    if (wochenBisAbspannen < 0)
+                    {
+                        e.Value = $"{kalb.Abspanndatum.ToShortDateString()}";
+                    }
+                    else
+                    {
+                        // Formatieren: Abspanndatum (in Wochen)
+                        e.Value = $"{kalb.Abspanndatum.ToShortDateString()} (in {wochenBisAbspannen:F1} Wochen)";
+                    }
+                }
+            }
+
+            if (dgvDatenKaelber.Columns[e.ColumnIndex].Name == "Silofutter")
+            {
+                // Hole das zugrunde liegende Kalb-Objekt
+                var kalb = dgvDatenKaelber.Rows[e.RowIndex].DataBoundItem as Kalb;
+
+                if (kalb != null)
+                {
+                    // Verwende die Alter-Eigenschaft des Kalb-Objekts
+                    int alterInTagen = kalb.Alter;
+                    double alterInWochen = alterInTagen / 7.0;
+
+                    // Formatieren: Alter in Tagen (Alter in Wochen)
+                    e.Value = $"{alterInTagen} ({alterInWochen:F1} Wochen)";
+                    e.FormattingApplied = true;
+                }
+            }
+        }
 
         private void btnMilchmenge_Click_1(object sender, EventArgs e)
         {
@@ -395,10 +434,51 @@ namespace Oberflaeche_kaelber.Forms
             dgv.DefaultCellStyle.SelectionForeColor = Color.Black;
             dgv.DefaultCellStyle.Padding = new Padding(5);
 
+
             // Zellengröße & Layout
             dgv.RowTemplate.Height = 35;
             //dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            // Manuelle Breite für eine bestimmte Spalte festlegen
+            var column = dgv.Columns.Cast<DataGridViewColumn>()
+                .FirstOrDefault(c => c.HeaderText == "zu klein zum Abspannen");
+            if (column != null)
+            {
+                column.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                column.Width = 110;
+            }
+
+            var column1 = dgv.Columns.Cast<DataGridViewColumn>()
+                .FirstOrDefault(c => c.HeaderText == "Alter in Tagen (Wochen)");
+            if (column1 != null)
+            {
+                column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                column1.Width = 140;
+            }
+
+            var column2 = dgv.Columns.Cast<DataGridViewColumn>()
+                .FirstOrDefault(c => c.HeaderText == "Abspanndatum Vollmond");
+            if (column2 != null)
+            {
+                column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                column2.Width = 200;
+            }
+
+            var column3 = dgv.Columns.Cast<DataGridViewColumn>()
+                .FirstOrDefault(c => c.HeaderText == "Alter Stall");
+            if (column3 != null)
+            {
+                column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                column3.Width = 60;
+            }
+
+            var column4 = dgv.Columns.Cast<DataGridViewColumn>()
+                .FirstOrDefault(c => c.HeaderText == "Lebensnummer");
+            if (column4 != null)
+            {
+                column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                column4.Width = 120;
+            }
             dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv.Columns["Geburtsdatum"].DefaultCellStyle.Format = "dd.MM.yyyy";

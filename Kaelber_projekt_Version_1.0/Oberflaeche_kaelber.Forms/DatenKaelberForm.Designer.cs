@@ -115,6 +115,7 @@
             dgvDatenKaelber2.Name = "dgvDatenKaelber2";
             dgvDatenKaelber2.Size = new Size(1356, 602);
             dgvDatenKaelber2.TabIndex = 4;
+            dgvDatenKaelber2.CellFormatting += dgvDatenKaelber_CellFormatting;
             dgvDatenKaelber2.CellValueChanged += dgvDatenKaelber2_CellValueChanged;
             // 
             // btnMilchmenge

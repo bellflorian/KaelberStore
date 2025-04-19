@@ -35,9 +35,9 @@ namespace Kaelber_projekt.Class
         public bool Heu {  get; set; }
         public bool Wasser { get; set; }
         public bool Silofutter {  get; set; }
-        [DisplayName("Alter in Tagen")]
+        [DisplayName("Alter in Tagen (Wochen)")]
         public int Alter {  get; set; }
-        [DisplayName("vorauss. Abspanndatum Vollmond")]
+        [DisplayName("Abspanndatum Vollmond")]
         public DateTime Abspanndatum { get; set; }
         // Info wenn ein Kalb zu klein ist um nach 2 Moante 
         [DisplayName("zu klein zum Abspannen")]
@@ -85,6 +85,7 @@ namespace Kaelber_projekt.Class
 
         public void CalculateFields()
         {
+
             Alter = (DateTime.Today - Geburtsdatum).Days + 1;
             //int totalTageBisAbspanndatum = (int)(Abspanndatum - DateTime.Today).TotalDays;
             if (ZuKlein == true)
@@ -107,8 +108,8 @@ namespace Kaelber_projekt.Class
                     case <= 28: Milch = "3,5L"; break;
                     case <= 56: Milch = "4L"; break;
                     case <= 63: Milch = "3L"; break;
-                    case <= 70: Milch = "2L"; break;
-                    case <= 92: Milch = "1L"; break;
+                    case <= 84: Milch = "2L"; break;
+                    case <= 110: Milch = "1L"; break;
                     default: Milch = "Fehler Abgespannt?"; break;
                 }
                 if (Alter > maxAlter)
@@ -130,8 +131,8 @@ namespace Kaelber_projekt.Class
                     case <= 28: Milch = "3,5L"; break;
                     case <= 56: Milch = "4L"; break;
                     case <= 63: Milch = "3L"; break;
-                    case <= 70: Milch = "2L"; break;
-                    case <= 92: Milch = "1L"; break;
+                    case <= 84: Milch = "2L"; break;
+                    case <= 110: Milch = "1L"; break;
                     default: Milch = "Fehler Abgespannt?"; break;
                 }
                 if (Alter > maxAlter)
@@ -153,8 +154,8 @@ namespace Kaelber_projekt.Class
                     case <= 28: Milch = "3,5L"; break;
                     case <= 56: Milch = "4L"; break;
                     case <= 63: Milch = "3L"; break;
-                    case <= 70: Milch = "2L"; break;
-                    case <= 92: Milch = "1L"; break;
+                    case <= 84: Milch = "2L"; break;
+                    case <= 110: Milch = "1L"; break;
                     default: Milch = "Fehler Abgespannt?"; break;
                 }
                 if (Alter > maxAlter)
