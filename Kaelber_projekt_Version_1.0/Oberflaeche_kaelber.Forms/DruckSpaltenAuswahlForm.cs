@@ -19,6 +19,8 @@ namespace Oberflaeche_kaelber.Forms
         {
             InitializeComponent();
 
+
+
             var props = typeof(Kalb).GetProperties()
            .Where(p => p.CanRead && p.GetMethod.IsPublic)
            .Select(p => p.Name)
@@ -42,6 +44,8 @@ namespace Oberflaeche_kaelber.Forms
 
             foreach (var name in props)
             {
+                if (name == "IstExakterVollmond")
+                    continue;
                 int index = clbColumnsSelect.Items.Add(name);// standardmäßig alles ausgewählt
                 if (standartspalten.Contains(name))
                 {

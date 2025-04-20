@@ -9,9 +9,8 @@ namespace Kaelber_projekt.Class
 {
     public static class Util
     {
-        public static DateTime NextFullMoon(DateTime datum)
+        public static (DateTime Datum, bool IstExakterVollmond) NextFullMoon(DateTime datum)
         {
-
             // Referenzvollmond: 25.03.2024, 08:00 UTC
             DateTime referenzVollmond = new DateTime(2024, 3, 25, 8, 0, 0, DateTimeKind.Utc);
             double mondzyklusTage = 29.530588853;
@@ -30,16 +29,16 @@ namespace Kaelber_projekt.Class
             double stundenDifferenz = Math.Abs((datumUtc - letzterVollmondUtc).TotalHours);
             double tageSeitLetztemVollmond = (datumUtc - letzterVollmondUtc).TotalDays;
 
-            // 1. Genau ±12h beim Vollmond => gib das Datum zurück
+            // 1. Genau ±12h beim Vollmond => gib das Datum zurück und markiere es als exakter Vollmond
             if (stundenDifferenz <= 12)
-                return datum;
+                return (datum, true);
 
-            // 2. Letzter Vollmond liegt in den letzten 7 Tagen => gib das Datum zurück
+            // 2. Letzter Vollmond liegt in den letzten 7 Tagen => gib das Datum zurück und markiere es als nicht exakter Vollmond
             if (tageSeitLetztemVollmond > 0 && tageSeitLetztemVollmond <= 7)
-                return datum;
+                return (datum, false);
 
-            // 3. Andernfalls gib den nächsten Vollmond zurück
-            return naechsterVollmondUtc.ToLocalTime();
+            // 3. Andernfalls gib den nächsten Vollmond zurück und markiere es als exakter Vollmond
+            return (naechsterVollmondUtc.ToLocalTime(), true);
         }
     }
 }

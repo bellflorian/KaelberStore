@@ -29,6 +29,16 @@ namespace Oberflaeche_kaelber.Forms
             bindingSource1.DataSource = sortierbareListe;
             dgvDatenKaelber.DataSource = bindingSource1;
             dgvDatenKaelber2.DataSource = bindingSource1;
+            // Spalte "IstExakterVollmond" ausblenden
+            if (dgvDatenKaelber.Columns.Contains("IstExakterVollmond"))
+            {
+                dgvDatenKaelber.Columns["IstExakterVollmond"].Visible = false;
+            }
+
+            if (dgvDatenKaelber2.Columns.Contains("IstExakterVollmond"))
+            {
+                dgvDatenKaelber2.Columns["IstExakterVollmond"].Visible = false;
+            }
 
             dgvDatenKaelber.AllowDrop = true;
 
@@ -208,6 +218,10 @@ namespace Oberflaeche_kaelber.Forms
         }
         private void dgvDatenKaelber_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            if (e.RowIndex < 0 || e.RowIndex >= dgvDatenKaelber.Rows.Count - (dgvDatenKaelber.AllowUserToAddRows ? 1 : 0))
+            {
+                return;
+            }
             // Prüfen, ob die aktuelle Spalte die "Alter"-Spalte ist
             if (dgvDatenKaelber.Columns[e.ColumnIndex].Name == "Alter")
             {
@@ -218,13 +232,15 @@ namespace Oberflaeche_kaelber.Forms
                     double wochenBisAbspannen = (kalb.Abspanndatum - DateTime.Now).Days / 7.0;
                     if (wochenBisAbspannen < 0)
                     {
-                        e.Value = $"{kalb.Abspanndatum.ToShortDateString()}";
+                        if (kalb.IstExakterVollmond)
+                            e.Value = $"{kalb.Abspanndatum.ToShortDateString()}🌕";
+                        else
+                            e.Value = $"{kalb.Abspanndatum.ToShortDateString()}";
                     }
+                    else if (kalb.IstExakterVollmond)
+                        e.Value = $"{kalb.Abspanndatum.ToShortDateString()}🌕 (in {wochenBisAbspannen:F1} Wochen)";
                     else
-                    {
-                        // Formatieren: Abspanndatum (in Wochen)
                         e.Value = $"{kalb.Abspanndatum.ToShortDateString()} (in {wochenBisAbspannen:F1} Wochen)";
-                    }
                 }
             }
 
@@ -461,7 +477,7 @@ namespace Oberflaeche_kaelber.Forms
             if (column2 != null)
             {
                 column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                column2.Width = 200;
+                column2.Width = 230;
             }
 
             var column3 = dgv.Columns.Cast<DataGridViewColumn>()
@@ -477,7 +493,7 @@ namespace Oberflaeche_kaelber.Forms
             if (column4 != null)
             {
                 column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-                column4.Width = 120;
+                column4.Width = 150;
             }
             dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

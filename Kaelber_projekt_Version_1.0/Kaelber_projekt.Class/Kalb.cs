@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Kaelber_projekt.Class
 {
@@ -42,8 +43,9 @@ namespace Kaelber_projekt.Class
         // Info wenn ein Kalb zu klein ist um nach 2 Moante 
         [DisplayName("zu klein zum Abspannen")]
         public bool ZuKlein { get; set; }
-        //public string WochenUndTageBisAbspanndatum { get; set; }
         public string Notiz {  get; set; }
+        public bool IstExakterVollmond { get; private set; }
+
 
 
 
@@ -87,16 +89,23 @@ namespace Kaelber_projekt.Class
         {
 
             Alter = (DateTime.Today - Geburtsdatum).Days + 1;
-            //int totalTageBisAbspanndatum = (int)(Abspanndatum - DateTime.Today).TotalDays;
+
+            var vollmondInfo = default((DateTime Datum, bool IstExakterVollmond));
             if (ZuKlein == true)
-                Abspanndatum = Util.NextFullMoon(Geburtsdatum.AddDays(84));
+            {
+                vollmondInfo = Util.NextFullMoon(Geburtsdatum.AddDays(84));
+                Abspanndatum = vollmondInfo.Datum;
+            }
             else
-                Abspanndatum = Util.NextFullMoon(Geburtsdatum.AddDays(56));
+            {
+                vollmondInfo = Util.NextFullMoon(Geburtsdatum.AddDays(56));
+                Abspanndatum = vollmondInfo.Datum;
+            }
+
+            IstExakterVollmond = vollmondInfo.IstExakterVollmond;
 
             double maxAlter = (Abspanndatum - Geburtsdatum).TotalDays;
-            //Wochen und Tage bis Abspanndatum angezeigt
-
-            //WochenUndTageBisAbspanndatum = $"{totalTageBisAbspanndatum / 7} Wochen und {totalTageBisAbspanndatum % 7} Tage";
+           
 
             if (Groeße == "Klein 35kg")
             {
