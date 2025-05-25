@@ -99,13 +99,27 @@ namespace Oberflaeche_kaelber.Forms
                 Cursor = Cursors.Hand
             };
 
+            var AlterLabel = new Label
+            {
+                Text = (kalb.Alter / 7.0).ToString("F1") + " W",
+                AutoSize = true,
+                Font = new Font("ADLaM Display", 11, FontStyle.Bold),
+                ForeColor = Color.Black,
+                BackColor = Color.Transparent,
+                Location = new Point(1, 10),
+                Cursor = Cursors.Hand
+            };
+            this.Controls.Add(AlterLabel);
+
             var milchLabel = new Label
             {
                 Text = kalb.Milch,
                 AutoSize = true,
                 Font = kalb.Milch == "Abgespannt"
-                    ? new Font("ADLaM Display", 9, FontStyle.Bold)
-                    : new Font("ADLaM Display", 25, FontStyle.Bold),
+                   ? new Font("ADLaM Display", 9, FontStyle.Bold)
+                   : kalb.Milch.Contains(";")
+                       ? new Font("ADLaM Display", 18, FontStyle.Bold) // kleiner, wenn Kuhnummer dabei
+                       : new Font("ADLaM Display", 25, FontStyle.Bold), // groß, wenn nur Milch
                 ForeColor = Color.Black,
                 BackColor = Color.Transparent,
                 Location = kalb.Milch == "Abgespannt"
@@ -123,6 +137,68 @@ namespace Oberflaeche_kaelber.Forms
 
             this.Controls.Add(lebensnummerLabel);
             this.Controls.Add(milchLabel);
+
+            if (kalb.Wasser)
+            {
+                var wasserLabel = new Label
+                {
+                    Text = "W",
+                    AutoSize = true,
+                    Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                    ForeColor = Color.DodgerBlue,
+                    BackColor = Color.Transparent,
+                    Location = new Point(10, 65), // Position nach Wunsch anpassen
+                    Cursor = Cursors.Hand
+                };
+                wasserLabel.Click += (s, e) => ÖffneKalbAuswahl();
+                this.Controls.Add(wasserLabel);
+            }
+            if (kalb.Silofutter)
+            {
+                var wasserLabel = new Label
+                {
+                    Text = "S",
+                    AutoSize = true,
+                    Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                    ForeColor = Color.Brown,
+                    BackColor = Color.Transparent,
+                    Location = new Point(32, 65), // Position nach Wunsch anpassen
+                    Cursor = Cursors.Hand
+                };
+                wasserLabel.Click += (s, e) => ÖffneKalbAuswahl();
+                this.Controls.Add(wasserLabel);
+            }
+            if (kalb.Heu)
+            {
+                var wasserLabel = new Label
+                {
+                    Text = "H",
+                    AutoSize = true,
+                    Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                    ForeColor = Color.Green,
+                    BackColor = Color.Transparent,
+                    Location = new Point(10, 45), // Position nach Wunsch anpassen
+                    Cursor = Cursors.Hand
+                };
+                wasserLabel.Click += (s, e) => ÖffneKalbAuswahl();
+                this.Controls.Add(wasserLabel);
+            }
+            if (kalb.Kaelberstarter)
+            {
+                var wasserLabel = new Label
+                {
+                    Text = "K",
+                    AutoSize = true,
+                    Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                    ForeColor = Color.Black,
+                    BackColor = Color.Transparent,
+                    Location = new Point(32, 45), // Position nach Wunsch anpassen
+                    Cursor = Cursors.Hand
+                };
+                wasserLabel.Click += (s, e) => ÖffneKalbAuswahl();
+                this.Controls.Add(wasserLabel);
+            }
+
 
             KalbZugewiesen?.Invoke(this, kalb);
         }

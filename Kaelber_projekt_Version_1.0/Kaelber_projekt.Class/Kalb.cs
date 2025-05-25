@@ -18,6 +18,8 @@ namespace Kaelber_projekt.Class
         public bool Impfungen {  get; set; }
         public bool Hornlos {  get; set; }
         public bool Enthornt { get; set; } 
+        [DisplayName("Milchmast")]
+        public bool Milchmast { get; set; }
 
         // Errechnete Felder
         public string Milch {  get; set; }
@@ -65,7 +67,8 @@ namespace Kaelber_projekt.Class
                     bool hornlos,
                     string krankheiten,
                     bool alterStall,
-                    bool zuklein)
+                    bool zuklein,
+                    bool milchmast)
         {
             Lebensnummer = lebensnummer;
             Name = name;
@@ -83,6 +86,7 @@ namespace Kaelber_projekt.Class
             CalculateFields();
             AlterStall = alterStall;
             ZuKlein = zuklein;
+            Milchmast = milchmast;
         }
 
         public void CalculateFields()
@@ -91,10 +95,17 @@ namespace Kaelber_projekt.Class
             Alter = (DateTime.Today - Geburtsdatum).Days + 1;
 
             var vollmondInfo = default((DateTime Datum, bool IstExakterVollmond));
-            if (ZuKlein == true)
+            if (ZuKlein == true && Milchmast == false)
             {
                 vollmondInfo = Util.NextFullMoon(Geburtsdatum.AddDays(84));
                 Abspanndatum = vollmondInfo.Datum;
+            }
+            else if (Milchmast == true)
+            {
+                if (ZuKlein == true || Groeße == "Klein 35kg" || Groeße == "Mittel 40kg") // groeße funktioniert noch nicht
+                    Abspanndatum = Geburtsdatum.AddDays(84);
+                else
+                    Abspanndatum = Geburtsdatum.AddDays(56);
             }
             else
             {
@@ -105,9 +116,9 @@ namespace Kaelber_projekt.Class
             IstExakterVollmond = vollmondInfo.IstExakterVollmond;
 
             double maxAlter = (Abspanndatum - Geburtsdatum).TotalDays;
-           
 
-            if (Groeße == "Klein 35kg")
+
+            if (Groeße == "Klein 35kg" && Milchmast==false)
             {
                 switch (Alter)
                 {
@@ -128,32 +139,10 @@ namespace Kaelber_projekt.Class
                 Kaelberstarter = Alter > 21 ? true : false;
                 Heu = Alter > 21 ? true : false;
                 Wasser = Alter > 21 ? true : false;
+                Silofutter = Alter > 33 ? true : false;
             }
 
-            else if (Groeße == "Mittel 40kg")
-            {
-                switch (Alter)
-                {
-                    case <= 7: Milch = $"3L; {MutterNr}"; break;
-                    case <= 14: Milch = "3L"; break;
-                    case <= 21: Milch = "3,5L"; break;
-                    case <= 28: Milch = "3,5L"; break;
-                    case <= 56: Milch = "4L"; break;
-                    case <= 63: Milch = "3L"; break;
-                    case <= 84: Milch = "2L"; break;
-                    case <= 110: Milch = "1L"; break;
-                    default: Milch = "Fehler Abgespannt?"; break;
-                }
-                if (Alter > maxAlter)
-                    Milch = "Abgespannt"; 
-                else if (Krankheiten != String.Empty && Krankheiten != " " && Krankheiten != null)
-                    Milch = "-";
-                Kaelberstarter = Alter > 17 ? true : false;
-                Heu = Alter > 17 ? true : false;
-                Wasser = Alter > 17 ? true : false;
-            }
-
-            else if (Groeße == "Groß 45kg")
+            else if (Groeße == "Mittel 40kg" && Milchmast == false)
             {
                 switch (Alter)
                 {
@@ -174,11 +163,56 @@ namespace Kaelber_projekt.Class
                 Kaelberstarter = Alter > 17 ? true : false;
                 Heu = Alter > 17 ? true : false;
                 Wasser = Alter > 17 ? true : false;
+                Silofutter = Alter > 33 ? true : false;
             }
+
+            else if (Groeße == "Groß 45kg" && Milchmast == false)
+            {
+                switch (Alter)
+                {
+                    case <= 7: Milch = $"3L; {MutterNr}"; break;
+                    case <= 14: Milch = "3L"; break;
+                    case <= 21: Milch = "3,5L"; break;
+                    case <= 28: Milch = "3,5L"; break;
+                    case <= 56: Milch = "4L"; break;
+                    case <= 63: Milch = "3L"; break;
+                    case <= 84: Milch = "2L"; break;
+                    case <= 110: Milch = "1L"; break;
+                    default: Milch = "Fehler Abgespannt?"; break;
+                }
+                if (Alter > maxAlter)
+                    Milch = "Abgespannt";
+                else if (Krankheiten != String.Empty && Krankheiten != " " && Krankheiten != null)
+                    Milch = "-";
+                Kaelberstarter = Alter > 17 ? true : false;
+                Heu = Alter > 17 ? true : false;
+                Wasser = Alter > 17 ? true : false;
+                Silofutter = Alter > 33 ? true : false;
+            }
+            else if (Milchmast == true)
+            {
+                switch (Alter)
+                {
+                    case <= 7: Milch = $"3L; {MutterNr}"; break;
+                    case <= 14: Milch = "4L"; break;
+                    case <= 21: Milch = "5L"; break;
+                    case <= 28: Milch = "6L"; break;
+                    case <= 84: Milch = "8L"; break;
+                    default: Milch = "Fehler Abgespannt?"; break;
+                }
+                if (Alter > 84)
+                    Milch = "Milchmast fertig";
+                else if (Krankheiten != String.Empty && Krankheiten != " " && Krankheiten != null)
+                    Milch = "-";
+                Kaelberstarter = false;
+                Heu = false;
+                Wasser = false;
+                Silofutter = false;
+            }
+
             else
                 Milch = "Fehler Größe";
 
-            Silofutter = Alter > 33 ? true : false;
         }
 
         public override string ToString()

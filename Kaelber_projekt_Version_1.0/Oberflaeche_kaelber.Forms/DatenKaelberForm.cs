@@ -167,7 +167,7 @@ namespace Oberflaeche_kaelber.Forms
             {
                 if (addKalbForm.ShowDialog() == DialogResult.OK)
                 {
-                    Kalb kalb = new Kalb(addKalbForm.Lebensnummer, addKalbForm.Name, addKalbForm.Geschlecht, addKalbForm.Groeße, addKalbForm.MutterNummer, addKalbForm.Geburtsdatum, addKalbForm.Eisen, addKalbForm.Selene, addKalbForm.Impfungen, addKalbForm.Hornlos, addKalbForm.Krankheiten, addKalbForm.AlterStall, addKalbForm.zuKlein);
+                    Kalb kalb = new Kalb(addKalbForm.Lebensnummer, addKalbForm.Name, addKalbForm.Geschlecht, addKalbForm.Groeße, addKalbForm.MutterNummer, addKalbForm.Geburtsdatum, addKalbForm.Eisen, addKalbForm.Selene, addKalbForm.Impfungen, addKalbForm.Hornlos, addKalbForm.Krankheiten, addKalbForm.AlterStall, addKalbForm.zuKlein, addKalbForm.Milchmast);
                     store.AddKalb(kalb);
                     (bindingSource1.List as IList<Kalb>)?.Add(kalb);
                 }
@@ -260,6 +260,22 @@ namespace Oberflaeche_kaelber.Forms
                     e.FormattingApplied = true;
                 }
             }
+            //ich verstehe nicht warum das nicht funktioniert
+
+            if (e.ColumnIndex == 0)
+            {
+                var kalb = dgvDatenKaelber.Rows[e.RowIndex].DataBoundItem as Kalb;
+                if (kalb != null)
+                {
+                    if (kalb.Milchmast)
+                        e.Value = $"{kalb.Lebensnummer} Milchmast";
+                    else
+                        e.Value = kalb.Lebensnummer.ToString();
+                    e.FormattingApplied = true;
+                }
+            }
+
+
         }
 
         private void btnMilchmenge_Click_1(object sender, EventArgs e)

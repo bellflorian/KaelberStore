@@ -26,6 +26,7 @@ namespace Oberflaeche_kaelber.Forms
         public string Krankheiten = string.Empty;
         public bool AlterStall = false;
         public bool zuKlein = false;
+        public bool Milchmast = false;
 
         public AddKalbForm()
         {
