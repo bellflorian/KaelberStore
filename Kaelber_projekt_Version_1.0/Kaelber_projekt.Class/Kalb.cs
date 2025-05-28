@@ -136,10 +136,10 @@ namespace Kaelber_projekt.Class
                     Milch = "Abgespannt";
                 else if (Krankheiten != String.Empty && Krankheiten != " " && Krankheiten != null)
                     Milch = "-";
-                Kaelberstarter = Alter > 21 ? true : false;
-                Heu = Alter > 21 ? true : false;
-                Wasser = Alter > 21 ? true : false;
-                Silofutter = Alter > 33 ? true : false;
+                Kaelberstarter = Alter > 10 ? true : false;
+                Heu = Alter > 7 ? true : false;
+                Wasser = Alter > 1 ? true : false;
+                Silofutter = Alter > 40 ? true : false;
             }
 
             else if (Groeße == "Mittel 40kg" && Milchmast == false)
@@ -160,10 +160,10 @@ namespace Kaelber_projekt.Class
                     Milch = "Abgespannt";
                 else if (Krankheiten != String.Empty && Krankheiten != " " && Krankheiten != null)
                     Milch = "-";
-                Kaelberstarter = Alter > 17 ? true : false;
-                Heu = Alter > 17 ? true : false;
-                Wasser = Alter > 17 ? true : false;
-                Silofutter = Alter > 33 ? true : false;
+                Kaelberstarter = Alter > 7 ? true : false;
+                Heu = Alter > 7 ? true : false;
+                Wasser = Alter > 1 ? true : false;
+                Silofutter = Alter > 40 ? true : false;
             }
 
             else if (Groeße == "Groß 45kg" && Milchmast == false)
@@ -184,10 +184,10 @@ namespace Kaelber_projekt.Class
                     Milch = "Abgespannt";
                 else if (Krankheiten != String.Empty && Krankheiten != " " && Krankheiten != null)
                     Milch = "-";
-                Kaelberstarter = Alter > 17 ? true : false;
-                Heu = Alter > 17 ? true : false;
-                Wasser = Alter > 17 ? true : false;
-                Silofutter = Alter > 33 ? true : false;
+                Kaelberstarter = Alter > 7 ? true : false;
+                Heu = Alter > 7 ? true : false;
+                Wasser = Alter > 1 ? true : false;
+                Silofutter = Alter > 40 ? true : false;
             }
             else if (Milchmast == true)
             {

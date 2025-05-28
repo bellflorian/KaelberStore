@@ -10,15 +10,20 @@ namespace Oberflaeche_kaelber.Forms
         private IKalbStore store = new TxtFileStore();
         private IKaelberboxStore boxStore = new TxtFileStore();
         private List<Kalb> kaelber;
+        private BindingSource bindingSourceAlleKaelber = new BindingSource();
+        private IKalbStore alleStore = new AlleKaelberStore();
 
         public DatenKaelberForm()
         {
             InitializeComponent();
             LoadData();
+            dgvDatenKaelber.DataError += DgvDatenKaelber_DataError;
+            dgvDatenKaelber2.DataError += DgvDatenKaelber_DataError;
             StyleDataGridView(dgvDatenKaelber);
             StyleDataGridView(dgvDatenKaelber2);
+            dgvAlleKaelber.CellClick += DgvAlleKaelber_CellClick;
         }
-
+        
         private void LoadData()
         {
             bindingSource1.ListChanged += BindingSource1_ListChanged;
@@ -43,7 +48,7 @@ namespace Oberflaeche_kaelber.Forms
             dgvDatenKaelber.AllowDrop = true;
 
             LoadKaelberBoxes();
-
+            LoadAlleKaelber();
             // Ausblenden auf dem ersten Tab
             bool temp = false;
             for (int i = 0; i < dgvDatenKaelber.ColumnCount; i++)
@@ -54,6 +59,7 @@ namespace Oberflaeche_kaelber.Forms
                 if (temp)
                     dgvDatenKaelber.Columns[i].Visible = false;
             }
+
             if (!dgvDatenKaelber.Columns.Contains("Löschen"))
             {
                 DataGridViewTextBoxColumn deleteColumn = new DataGridViewTextBoxColumn();
@@ -64,6 +70,17 @@ namespace Oberflaeche_kaelber.Forms
                 deleteColumn.DefaultCellStyle.NullValue = "🗑️"; // Das hier zeigt das Emoji an
                 dgvDatenKaelber.Columns.Add(deleteColumn);
             }
+            if (!dgvDatenKaelber.Columns.Contains("Verschieben"))
+            {
+                DataGridViewTextBoxColumn transferColumn = new DataGridViewTextBoxColumn();
+                transferColumn.Name = "Verschieben";
+                transferColumn.HeaderText = "";
+                transferColumn.Width = 40;
+                transferColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                transferColumn.DefaultCellStyle.NullValue = "➥"; // Das hier zeigt das Emoji an
+                dgvDatenKaelber.Columns.Add(transferColumn);
+            }
+
 
             // Ausblenden auf dem zweiten Tab
             for (int i = 0; i < dgvDatenKaelber2.ColumnCount; i++)
@@ -86,6 +103,75 @@ namespace Oberflaeche_kaelber.Forms
                 if (dgvDatenKaelber2.Columns[i].HeaderText == "Durchfall + Datum" || dgvDatenKaelber2.Columns[i].HeaderText == "Notiz" || dgvDatenKaelber2.Columns[i].HeaderText == "Alter Stall" || dgvDatenKaelber2.Columns[i].HeaderText == "zu klein zum Abspannen")
                     dgvDatenKaelber2.Columns[i].ReadOnly = false;
             }
+        }
+
+        private void LoadAlleKaelber()
+        {
+            var alleKaelberListe = alleStore.GetAllKaelber();
+            // Berechnete Felder für jedes Kalb aktualisieren
+            foreach (var kalb in alleKaelberListe)
+            {
+                kalb.CalculateFields();
+            }
+
+            var sortierbareListe = new SortableBindingList<Kalb>(alleKaelberListe);
+            bindingSourceAlleKaelber.DataSource = sortierbareListe;
+            dgvAlleKaelber.DataSource = bindingSourceAlleKaelber;
+
+            StyleDataGridView(dgvAlleKaelber);
+
+            // "Löschen"-Button-Spalte nur einmal hinzufügen
+            if (!dgvAlleKaelber.Columns.Contains("Loeschen"))
+            {
+                DataGridViewTextBoxColumn deleteColumn = new DataGridViewTextBoxColumn();
+                deleteColumn.Name = "Loeschen";
+                deleteColumn.HeaderText = "";
+                deleteColumn.Width = 40;
+                deleteColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                deleteColumn.DefaultCellStyle.NullValue = "🗑️";
+                dgvAlleKaelber.Columns.Add(deleteColumn);
+            }
+            // "Zurück"-Button-Spalte nur einmal hinzufügen
+
+            if (!dgvAlleKaelber.Columns.Contains("Zurueck"))
+            {
+                DataGridViewTextBoxColumn backColumn = new DataGridViewTextBoxColumn();
+                backColumn.Name = "Zurueck";
+                backColumn.HeaderText = "";
+                backColumn.Width = 40;
+                backColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                backColumn.DefaultCellStyle.NullValue = "⮌"; // Symbol für zurück
+                dgvAlleKaelber.Columns.Add(backColumn);
+            }
+
+            // Alle Spalten auf ReadOnly, außer "Loeschen" und "Zurueck"
+            foreach (DataGridViewColumn col in dgvAlleKaelber.Columns)
+            {
+                if (col.Name != "Loeschen" && col.Name != "Zurueck")
+                    col.ReadOnly = true;
+                else
+                    col.ReadOnly = false;
+            }
+
+            StyleDataGridView(dgvAlleKaelber);
+            if (dgvAlleKaelber.Columns.Contains("IstExakterVollmond"))
+                dgvAlleKaelber.Columns["IstExakterVollmond"].Visible = false;
+            if (dgvAlleKaelber.Columns.Contains("Milch"))
+                dgvAlleKaelber.Columns["Milch"].Visible = false;
+            if (dgvAlleKaelber.Columns.Contains("Krankheiten"))
+                dgvAlleKaelber.Columns["Krankheiten"].Visible = false;
+            if (dgvAlleKaelber.Columns.Contains("AlterStall"))
+                dgvAlleKaelber.Columns["AlterStall"].Visible = false;
+            if (dgvAlleKaelber.Columns.Contains("Kaelberstarter"))
+                dgvAlleKaelber.Columns["Kaelberstarter"].Visible = false;
+            if (dgvAlleKaelber.Columns.Contains("Heu"))
+                dgvAlleKaelber.Columns["Heu"].Visible = false;
+            if (dgvAlleKaelber.Columns.Contains("Wasser"))
+                dgvAlleKaelber.Columns["Wasser"].Visible = false;
+            if (dgvAlleKaelber.Columns.Contains("Silofutter"))
+                dgvAlleKaelber.Columns["Silofutter"].Visible = false;
+            if (dgvAlleKaelber.Columns.Contains("Alter"))
+                dgvAlleKaelber.Columns["Alter"].Visible = false;
         }
 
         private void LoadKaelberBoxes()
@@ -145,19 +231,99 @@ namespace Oberflaeche_kaelber.Forms
 
         private void Box_KalbZugewiesen(object sender, Kalb kalb)
         {
+            if (kalb == null)
+                return;
+
+            // Prüfen, ob das Kalb schon in einer anderen Box ist
+            foreach (var ctrl in AlleControls(this))
+            {
+                if (ctrl is Kaelberbox box)
+                {
+                    var tempBox = boxStore.GetKaelberBoxById(box.Name);
+                    if (tempBox.Lebensnummer == kalb.Lebensnummer)
+                    {
+                        if (sender == box) continue;
+
+                        MessageBox.Show("Dieses Kalb ist bereits einer anderen Box zugewiesen!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        // Event-Handler temporär abmelden, damit keine Endlosschleife entsteht
+                        if (sender is Kaelberbox b)
+                        {
+                            b.KalbZugewiesen -= Box_KalbZugewiesen;
+                            b.AktuellerKalb = null;
+                            b.KalbZugewiesen += Box_KalbZugewiesen;
+                        }
+                        if (sender is KaelberboxVertikal bv)
+                        {
+                            bv.KalbZugewiesen -= Box_KalbZugewiesen;
+                            bv.AktuellerKalb = null;
+                            bv.KalbZugewiesen += Box_KalbZugewiesen;
+                        }
+                        return;
+                    }
+                }
+                else if (ctrl is KaelberboxVertikal boxVertical)
+                {
+                    var tempBox = boxStore.GetKaelberBoxById(boxVertical.Name);
+                    if (tempBox.Lebensnummer == kalb.Lebensnummer)
+                    {
+                        if (sender == boxVertical) continue;
+
+                        MessageBox.Show("Dieses Kalb ist bereits einer anderen Box zugewiesen!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        if (sender is Kaelberbox b)
+                        {
+                            b.KalbZugewiesen -= Box_KalbZugewiesen;
+                            b.AktuellerKalb = null;
+                            b.KalbZugewiesen += Box_KalbZugewiesen;
+                        }
+                        if (sender is KaelberboxVertikal bv)
+                        {
+                            bv.KalbZugewiesen -= Box_KalbZugewiesen;
+                            bv.AktuellerKalb = null;
+                            bv.KalbZugewiesen += Box_KalbZugewiesen;
+                        }
+                        return;
+                    }
+                }
+            }
+
             if (sender is Kaelberbox box1)
             {
                 var box = sender as Kaelberbox;
-
                 var daten = new Kaelber_projekt.Class.Kaelberbox(box.Name, kalb?.Lebensnummer);
                 boxStore.SetBox(daten);
             }
             else if (sender is KaelberboxVertikal box2)
             {
                 var box = sender as KaelberboxVertikal;
-
                 var daten = new Kaelber_projekt.Class.Kaelberbox(box.Name, kalb?.Lebensnummer);
                 boxStore.SetBox(daten);
+            }
+        }
+
+        private void EntferneKalbAusAllenBoxen(int lebensnummer)
+        {
+            foreach (var ctrl in AlleControls(this))
+            {
+                if (ctrl is Kaelberbox box)
+                {
+                    var tempBox = boxStore.GetKaelberBoxById(box.Name);
+                    if (tempBox.Lebensnummer == lebensnummer)
+                    {
+                        box.AktuellerKalb = null;
+                        boxStore.SetBox(new Kaelber_projekt.Class.Kaelberbox(box.Name, null));
+                    }
+                }
+                else if (ctrl is KaelberboxVertikal boxVertical)
+                {
+                    var tempBox = boxStore.GetKaelberBoxById(boxVertical.Name);
+                    if (tempBox.Lebensnummer == lebensnummer)
+                    {
+                        boxVertical.AktuellerKalb = null;
+                        boxStore.SetBox(new Kaelber_projekt.Class.Kaelberbox(boxVertical.Name, null));
+                    }
+                }
             }
         }
 
@@ -180,6 +346,7 @@ namespace Oberflaeche_kaelber.Forms
             RecalculateKaelber();
             store.SetKaelber((bindingSource1.List as IEnumerable<Kalb>).ToList());
             LoadKaelberBoxes();
+            bindingSource1.ResetBindings(false);
         }
 
         private void dgvDatenKaelber2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -187,6 +354,7 @@ namespace Oberflaeche_kaelber.Forms
             RecalculateKaelber();
             store.SetKaelber((bindingSource1.List as IEnumerable<Kalb>).ToList());
             LoadKaelberBoxes();
+            bindingSource1.ResetBindings(false);
         }
 
         private void RecalculateKaelber()
@@ -199,23 +367,93 @@ namespace Oberflaeche_kaelber.Forms
 
         private void dgvDatenKaelber_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Prüfen, ob die Klickposition gültig ist
-            if (e.RowIndex >= 0 && dgvDatenKaelber.Columns[e.ColumnIndex].Name == "Löschen")
+            if (e.RowIndex < 0)
+                return;
+
+            var kalb = dgvDatenKaelber.Rows[e.RowIndex].DataBoundItem as Kalb;
+            if (kalb == null)
+                return;
+
+            // 🗑️ Löschen
+            if (dgvDatenKaelber.Columns[e.ColumnIndex].Name == "Löschen")
             {
-                // Sicherheitsabfrage (optional)
                 var result = MessageBox.Show("Dieses Kalb wirklich löschen?", "Bestätigen", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    // Datensatz aus der Datenquelle entfernen
-                    var kalb = dgvDatenKaelber.Rows[e.RowIndex].DataBoundItem as Kalb;
-                    if (kalb != null)
-                    {
-                        bindingSource1.Remove(kalb);
-                        store.SetKaelber((bindingSource1.List as IEnumerable<Kalb>).ToList());
-                    }
+                    EntferneKalbAusAllenBoxen(kalb.Lebensnummer);
+                    bindingSource1.Remove(kalb);
+                    store.SetKaelber((bindingSource1.List as IEnumerable<Kalb>).ToList());
+
+                    MessageBox.Show("Kalb wurde gelöscht.");
+                }
+            }
+
+            // ➡️ Verschieben
+            else if (dgvDatenKaelber.Columns[e.ColumnIndex].Name == "Verschieben")
+            {
+                var result = MessageBox.Show("Kalb in 'AlleKälber' verschieben?", "Verschieben bestätigen", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    EntferneKalbAusAllenBoxen(kalb.Lebensnummer);
+                    // 👉 hier ist dein UI-Code!
+                    IKalbStore alleStore = new AlleKaelberStore();
+                    alleStore.AddKalb(kalb);
+
+                    // Entferne aus aktueller Liste
+                    bindingSource1.Remove(kalb);
+                    store.SetKaelber((bindingSource1.List as IEnumerable<Kalb>).ToList());
+
+                    LoadAlleKaelber();
+
+                    MessageBox.Show("Kalb wurde verschoben.");
                 }
             }
         }
+
+        private void DgvAlleKaelber_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            var kalb = dgvAlleKaelber.Rows[e.RowIndex].DataBoundItem as Kalb;
+            if (kalb == null)
+                return;
+
+            if (dgvAlleKaelber.Columns[e.ColumnIndex].Name == "Zurueck")
+            {
+                var result = MessageBox.Show("Kalb zurück in die normale Liste verschieben?", "Verschieben bestätigen", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    var alleListe = alleStore.GetAllKaelber();
+                    alleListe.RemoveAll(k => k.Lebensnummer == kalb.Lebensnummer);
+                    alleStore.SetKaelber(alleListe);
+
+                    var normaleListe = store.GetAllKaelber();
+                    normaleListe.Add(kalb);
+                    store.SetKaelber(normaleListe);
+
+                    LoadAlleKaelber();
+                    LoadData();
+
+                    MessageBox.Show("Kalb wurde zurückverschoben.");
+                }
+            }
+            else if (dgvAlleKaelber.Columns[e.ColumnIndex].Name == "Loeschen")
+            {
+                var result = MessageBox.Show("Dieses Kalb wirklich löschen?", "Löschen bestätigen", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    var alleListe = alleStore.GetAllKaelber();
+                    alleListe.RemoveAll(k => k.Lebensnummer == kalb.Lebensnummer);
+                    alleStore.SetKaelber(alleListe);
+
+                    LoadAlleKaelber();
+
+                    MessageBox.Show("Kalb wurde gelöscht.");
+                }
+            }
+        }
+
         private void dgvDatenKaelber_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex < 0 || e.RowIndex >= dgvDatenKaelber.Rows.Count - (dgvDatenKaelber.AllowUserToAddRows ? 1 : 0))
@@ -223,7 +461,7 @@ namespace Oberflaeche_kaelber.Forms
                 return;
             }
             // Prüfen, ob die aktuelle Spalte die "Alter"-Spalte ist
-            if (dgvDatenKaelber.Columns[e.ColumnIndex].Name == "Alter")
+            if (e.ColumnIndex == 20)
             {
                 var kalb = dgvDatenKaelber.Rows[e.RowIndex].DataBoundItem as Kalb;
 
@@ -232,19 +470,22 @@ namespace Oberflaeche_kaelber.Forms
                     double wochenBisAbspannen = (kalb.Abspanndatum - DateTime.Now).Days / 7.0;
                     if (wochenBisAbspannen < 0)
                     {
-                        if (kalb.IstExakterVollmond)
-                            e.Value = $"{kalb.Abspanndatum.ToShortDateString()}🌕";
-                        else
-                            e.Value = $"{kalb.Abspanndatum.ToShortDateString()}";
+                        e.Value = kalb.IstExakterVollmond
+                            ? $"{kalb.Abspanndatum:dd.MM.yyyy}🌕"
+                            : $"{kalb.Abspanndatum:dd.MM.yyyy}";
                     }
-                    else if (kalb.IstExakterVollmond)
-                        e.Value = $"{kalb.Abspanndatum.ToShortDateString()}🌕 (in {wochenBisAbspannen:F1} Wochen)";
                     else
-                        e.Value = $"{kalb.Abspanndatum.ToShortDateString()} (in {wochenBisAbspannen:F1} Wochen)";
+                    {
+                        e.Value = kalb.IstExakterVollmond
+                            ? $"{kalb.Abspanndatum:dd.MM.yyyy}🌕 (in {wochenBisAbspannen:F1} Wochen)"
+                            : $"{kalb.Abspanndatum:dd.MM.yyyy} (in {wochenBisAbspannen:F1} Wochen)";
+                    }
+                    e.FormattingApplied = true; // verhindert Rückwandlung ins Modell
                 }
             }
 
-            if (dgvDatenKaelber.Columns[e.ColumnIndex].Name == "Silofutter")
+
+            if (e.ColumnIndex == 19)
             {
                 // Hole das zugrunde liegende Kalb-Objekt
                 var kalb = dgvDatenKaelber.Rows[e.RowIndex].DataBoundItem as Kalb;
@@ -260,7 +501,6 @@ namespace Oberflaeche_kaelber.Forms
                     e.FormattingApplied = true;
                 }
             }
-            //ich verstehe nicht warum das nicht funktioniert
 
             if (e.ColumnIndex == 0)
             {
@@ -521,7 +761,13 @@ namespace Oberflaeche_kaelber.Forms
             dgv.CellBorderStyle = DataGridViewCellBorderStyle.Single;
             dgv.RowHeadersVisible = false;
 
-            dgv.AllowUserToAddRows = false;
+            dgv.AllowUserToAddRows = false;  
+        }
+        private void DgvDatenKaelber_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            // Verhindert Absturz durch Formatierungsfehler
+            e.ThrowException = false;
+            e.Cancel = true;
         }
     }
 }

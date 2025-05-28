@@ -61,6 +61,8 @@
             kaelberbox11 = new Kaelberbox();
             kaelberbox10 = new Kaelberbox();
             kaelberbox9 = new Kaelberbox();
+            tcAlleKaelber = new TabPage();
+            dgvAlleKaelber = new DataGridView();
             tcTabs.SuspendLayout();
             tcPageKaelber2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDatenKaelber2).BeginInit();
@@ -68,6 +70,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvDatenKaelber).BeginInit();
             tcStalluebersichtNeuerStall.SuspendLayout();
             tcStalluebersichtAlterStall.SuspendLayout();
+            tcAlleKaelber.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAlleKaelber).BeginInit();
             SuspendLayout();
             // 
             // tcTabs
@@ -76,6 +80,7 @@
             tcTabs.Controls.Add(tcPageKaelber1);
             tcTabs.Controls.Add(tcStalluebersichtNeuerStall);
             tcTabs.Controls.Add(tcStalluebersichtAlterStall);
+            tcTabs.Controls.Add(tcAlleKaelber);
             tcTabs.Dock = DockStyle.Fill;
             tcTabs.Location = new Point(0, 0);
             tcTabs.Name = "tcTabs";
@@ -450,6 +455,26 @@
             kaelberbox9.Size = new Size(150, 100);
             kaelberbox9.TabIndex = 0;
             // 
+            // tcAlleKaelber
+            // 
+            tcAlleKaelber.Controls.Add(dgvAlleKaelber);
+            tcAlleKaelber.Location = new Point(4, 24);
+            tcAlleKaelber.Name = "tcAlleKaelber";
+            tcAlleKaelber.Padding = new Padding(3);
+            tcAlleKaelber.Size = new Size(1362, 657);
+            tcAlleKaelber.TabIndex = 4;
+            tcAlleKaelber.Text = "Alle Kälber";
+            tcAlleKaelber.UseVisualStyleBackColor = true;
+            // 
+            // dgvAlleKaelber
+            // 
+            dgvAlleKaelber.BackgroundColor = SystemColors.Control;
+            dgvAlleKaelber.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvAlleKaelber.Location = new Point(0, 0);
+            dgvAlleKaelber.Name = "dgvAlleKaelber";
+            dgvAlleKaelber.Size = new Size(1362, 613);
+            dgvAlleKaelber.TabIndex = 0;
+            // 
             // DatenKaelberForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -465,6 +490,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvDatenKaelber).EndInit();
             tcStalluebersichtNeuerStall.ResumeLayout(false);
             tcStalluebersichtAlterStall.ResumeLayout(false);
+            tcAlleKaelber.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvAlleKaelber).EndInit();
             ResumeLayout(false);
         }
 
@@ -501,5 +528,7 @@
         private KaelberboxVertikal kaelberboxVertikal1;
         private KaelberboxVertikal kaelberboxVertikal7;
         private KaelberboxVertikal kaelberboxVertikal6;
+        private TabPage tcAlleKaelber;
+        private DataGridView dgvAlleKaelber;
     }
 }
