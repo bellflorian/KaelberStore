@@ -113,20 +113,23 @@ namespace Oberflaeche_kaelber.Forms
 
             var milchLabel = new Label
             {
-                Text = kalb.Milch,
+                Text = kalb.Milch == "Milchmast fertig"
+                    ? "Milchmast\nfertig"
+                    : kalb.Milch,
                 AutoSize = true,
-                Font = kalb.Milch == "Abgespannt"
-                   ? new Font("ADLaM Display", 9, FontStyle.Bold)
-                   : kalb.Milch.Contains(";")
-                       ? new Font("ADLaM Display", 18, FontStyle.Bold) // kleiner, wenn Kuhnummer dabei
-                       : new Font("ADLaM Display", 25, FontStyle.Bold), // groß, wenn nur Milch
+                Font = (kalb.Milch == "Abgespannt" || kalb.Milch == "Milchmast fertig")
+                    ? new Font("ADLaM Display", 9, FontStyle.Bold)
+                    : kalb.Milch.Contains(";")
+                        ? new Font("ADLaM Display", 18, FontStyle.Bold)
+                        : new Font("ADLaM Display", 25, FontStyle.Bold),
                 ForeColor = Color.Black,
                 BackColor = Color.Transparent,
-                Location = kalb.Milch == "Abgespannt"
+                Location = (kalb.Milch == "Abgespannt" || kalb.Milch == "Milchmast fertig")
                     ? new Point(56, 50)
                     : new Point(58, 40),
                 Cursor = Cursors.Hand
             };
+
 
             // Events hinzufügen, damit auch Labels klickbar bleiben
             lebensnummerLabel.Click += (s, e) => ÖffneKalbAuswahl();

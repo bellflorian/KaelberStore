@@ -120,7 +120,14 @@ namespace Kaelber_projekt.Class
 
             int index = Kaelberboxes.FindIndex(b => b.BoxId == box.BoxId);
 
-            Kaelberboxes[index] = box;
+            if (index >= 0)
+            {
+                Kaelberboxes[index] = box;
+            }
+            else
+            {
+                Kaelberboxes.Add(box);
+            }
 
             SaveToBoxFile();
         }
@@ -141,7 +148,8 @@ namespace Kaelber_projekt.Class
 
         public void SaveToBoxFile()
         {
-            File.WriteAllLines("Boxes.txt", Kaelberboxes.Select(box => $"{box.BoxId};{box.Lebensnummer}"));
+            File.WriteAllLines("Boxes.txt", Kaelberboxes.Select(box =>
+                $"{box.BoxId};{(box.Lebensnummer.HasValue ? box.Lebensnummer.ToString() : "")}"));
         }
     }
 }

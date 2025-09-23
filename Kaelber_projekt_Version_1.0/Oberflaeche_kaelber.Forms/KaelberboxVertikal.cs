@@ -128,18 +128,22 @@ namespace Oberflaeche_kaelber.Forms
 
             var milchLabel = new Label
             {
-                Text = kalb.Milch,
-                AutoSize = true,
-                Font = kalb.Milch == "Abgespannt"
-                    ? new Font("ADLaM Display", 9, FontStyle.Bold) // klein, wenn Abgespannt
+                Text = kalb.Milch == "Milchmast fertig"
+                    ? "Milchmast\nfertig"
+                    : kalb.Milch,
+                AutoSize = false,
+                Size = new Size(80, 30), // ggf. anpassen
+                Font = (kalb.Milch == "Abgespannt" || kalb.Milch == "Milchmast fertig")
+                    ? new Font("ADLaM Display", 8, FontStyle.Bold)
                     : kalb.Milch.Contains(";")
-                      ? new Font("ADLaM Display", 18, FontStyle.Bold) // kleiner, wenn Kuhnummer dabei
-                      : new Font("ADLaM Display", 25, FontStyle.Bold), // groß, wenn nur Milch
+                        ? new Font("ADLaM Display", 18, FontStyle.Bold)
+                        : new Font("ADLaM Display", 25, FontStyle.Bold),
                 ForeColor = Color.Black,
                 BackColor = Color.Transparent,
-                Location = kalb.Milch == "Abgespannt"
+                Location = (kalb.Milch == "Abgespannt" || kalb.Milch == "Milchmast fertig")
                     ? new Point(7, 100)
                     : new Point(6, 90),
+                TextAlign = ContentAlignment.TopCenter,
                 Cursor = Cursors.Hand
             };
 
@@ -213,7 +217,6 @@ namespace Oberflaeche_kaelber.Forms
                 wasserLabel.Click += (s, e) => ÖffneKalbAuswahl();
                 this.Controls.Add(wasserLabel);
             }
-
             KalbZugewiesen?.Invoke(this, kalb);
         }
     }

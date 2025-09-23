@@ -2,13 +2,15 @@
 using System.ComponentModel;
 using System.Drawing.Printing;
 using System.Windows.Forms;
+using System.IO.Ports;
 namespace Oberflaeche_kaelber.Forms
 {
     public partial class DatenKaelberForm : Form
     {
         private BindingSource bindingSource1 = new BindingSource();
-        private IKalbStore store = new TxtFileStore();
-        private IKaelberboxStore boxStore = new TxtFileStore();
+        private TxtFileStore fileStore = new TxtFileStore();
+        private IKalbStore store;
+        private IKaelberboxStore boxStore;
         private List<Kalb> kaelber;
         private BindingSource bindingSourceAlleKaelber = new BindingSource();
         private IKalbStore alleStore = new AlleKaelberStore();
@@ -16,6 +18,14 @@ namespace Oberflaeche_kaelber.Forms
         public DatenKaelberForm()
         {
             InitializeComponent();
+            this.Load += MainForm_Load;
+            fileStore = new TxtFileStore();
+            store = fileStore;
+            boxStore = fileStore;
+            arduinoTimer = new System.Windows.Forms.Timer();
+            arduinoTimer.Interval = 2000; // alle 2 Sekunden
+            arduinoTimer.Tick += ArduinoTimer_Tick;
+            arduinoTimer.Start();
             LoadData();
             dgvDatenKaelber.DataError += DgvDatenKaelber_DataError;
             dgvDatenKaelber2.DataError += DgvDatenKaelber_DataError;
@@ -23,7 +33,7 @@ namespace Oberflaeche_kaelber.Forms
             StyleDataGridView(dgvDatenKaelber2);
             dgvAlleKaelber.CellClick += DgvAlleKaelber_CellClick;
         }
-        
+
         private void LoadData()
         {
             bindingSource1.ListChanged += BindingSource1_ListChanged;
@@ -192,7 +202,8 @@ namespace Oberflaeche_kaelber.Forms
                 }
             }
 
-            boxStore.GenerateBoxTxtFile(names);
+            if (!System.IO.File.Exists("Boxes.txt"))
+                boxStore.GenerateBoxTxtFile(names);
 
             foreach (var ctrl in AlleControls(this))
             {
@@ -232,8 +243,21 @@ namespace Oberflaeche_kaelber.Forms
         private void Box_KalbZugewiesen(object sender, Kalb kalb)
         {
             if (kalb == null)
+            {
+                if (sender is Kaelberbox box11)
+                {
+                    var box = sender as Kaelberbox;
+                    var daten = new Kaelber_projekt.Class.Kaelberbox(box.Name, null);
+                    boxStore.SetBox(daten);
+                }
+                else if (sender is KaelberboxVertikal box22)
+                {
+                    var box = sender as KaelberboxVertikal;
+                    var daten = new Kaelber_projekt.Class.Kaelberbox(box.Name, null);
+                    boxStore.SetBox(daten);
+                }
                 return;
-
+            }
             // Prüfen, ob das Kalb schon in einer anderen Box ist
             foreach (var ctrl in AlleControls(this))
             {
@@ -313,6 +337,7 @@ namespace Oberflaeche_kaelber.Forms
                     {
                         box.AktuellerKalb = null;
                         boxStore.SetBox(new Kaelber_projekt.Class.Kaelberbox(box.Name, null));
+                        MessageBox.Show(System.IO.Path.GetFullPath("Boxes.txt"));
                     }
                 }
                 else if (ctrl is KaelberboxVertikal boxVertical)
@@ -359,9 +384,46 @@ namespace Oberflaeche_kaelber.Forms
 
         private void RecalculateKaelber()
         {
+            double KleinMilch1 = Properties.Settings.Default.PKleinMilch1;
+            double KleinMilch2 = Properties.Settings.Default.PKleinMilch2;
+            double KleinMilch3 = Properties.Settings.Default.PKleinMilch3;
+            double KleinMilch4 = Properties.Settings.Default.PKleinMilch4;
+            double KleinMilch5 = Properties.Settings.Default.PKleinMilch5;
+            double KleinMilch6 = Properties.Settings.Default.PKleinMilch6;
+            double KleinMilch7 = Properties.Settings.Default.PKleinMilch7;
+            double KleinMilch8 = Properties.Settings.Default.PKleinMilch8;
+            double KleinMilch9 = Properties.Settings.Default.PKleinMilch9;
+            double KleinMilch10 = Properties.Settings.Default.PKleinMilch10;
+            double KleinMilch11 = Properties.Settings.Default.PKleinMilch11;
+            double KleinMilch12 = Properties.Settings.Default.PKleinMilch12;
+            double KleinMilch13 = Properties.Settings.Default.PKleinMilch13;
+            double KleinMilch14 = Properties.Settings.Default.PKleinMilch14;
+            double KleinMilch15 = Properties.Settings.Default.PKleinMilch15;
+            double KleinKaelberStarter = Properties.Settings.Default.PKleinKaelberstarter;
+            double KleinHeu = Properties.Settings.Default.PKleinHeu;
+            double KleinWasser = Properties.Settings.Default.PKleinWasser;
+            double KleinSilofutter = Properties.Settings.Default.PKleinSilofutter;
             foreach (Kalb k in kaelber)
             {
-                k.CalculateFields();
+                k.CalculateFields(KleinMilch1,
+                                    KleinMilch2,
+                                    KleinMilch3,
+                                    KleinMilch4,
+                                    KleinMilch5,
+                                    KleinMilch6,
+                                    KleinMilch7,
+                                    KleinMilch8,
+                                    KleinMilch9,
+                                    KleinMilch10,
+                                    KleinMilch11,
+                                    KleinMilch12,
+                                    KleinMilch13,
+                                    KleinMilch14,
+                                    KleinMilch15,
+                                    KleinKaelberStarter,
+                                    KleinHeu,
+                                    KleinWasser,
+                                    KleinSilofutter);
             }
         }
 
@@ -627,6 +689,8 @@ namespace Oberflaeche_kaelber.Forms
 
         private int dragRowIndex = -1;
         private bool dragging = false;
+        // Explicitly specify the namespace for Timer to resolve ambiguity
+        private System.Windows.Forms.Timer arduinoTimer;
 
         private void dgvDatenKaelber_MouseDown(object sender, MouseEventArgs e)
         {
@@ -761,7 +825,7 @@ namespace Oberflaeche_kaelber.Forms
             dgv.CellBorderStyle = DataGridViewCellBorderStyle.Single;
             dgv.RowHeadersVisible = false;
 
-            dgv.AllowUserToAddRows = false;  
+            dgv.AllowUserToAddRows = false;
         }
         private void DgvDatenKaelber_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
@@ -769,5 +833,158 @@ namespace Oberflaeche_kaelber.Forms
             e.ThrowException = false;
             e.Cancel = true;
         }
+
+        //Einstellungen speichern ect
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            txbKleinMilk1.Text = Properties.Settings.Default.PKleinMilch1.ToString();
+            txbKleinMilk2.Text = Properties.Settings.Default.PKleinMilch2.ToString();
+            txbKleinMilk3.Text = Properties.Settings.Default.PKleinMilch3.ToString();
+            txbKleinMilk4.Text = Properties.Settings.Default.PKleinMilch4.ToString();
+            txbKleinMilk5.Text = Properties.Settings.Default.PKleinMilch5.ToString();
+            txbKleinMilk6.Text = Properties.Settings.Default.PKleinMilch6.ToString();
+            txbKleinMilk7.Text = Properties.Settings.Default.PKleinMilch7.ToString();
+            txbKleinMilk8.Text = Properties.Settings.Default.PKleinMilch8.ToString();
+            txbKleinMilk9.Text = Properties.Settings.Default.PKleinMilch9.ToString();
+            txbKleinMilk10.Text = Properties.Settings.Default.PKleinMilch10.ToString();
+            txbKleinMilk11.Text = Properties.Settings.Default.PKleinMilch11.ToString();
+            txbKleinMilk12.Text = Properties.Settings.Default.PKleinMilch12.ToString();
+            txbKleinMilk13.Text = Properties.Settings.Default.PKleinMilch13.ToString();
+            txbKleinMilk14.Text = Properties.Settings.Default.PKleinMilch14.ToString();
+            txbKleinMilk15.Text = Properties.Settings.Default.PKleinMilch15.ToString();
+            txbKleinKaelberstarter.Text = Properties.Settings.Default.PKleinKaelberstarter.ToString();
+            txbKleinHeu.Text = Properties.Settings.Default.PKleinHeu.ToString();
+            txbKleinWasser.Text = Properties.Settings.Default.PKleinWasser.ToString();
+            txbKleinSilofutter.Text = Properties.Settings.Default.PKleinSilofutter.ToString();
+
+        }
+
+
+        private void btnSaveSettings_Click(object sender, EventArgs e)
+        {
+            // Liste von (TextBox, Setting-Name) Paaren
+            var doubleSettings = new (TextBox TextBox, string SettingName)[]
+            {
+                (txbKleinMilk1, nameof(Properties.Settings.Default.PKleinMilch1)),
+                (txbKleinMilk2, nameof(Properties.Settings.Default.PKleinMilch2)),
+                (txbKleinMilk3, nameof(Properties.Settings.Default.PKleinMilch3)),
+                (txbKleinMilk4, nameof(Properties.Settings.Default.PKleinMilch4)),
+                (txbKleinMilk5, nameof(Properties.Settings.Default.PKleinMilch5)),
+                (txbKleinMilk6, nameof(Properties.Settings.Default.PKleinMilch6)),
+                (txbKleinMilk7, nameof(Properties.Settings.Default.PKleinMilch7)),
+                (txbKleinMilk8, nameof(Properties.Settings.Default.PKleinMilch8)),
+                (txbKleinMilk9, nameof(Properties.Settings.Default.PKleinMilch9)),
+                (txbKleinMilk10, nameof(Properties.Settings.Default.PKleinMilch10)),
+                (txbKleinMilk11, nameof(Properties.Settings.Default.PKleinMilch11)),
+                (txbKleinMilk12, nameof(Properties.Settings.Default.PKleinMilch12)),
+                (txbKleinMilk13, nameof(Properties.Settings.Default.PKleinMilch13)),
+                (txbKleinMilk14, nameof(Properties.Settings.Default.PKleinMilch14)),
+                (txbKleinMilk15, nameof(Properties.Settings.Default.PKleinMilch15)),
+                (txbKleinKaelberstarter, nameof(Properties.Settings.Default.PKleinKaelberstarter)),
+                (txbKleinHeu, nameof(Properties.Settings.Default.PKleinHeu)),
+                (txbKleinWasser, nameof(Properties.Settings.Default.PKleinWasser)),
+                (txbKleinSilofutter, nameof(Properties.Settings.Default.PKleinSilofutter))
+
+                // Füge hier weitere Paare hinzu, z.B. (txbKleinMilk3, nameof(Properties.Settings.Default.PKleinMilch3))
+            };
+
+            foreach (var (textBox, settingName) in doubleSettings)
+            {
+                if (double.TryParse(textBox.Text, out double value))
+                {
+                    Properties.Settings.Default[settingName] = value;
+                }
+                else
+                {
+                    MessageBox.Show($"Bitte geben Sie für '{settingName}' nur eine Zahl ein.", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            Properties.Settings.Default.Save();
+            RecalculateKaelber();
+            bindingSource1.ResetBindings(false);
+
+            MessageBox.Show("Einstellung gespeichert!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+
+
+        //Arduino
+
+        private bool zeigeAlternativeAnzeige = false;
+        private void btnDisplay_Click(object sender, EventArgs e)
+        {
+            zeigeAlternativeAnzeige = !zeigeAlternativeAnzeige;
+        }
+        private void ArduinoTimer_Tick(object sender, EventArgs e)
+        {
+            // Beispiel: Box mit Name "kaelberbox1"
+            var box = boxStore.GetKaelberBoxById("kaelberbox1");
+            if (box == null || box.Lebensnummer == null)
+            {
+                // Box ist leer → "Leer" anzeigen
+                string text = "Leer";
+                try
+                {
+                    using (SerialPort port = new SerialPort("COM3", 9600))
+                    {
+                        port.Open();
+                        port.WriteLine(text);
+                        port.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Fehlerbehandlung
+                }
+                return;
+            }
+
+            // Hole das Kalb, das in dieser Box ist
+            var kalb = store.GetKalb(box.Lebensnummer.Value);
+            if (kalb == null)
+                return;
+
+            string fullText;
+            if (zeigeAlternativeAnzeige)
+            {
+                string zeile1 = $"Absp:{kalb.Abspanndatum:dd.MM.yyyy}";
+                string zeile2 = $" {kalb.Geschlecht}  " +
+                                (kalb.Enthornt ? "Enthornt" : "") +
+                                (kalb.Hornlos ? "Hornlos" : "") +
+                                (!kalb.Enthornt && !kalb.Hornlos ? "Hoerner" : "");
+
+                fullText = zeile1 + "|" + zeile2;
+            }
+            else
+            {
+                double alterInWochen = Math.Round(kalb.Alter / 7.0, 1);
+                string zeile1 = $"{kalb.Lebensnummer}  {kalb.Milch}  {alterInWochen}W";
+                string zeile2 =
+                    (kalb.Wasser ? "W " : "") +
+                    (kalb.Heu ? "H " : "") +
+                    (kalb.Kaelberstarter ? "K " : "") +
+                    (kalb.Silofutter ? "S" : "");
+                fullText = zeile1 + "|" + zeile2;
+            }
+
+            try
+            {
+                using (SerialPort port = new SerialPort("COM3", 9600))
+                {
+                    port.Open();
+                    port.WriteLine(fullText);
+                    port.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Fehlerbehandlung
+            }
+        }
+
     }
 }
