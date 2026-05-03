@@ -126,23 +126,26 @@ namespace Oberflaeche_kaelber.Forms
             };
             this.Controls.Add(wochenEinheitLabel);
 
+            bool hatMutterNummer = kalb.Milch.Contains(";");
             var milchLabel = new Label
             {
                 Text = kalb.Milch == "Milchmast fertig"
                     ? "Milchmast\nfertig"
                     : kalb.Milch,
                 AutoSize = false,
-                Size = new Size(80, 30), // ggf. anpassen
+                Size = hatMutterNummer ? new Size(88, 30) : new Size(80, 36),
                 Font = (kalb.Milch == "Abgespannt" || kalb.Milch == "Milchmast fertig")
                     ? new Font("ADLaM Display", 8, FontStyle.Bold)
-                    : kalb.Milch.Contains(";")
-                        ? new Font("ADLaM Display", 18, FontStyle.Bold)
+                    : hatMutterNummer
+                        ? new Font("ADLaM Display", 12, FontStyle.Bold)
                         : new Font("ADLaM Display", 25, FontStyle.Bold),
                 ForeColor = Color.Black,
                 BackColor = Color.Transparent,
                 Location = (kalb.Milch == "Abgespannt" || kalb.Milch == "Milchmast fertig")
                     ? new Point(7, 100)
-                    : new Point(6, 90),
+                    : hatMutterNummer
+                        ? new Point(6, 96)
+                        : new Point(6, 90),
                 TextAlign = ContentAlignment.TopCenter,
                 Cursor = Cursors.Hand
             };

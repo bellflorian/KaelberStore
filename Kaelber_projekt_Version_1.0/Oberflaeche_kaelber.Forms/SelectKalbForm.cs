@@ -21,8 +21,7 @@ namespace Oberflaeche_kaelber.Forms
         {
             InitializeComponent();
             kaelber = store.GetAllKaelber();
-            foreach (Kalb kalb in kaelber)
-                kalb.CalculateFields();
+            KalbBerechnungHelper.CalculateAll(kaelber);
             cobxKaelberListe.DataSource = kaelber;
             cobxKaelberListe.DisplayMember = "Lebensnummer";
         }

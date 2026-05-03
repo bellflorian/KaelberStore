@@ -59,5 +59,155 @@
     <Setting Name="PKleinSilofutter" Type="System.Double" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="PMittelMilch1" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelMilch2" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelMilch3" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelMilch4" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelMilch5" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelMilch6" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelMilch7" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelMilch8" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelMilch9" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelMilch10" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelMilch11" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelMilch12" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelMilch13" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelMilch14" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelMilch15" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PMittelKaelberstarter" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">7</Value>
+    </Setting>
+    <Setting Name="PMittelHeu" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">7</Value>
+    </Setting>
+    <Setting Name="PMittelWasser" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="PMittelSilofutter" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">40</Value>
+    </Setting>
+    <Setting Name="PGrossMilch1" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossMilch2" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossMilch3" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossMilch4" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossMilch5" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossMilch6" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossMilch7" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossMilch8" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossMilch9" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossMilch10" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossMilch11" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossMilch12" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossMilch13" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossMilch14" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossMilch15" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="PGrossKaelberstarter" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">7</Value>
+    </Setting>
+    <Setting Name="PGrossHeu" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">7</Value>
+    </Setting>
+    <Setting Name="PGrossWasser" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="PGrossSilofutter" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">40</Value>
+    </Setting>
+	  <Setting Name="PMilchmast1" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">3</Value>
+	  </Setting>
+	  <Setting Name="PMilchmast2" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">4</Value>
+	  </Setting>
+	  <Setting Name="PMilchmast3" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">5</Value>
+	  </Setting>
+	  <Setting Name="PMilchmast4" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">6</Value>
+	  </Setting>
+	  <Setting Name="PMilchmast5" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">6</Value>
+	  </Setting>
+	  <Setting Name="PMilchmast6" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">6</Value>
+	  </Setting>
+	  <Setting Name="PMilchmast7" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">7</Value>
+	  </Setting>
+	  <Setting Name="PMilchmast8" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">7</Value>
+	  </Setting>
+	  <Setting Name="PMilchmast9" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">7</Value>
+	  </Setting>
+	  <Setting Name="PMilchmast10" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">8</Value>
+	  </Setting>
+	  <Setting Name="PMilchmast11" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">8</Value>
+	  </Setting>
+	  <Setting Name="PMilchmast12" Type="System.Double" Scope="User">
+		  <Value Profile="(Default)">8</Value>
+	  </Setting>
   </Settings>
 </SettingsFile>

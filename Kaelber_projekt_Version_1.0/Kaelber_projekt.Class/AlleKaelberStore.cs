@@ -7,7 +7,6 @@ namespace Kaelber_projekt.Class
 {
     public class AlleKaelberStore : IKalbStore
     {
-        private const string FilePath = "AlleKaelber.txt";
         private List<Kalb> kaelber = new List<Kalb>();
 
         public void AddKalb(Kalb kalb)
@@ -32,13 +31,13 @@ namespace Kaelber_projekt.Class
         {
             kaelber.Clear();
 
-            if (!File.Exists(FilePath))
+            if (!File.Exists(DataFilePaths.AlleKaelberFile))
             {
-                File.Create(FilePath).Close();
+                File.Create(DataFilePaths.AlleKaelberFile).Close();
                 return kaelber;
             }
 
-            string[] lines = File.ReadAllLines(FilePath);
+            string[] lines = File.ReadAllLines(DataFilePaths.AlleKaelberFile);
 
             foreach (string line in lines)
             {
@@ -78,7 +77,7 @@ namespace Kaelber_projekt.Class
                 string line = $"{kalb.Lebensnummer};{kalb.Name};{kalb.Geschlecht};{kalb.Groeße};{kalb.MutterNr};{kalb.Geburtsdatum};{kalb.Eisen};{kalb.Selene};{kalb.Impfungen};{kalb.Hornlos};{kalb.Enthornt};{kalb.AlterStall};{kalb.Krankheiten};{kalb.Notiz};{kalb.ZuKlein};{kalb.Milchmast}";
                 output.Add(line);
             }
-            File.WriteAllLines(FilePath, output);
+            File.WriteAllLines(DataFilePaths.AlleKaelberFile, output);
         }
     }
 }

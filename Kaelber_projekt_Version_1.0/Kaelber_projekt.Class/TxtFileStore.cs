@@ -36,13 +36,13 @@ namespace Kaelber_projekt.Class
         {
             Kaelber.Clear();
 
-            if (!File.Exists("Kaelber.txt"))
+            if (!File.Exists(DataFilePaths.KaelberFile))
             {
-                File.Create("Kaelber.txt").Close();
+                File.Create(DataFilePaths.KaelberFile).Close();
                 return Kaelber;
             }
 
-            string[] lines = File.ReadAllLines("Kaelber.txt");
+            string[] lines = File.ReadAllLines(DataFilePaths.KaelberFile);
 
             foreach (string line in lines)
             {
@@ -82,14 +82,14 @@ namespace Kaelber_projekt.Class
                 string line = $"{kalb.Lebensnummer};{kalb.Name};{kalb.Geschlecht};{kalb.Groeße};{kalb.MutterNr};{kalb.Geburtsdatum};{kalb.Eisen};{kalb.Selene};{kalb.Impfungen};{kalb.Hornlos};{kalb.Enthornt};{kalb.AlterStall};{kalb.Krankheiten};{kalb.Notiz};{kalb.ZuKlein};{kalb.Milchmast}";
                 output.Add(line);
             }
-            File.WriteAllLines("Kaelber.txt", output);
+            File.WriteAllLines(DataFilePaths.KaelberFile, output);
         }
 
         public List<Kaelberbox> GetAllKaelberBoxes()
         {
             Kaelberboxes.Clear();
 
-            string[] content = File.ReadAllLines("Boxes.txt");
+            string[] content = File.ReadAllLines(DataFilePaths.BoxesFile);
 
             foreach (string line in content)
             {
@@ -134,21 +134,21 @@ namespace Kaelber_projekt.Class
 
         public bool GenerateBoxTxtFile(List<string> names)
         {
-            if(File.Exists("Boxes.txt"))
+            if(File.Exists(DataFilePaths.BoxesFile))
                 return false;
 
-            File.Create("Boxes.txt").Close();
+            File.Create(DataFilePaths.BoxesFile).Close();
 
             foreach (string name in names)
                 Kaelberboxes.Add(new Kaelberbox(name, null));
 
-            File.WriteAllLines("Boxes.txt", Kaelberboxes.Select(box => $"{box.BoxId};{box.Lebensnummer}"));
+            File.WriteAllLines(DataFilePaths.BoxesFile, Kaelberboxes.Select(box => $"{box.BoxId};{box.Lebensnummer}"));
             return true;
         }
 
         public void SaveToBoxFile()
         {
-            File.WriteAllLines("Boxes.txt", Kaelberboxes.Select(box =>
+            File.WriteAllLines(DataFilePaths.BoxesFile, Kaelberboxes.Select(box =>
                 $"{box.BoxId};{(box.Lebensnummer.HasValue ? box.Lebensnummer.ToString() : "")}"));
         }
     }
