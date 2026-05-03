@@ -119,10 +119,7 @@ namespace Oberflaeche_kaelber.Forms
         {
             var alleKaelberListe = alleStore.GetAllKaelber();
             // Berechnete Felder für jedes Kalb aktualisieren
-            foreach (var kalb in alleKaelberListe)
-            {
-                kalb.CalculateFields();
-            }
+            KalbBerechnungHelper.CalculateAll(alleKaelberListe);
 
             var sortierbareListe = new SortableBindingList<Kalb>(alleKaelberListe);
             bindingSourceAlleKaelber.DataSource = sortierbareListe;
@@ -202,7 +199,7 @@ namespace Oberflaeche_kaelber.Forms
                 }
             }
 
-            if (!System.IO.File.Exists("Boxes.txt"))
+            if (!System.IO.File.Exists(DataFilePaths.BoxesFile))
                 boxStore.GenerateBoxTxtFile(names);
 
             foreach (var ctrl in AlleControls(this))
@@ -210,6 +207,9 @@ namespace Oberflaeche_kaelber.Forms
                 if (ctrl is Kaelberbox box)
                 {
                     Kaelber_projekt.Class.Kaelberbox tempBox = boxStore.GetKaelberBoxById(box.Name);
+
+                    if (tempBox == null)
+                        continue; // oder: boxStore.SetBox(new Kaelberbox(box.Name, null));
 
                     if (tempBox.Lebensnummer == null)
                         continue;
@@ -220,6 +220,9 @@ namespace Oberflaeche_kaelber.Forms
                 else if (ctrl is KaelberboxVertikal boxVertical)
                 {
                     Kaelber_projekt.Class.Kaelberbox tempBox = boxStore.GetKaelberBoxById(boxVertical.Name);
+
+                    if (tempBox == null)
+                        continue; // oder: boxStore.SetBox(new Kaelberbox(boxVertical.Name, null));
 
                     if (tempBox.Lebensnummer == null)
                         continue;
@@ -264,6 +267,8 @@ namespace Oberflaeche_kaelber.Forms
                 if (ctrl is Kaelberbox box)
                 {
                     var tempBox = boxStore.GetKaelberBoxById(box.Name);
+                    if (tempBox == null)
+                        continue;
                     if (tempBox.Lebensnummer == kalb.Lebensnummer)
                     {
                         if (sender == box) continue;
@@ -289,6 +294,8 @@ namespace Oberflaeche_kaelber.Forms
                 else if (ctrl is KaelberboxVertikal boxVertical)
                 {
                     var tempBox = boxStore.GetKaelberBoxById(boxVertical.Name);
+                    if (tempBox == null)
+                        continue;
                     if (tempBox.Lebensnummer == kalb.Lebensnummer)
                     {
                         if (sender == boxVertical) continue;
@@ -337,7 +344,7 @@ namespace Oberflaeche_kaelber.Forms
                     {
                         box.AktuellerKalb = null;
                         boxStore.SetBox(new Kaelber_projekt.Class.Kaelberbox(box.Name, null));
-                        MessageBox.Show(System.IO.Path.GetFullPath("Boxes.txt"));
+                        MessageBox.Show(DataFilePaths.BoxesFile);
                     }
                 }
                 else if (ctrl is KaelberboxVertikal boxVertical)
@@ -384,47 +391,7 @@ namespace Oberflaeche_kaelber.Forms
 
         private void RecalculateKaelber()
         {
-            double KleinMilch1 = Properties.Settings.Default.PKleinMilch1;
-            double KleinMilch2 = Properties.Settings.Default.PKleinMilch2;
-            double KleinMilch3 = Properties.Settings.Default.PKleinMilch3;
-            double KleinMilch4 = Properties.Settings.Default.PKleinMilch4;
-            double KleinMilch5 = Properties.Settings.Default.PKleinMilch5;
-            double KleinMilch6 = Properties.Settings.Default.PKleinMilch6;
-            double KleinMilch7 = Properties.Settings.Default.PKleinMilch7;
-            double KleinMilch8 = Properties.Settings.Default.PKleinMilch8;
-            double KleinMilch9 = Properties.Settings.Default.PKleinMilch9;
-            double KleinMilch10 = Properties.Settings.Default.PKleinMilch10;
-            double KleinMilch11 = Properties.Settings.Default.PKleinMilch11;
-            double KleinMilch12 = Properties.Settings.Default.PKleinMilch12;
-            double KleinMilch13 = Properties.Settings.Default.PKleinMilch13;
-            double KleinMilch14 = Properties.Settings.Default.PKleinMilch14;
-            double KleinMilch15 = Properties.Settings.Default.PKleinMilch15;
-            double KleinKaelberStarter = Properties.Settings.Default.PKleinKaelberstarter;
-            double KleinHeu = Properties.Settings.Default.PKleinHeu;
-            double KleinWasser = Properties.Settings.Default.PKleinWasser;
-            double KleinSilofutter = Properties.Settings.Default.PKleinSilofutter;
-            foreach (Kalb k in kaelber)
-            {
-                k.CalculateFields(KleinMilch1,
-                                    KleinMilch2,
-                                    KleinMilch3,
-                                    KleinMilch4,
-                                    KleinMilch5,
-                                    KleinMilch6,
-                                    KleinMilch7,
-                                    KleinMilch8,
-                                    KleinMilch9,
-                                    KleinMilch10,
-                                    KleinMilch11,
-                                    KleinMilch12,
-                                    KleinMilch13,
-                                    KleinMilch14,
-                                    KleinMilch15,
-                                    KleinKaelberStarter,
-                                    KleinHeu,
-                                    KleinWasser,
-                                    KleinSilofutter);
-            }
+            KalbBerechnungHelper.CalculateAll(kaelber);
         }
 
         private void dgvDatenKaelber_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -857,6 +824,61 @@ namespace Oberflaeche_kaelber.Forms
             txbKleinHeu.Text = Properties.Settings.Default.PKleinHeu.ToString();
             txbKleinWasser.Text = Properties.Settings.Default.PKleinWasser.ToString();
             txbKleinSilofutter.Text = Properties.Settings.Default.PKleinSilofutter.ToString();
+            // Mittel
+            txbMittelMilk1.Text = Properties.Settings.Default.PMittelMilch1.ToString();
+            txbMittelMilk2.Text = Properties.Settings.Default.PMittelMilch2.ToString();
+            txbMittelMilk3.Text = Properties.Settings.Default.PMittelMilch3.ToString();
+            txbMittelMilk4.Text = Properties.Settings.Default.PMittelMilch4.ToString();
+            txbMittelMilk5.Text = Properties.Settings.Default.PMittelMilch5.ToString();
+            txbMittelMilk6.Text = Properties.Settings.Default.PMittelMilch6.ToString();
+            txbMittelMilk7.Text = Properties.Settings.Default.PMittelMilch7.ToString();
+            txbMittelMilk8.Text = Properties.Settings.Default.PMittelMilch8.ToString();
+            txbMittelMilk9.Text = Properties.Settings.Default.PMittelMilch9.ToString();
+            txbMittelMilk10.Text = Properties.Settings.Default.PMittelMilch10.ToString();
+            txbMittelMilk11.Text = Properties.Settings.Default.PMittelMilch11.ToString();
+            txbMittelMilk12.Text = Properties.Settings.Default.PMittelMilch12.ToString();
+            txbMittelMilk13.Text = Properties.Settings.Default.PMittelMilch13.ToString();
+            txbMittelMilk14.Text = Properties.Settings.Default.PMittelMilch14.ToString();
+            txbMittelMilk15.Text = Properties.Settings.Default.PMittelMilch15.ToString();
+            txbMittelKaelberstarter.Text = Properties.Settings.Default.PMittelKaelberstarter.ToString();
+            txbMittelHeu.Text = Properties.Settings.Default.PMittelHeu.ToString();
+            txbMittelWasser.Text = Properties.Settings.Default.PMittelWasser.ToString();
+            txbMittelSilofutter.Text = Properties.Settings.Default.PMittelSilofutter.ToString();
+
+            // Groß
+            txbGrossMilk1.Text = Properties.Settings.Default.PGrossMilch1.ToString();
+            txbGrossMilk2.Text = Properties.Settings.Default.PGrossMilch2.ToString();
+            txbGrossMilk3.Text = Properties.Settings.Default.PGrossMilch3.ToString();
+            txbGrossMilk4.Text = Properties.Settings.Default.PGrossMilch4.ToString();
+            txbGrossMilk5.Text = Properties.Settings.Default.PGrossMilch5.ToString();
+            txbGrossMilk6.Text = Properties.Settings.Default.PGrossMilch6.ToString();
+            txbGrossMilk7.Text = Properties.Settings.Default.PGrossMilch7.ToString();
+            txbGrossMilk8.Text = Properties.Settings.Default.PGrossMilch8.ToString();
+            txbGrossMilk9.Text = Properties.Settings.Default.PGrossMilch9.ToString();
+            txbGrossMilk10.Text = Properties.Settings.Default.PGrossMilch10.ToString();
+            txbGrossMilk11.Text = Properties.Settings.Default.PGrossMilch11.ToString();
+            txbGrossMilk12.Text = Properties.Settings.Default.PGrossMilch12.ToString();
+            txbGrossMilk13.Text = Properties.Settings.Default.PGrossMilch13.ToString();
+            txbGrossMilk14.Text = Properties.Settings.Default.PGrossMilch14.ToString();
+            txbGrossMilk15.Text = Properties.Settings.Default.PGrossMilch15.ToString();
+            txbGrossKaelberstarter.Text = Properties.Settings.Default.PGrossKaelberstarter.ToString();
+            txbGrossHeu.Text = Properties.Settings.Default.PGrossHeu.ToString();
+            txbGrossWasser.Text = Properties.Settings.Default.PGrossWasser.ToString();
+            txbGrossSilofutter.Text = Properties.Settings.Default.PGrossSilofutter.ToString();
+
+            // Milchmast
+            txbMilchmast1.Text = Properties.Settings.Default.PMilchmast1.ToString();
+            txbMilchmast2.Text = Properties.Settings.Default.PMilchmast2.ToString();
+            txbMilchmast3.Text = Properties.Settings.Default.PMilchmast3.ToString();
+            txbMilchmast4.Text = Properties.Settings.Default.PMilchmast4.ToString();
+            txbMilchmast5.Text = Properties.Settings.Default.PMilchmast5.ToString();
+            txbMilchmast6.Text = Properties.Settings.Default.PMilchmast6.ToString();
+            txbMilchmast7.Text = Properties.Settings.Default.PMilchmast7.ToString();
+            txbMilchmast8.Text = Properties.Settings.Default.PMilchmast8.ToString();
+            txbMilchmast9.Text = Properties.Settings.Default.PMilchmast9.ToString();
+            txbMilchmast10.Text = Properties.Settings.Default.PMilchmast10.ToString();
+            txbMilchmast11.Text = Properties.Settings.Default.PMilchmast11.ToString();
+            txbMilchmast12.Text = Properties.Settings.Default.PMilchmast12.ToString();
 
         }
 
@@ -884,10 +906,66 @@ namespace Oberflaeche_kaelber.Forms
                 (txbKleinKaelberstarter, nameof(Properties.Settings.Default.PKleinKaelberstarter)),
                 (txbKleinHeu, nameof(Properties.Settings.Default.PKleinHeu)),
                 (txbKleinWasser, nameof(Properties.Settings.Default.PKleinWasser)),
-                (txbKleinSilofutter, nameof(Properties.Settings.Default.PKleinSilofutter))
+                (txbKleinSilofutter, nameof(Properties.Settings.Default.PKleinSilofutter)),
 
-                // Füge hier weitere Paare hinzu, z.B. (txbKleinMilk3, nameof(Properties.Settings.Default.PKleinMilch3))
-            };
+                // Mittel
+                (txbMittelMilk1, nameof(Properties.Settings.Default.PMittelMilch1)),
+                (txbMittelMilk2, nameof(Properties.Settings.Default.PMittelMilch2)),
+                (txbMittelMilk3, nameof(Properties.Settings.Default.PMittelMilch3)),
+                (txbMittelMilk4, nameof(Properties.Settings.Default.PMittelMilch4)),
+                (txbMittelMilk5, nameof(Properties.Settings.Default.PMittelMilch5)),
+                (txbMittelMilk6, nameof(Properties.Settings.Default.PMittelMilch6)),
+                (txbMittelMilk7, nameof(Properties.Settings.Default.PMittelMilch7)),
+                (txbMittelMilk8, nameof(Properties.Settings.Default.PMittelMilch8)),
+                (txbMittelMilk9, nameof(Properties.Settings.Default.PMittelMilch9)),
+                (txbMittelMilk10, nameof(Properties.Settings.Default.PMittelMilch10)),
+                (txbMittelMilk11, nameof(Properties.Settings.Default.PMittelMilch11)),
+                (txbMittelMilk12, nameof(Properties.Settings.Default.PMittelMilch12)),
+                (txbMittelMilk13, nameof(Properties.Settings.Default.PMittelMilch13)),
+                (txbMittelMilk14, nameof(Properties.Settings.Default.PMittelMilch14)),
+                (txbMittelMilk15, nameof(Properties.Settings.Default.PMittelMilch15)),
+                (txbMittelKaelberstarter, nameof(Properties.Settings.Default.PMittelKaelberstarter)),
+                (txbMittelHeu, nameof(Properties.Settings.Default.PMittelHeu)),
+                (txbMittelWasser, nameof(Properties.Settings.Default.PMittelWasser)),
+                (txbMittelSilofutter, nameof(Properties.Settings.Default.PMittelSilofutter)),
+
+                // Groß
+                (txbGrossMilk1, nameof(Properties.Settings.Default.PGrossMilch1)),
+                (txbGrossMilk2, nameof(Properties.Settings.Default.PGrossMilch2)),
+                (txbGrossMilk3, nameof(Properties.Settings.Default.PGrossMilch3)),
+                (txbGrossMilk4, nameof(Properties.Settings.Default.PGrossMilch4)),
+                (txbGrossMilk5, nameof(Properties.Settings.Default.PGrossMilch5)),
+                (txbGrossMilk6, nameof(Properties.Settings.Default.PGrossMilch6)),
+                (txbGrossMilk7, nameof(Properties.Settings.Default.PGrossMilch7)),
+                (txbGrossMilk8, nameof(Properties.Settings.Default.PGrossMilch8)),
+                (txbGrossMilk9, nameof(Properties.Settings.Default.PGrossMilch9)),
+                (txbGrossMilk10, nameof(Properties.Settings.Default.PGrossMilch10)),
+                (txbGrossMilk11, nameof(Properties.Settings.Default.PGrossMilch11)),
+                (txbGrossMilk12, nameof(Properties.Settings.Default.PGrossMilch12)),
+                (txbGrossMilk13, nameof(Properties.Settings.Default.PGrossMilch13)),
+                (txbGrossMilk14, nameof(Properties.Settings.Default.PGrossMilch14)),
+                (txbGrossMilk15, nameof(Properties.Settings.Default.PGrossMilch15)),
+                (txbGrossKaelberstarter, nameof(Properties.Settings.Default.PGrossKaelberstarter)),
+                (txbGrossHeu, nameof(Properties.Settings.Default.PGrossHeu)),
+                (txbGrossWasser, nameof(Properties.Settings.Default.PGrossWasser)),
+                (txbGrossSilofutter, nameof(Properties.Settings.Default.PGrossSilofutter)),
+
+                // Milchmast
+                (txbMilchmast1, nameof(Properties.Settings.Default.PMilchmast1)),
+                (txbMilchmast2, nameof(Properties.Settings.Default.PMilchmast2)),
+                (txbMilchmast3, nameof(Properties.Settings.Default.PMilchmast3)),
+                (txbMilchmast4, nameof(Properties.Settings.Default.PMilchmast4)),
+                (txbMilchmast5, nameof(Properties.Settings.Default.PMilchmast5)),
+                (txbMilchmast6, nameof(Properties.Settings.Default.PMilchmast6)),
+                (txbMilchmast7, nameof(Properties.Settings.Default.PMilchmast7)),
+                (txbMilchmast8, nameof(Properties.Settings.Default.PMilchmast8)),
+                (txbMilchmast9, nameof(Properties.Settings.Default.PMilchmast9)),
+                (txbMilchmast10, nameof(Properties.Settings.Default.PMilchmast10)),
+                (txbMilchmast11, nameof(Properties.Settings.Default.PMilchmast11)),
+                (txbMilchmast12, nameof(Properties.Settings.Default.PMilchmast12)),
+
+            // Füge hier weitere Paare hinzu, z.B. (txbKleinMilk3, nameof(Properties.Settings.Default.PKleinMilch3))
+        };
 
             foreach (var (textBox, settingName) in doubleSettings)
             {
@@ -908,7 +986,6 @@ namespace Oberflaeche_kaelber.Forms
 
             MessageBox.Show("Einstellung gespeichert!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
 
 
 
